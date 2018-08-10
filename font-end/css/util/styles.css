@@ -521,11 +521,19 @@ footer {
 .pagination>.active>span,
 .pagination>.active>span:focus,
 .pagination>.active>span:hover{
-  background-color: #3c763d;
+  background-color: #57a459;
   border-color: #3c763d;
 }
 
 .pagination>li>a,
 .pagination>li>span{
   color: #3c763d;
+}
+.pagination >li{
+  cursor: pointer;
+}
+
+/*================评论的星星===================*/
+.star_score{
+  display: inline-block;
 }

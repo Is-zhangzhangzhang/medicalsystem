@@ -23,7 +23,7 @@ let drawPagination = function(ul,pages,nowPage){
     let li = "<li><span aria-label=\"Previous\"><span aria-hidden=\"true\">&laquo;</span></span>\n</li>";  //上一页 <<
         for(let i=1; i<=pages; i++)
         {
-            if(i == nowPage){
+            if(i == nowPage){   //如果是当前页需要加上active
                 li += "<li class='active'><span>"+i+"</span></li>";
             }
             else
@@ -36,26 +36,26 @@ let drawPagination = function(ul,pages,nowPage){
 
 let setPageDisable = function (ul,pages,nowPage) {
     let liNode = ul.find('li');
-    console.log(pages);
+    // console.log(pages);
+    if(pages == 1) //总页数只有1 << >>都要禁用
+    {
+        // console.log("总页数只有1！！");
+        liNode.first().addClass('disabled');
+        liNode.last().addClass('disabled');
+    }else{
+        liNode.first().removeClass('disabled');
+        liNode.last().removeClass('disabled');
+    }
     if(nowPage == 1){ //当前页为第一页
-        console.log("当前页为第一页");
+        // console.log("当前页为第一页");
         liNode.first().addClass('disabled');
     }else {
         liNode.first().removeClass('disabled');
     }
     if(nowPage == pages ){ //当前页为最后一页
-        console.log("当前页为最后一页");
+        // console.log("当前页为最后一页");
         liNode.last().addClass('disabled');
     }else{
-        liNode.last().removeClass('disabled');
-    }
-    if(pages == 1) //总页数只有1 << >>都要禁用
-    {
-        console.log("总页数只有1！！");
-        liNode.first().addClass('disabled');
-        liNode.last().addClass('disabled');
-    }else{
-        liNode.first().removeClass('disabled');
         liNode.last().removeClass('disabled');
     }
 };
@@ -78,10 +78,16 @@ let getPrePage = function (ul,pages) {
     return prevPage;
 };
 //点击某一页
-let clickAnyPage = function (ul,pages,page) {
+/**
+ *
+ * @param ul
+ * @param pages 总页数
+ * @param page 要切换的页数
+ */
+let clickAnyPage = function (ul,pages,toPage) {
     let nowPage = ul.find('.active');
     nowPage.removeClass('active');
-    $(ul.find('li').get(page)).addClass('active');
+    $(ul.find('li').get(toPage)).addClass('active');
 };
 //加载病人基本信息
 let loadPatient = function (uid) {

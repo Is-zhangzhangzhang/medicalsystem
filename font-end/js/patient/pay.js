@@ -61,7 +61,11 @@ let fillPay = function () {
 let afterPaid = function(){
     $('#pt_pay_success').modal('show');
 };
-
+//点击模态框的确认按钮
+$('#pay_modal_save').click(function () {
+    $('#pt_pay_success').modal('hide');
+    window.location.href = "./main.html";
+});
 //点击去评价
 $('#pa_to_comment').click(function () {
     $(this).attr("href","/font-end/html/patient/bookDoctor.html?paid=true&consumeIndex="+getConsumeIndex().consumeIndex);

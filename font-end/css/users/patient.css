@@ -215,3 +215,8 @@
     color:#999;
     font-weight: 600!important;
 }
+
+/*===================星星打分=====================*/
+#pt_submit_comment .star_score i{
+    cursor: pointer;
+}

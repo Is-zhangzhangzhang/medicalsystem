@@ -98,10 +98,11 @@ let fillTitle = function (patient,ad_title,ad_time,ad_content) {
 let reply;
 let fillDialog = function (res) {
     console.log(res);
-    if(res.replyArray.length <= 0){
-        return ;
-    }
     let dom = $('#messageList');
+    if(res.replyArray.length <= 0){
+        dom.parent.html('');
+        return;
+    }
     dom.html('');
     let dt = res.doctor;
     let pt = res.patient;

@@ -47,6 +47,12 @@ $(function () {
     //页面加载时请求科室
     loadDept();
 });
+/*===全局变量===*/
+let deptChosen;
+let consultPageSum;
+let commentPageSum;
+
+
 let getUrlFlag = function () {
     let url_param = location.search;
     // console.log(url_param);
@@ -62,8 +68,6 @@ let getUrlFlag = function () {
     }
     return flag;
 };
-/*===全局变量===*/
-let deptChosen;
 //挂号信息 标签选择切换
 let tagChange = function () {
     let a = $(this);
@@ -486,8 +490,8 @@ let loadConsult = function (page) {
                 if (res) {
                     Consult.setConsultList(res.advisoryArray);
                     fillConsultList(res.advisoryArray);
-                    let pageSum = parseInt(res.resultNum / 10) + 1;
-                    initConsultPagination(pageSum, page);
+                    consultPageSum = parseInt(res.resultNum / 10) + 1;
+                    initConsultPagination(consultPageSum, page);
                 }
             } else {
                 alert('请登录！');
@@ -558,8 +562,8 @@ let loadComment = function (page, dt_id) {
             // console.log(res);
             if (res.status == 'login') {
                 fillCommentList(res.evaluationArray);
-                let sum = parseInt(res.resultNum / 10) + 1;
-                initCommentPagination(sum, page);
+                commentPageSum = parseInt(res.resultNum / 10) + 1;
+                initCommentPagination(commentPageSum, page);
             }
             else {
                 alert('请登录！');
@@ -573,32 +577,6 @@ let loadComment = function (page, dt_id) {
 };
 
 /*=================医生咨询和评论=======================*/
-// 初始化咨询分页
-let pageSum = 3; //分页总页数
-let initConsultPagination = function (pages, page) {
-    let dom = $('#book_consult_page_ul>ul');
-    pageSum = pages;
-    console.log(pageSum);
-    dom.html('');
-    drawPagination(dom, pageSum, page);
-};
-//咨询点击下一页
-$('#book_consult_page_ul').on('click', 'li:last-child', function () {
-    if ($(this).hasClass('disabled') == false) {
-        let ul = $('#book_consult_page_ul>ul');
-        let page = getNextPage(ul, pageSum);
-        loadConsult(page); //重新请求下一页
-    }
-});
-//咨询点击上一页
-$('#book_consult_page_ul').on('click', 'li:first-child', function () {
-    if ($(this).hasClass('disabled') == false) {
-        let ul = $('#book_consult_page_ul>ul');
-        let page = getPrePage(ul, pages);
-        loadConsult(page); //重新请求上一页
-    }
-});
-
 //发表新咨询帖子
 $('#submit_new_consult').click(function () {
     let title = $('#consult_new_title').val();
@@ -646,39 +624,6 @@ $('#submit_new_consult').click(function () {
     });
 });
 
-//初始化评论分页
-let commentPage = 3;
-let initCommentPagination = function (sum, page) {
-    let ul = $('#book_comment_page_ul>ul');
-    commentPage = sum;
-    ul.html('');
-    drawPagination(ul, commentPage, page);
-};
-//评论点击下一页
-$('#book_comment_page_ul').on('click', 'li:last-child', function () {
-    if ($(this).hasClass('disabled') == false) {
-        let ul = $('#book_comment_page_ul>ul');
-        let page = getNextPage(ul, pageSum);
-        if (getUrlFlag()) {
-            let dt_id = JSON.parse(localStorage.getItem('consumeList'))[getUrlFlag().consumeIndex].mr.doctor.dt_id;
-            loadComment(page, dt_id);
-        } else
-            loadComment(page, Doctor.getDoctor().dt_id);//重新请求下一页
-    }
-});
-//评论点击上一页
-$('#book_comment_page_ul').on('click', 'li:first-child', function () {
-    if ($(this).hasClass('disabled') == false) {
-        let ul = $('#book_comment_page_ul>ul');
-        let page = getPrePage(ul, pages);
-        if (getUrlFlag()) {
-            let dt_id = JSON.parse(localStorage.getItem('consumeList'))[getUrlFlag().consumeIndex].mr.doctor.dt_id;
-            loadComment(page, dt_id);
-        }
-        else
-            loadComment(page, Doctor.getDoctor().dt_id); //重新请求上一页
-    }
-});
 // 点击展开咨询和评论
 $('.tab-show').click(function () {
     loadConsult();
@@ -740,9 +685,11 @@ $('#pt_submit_comment button').click(function () {
                 if (res.result == '1') {
                     console.log('评价成功');
                     $('#book_comment_modal').modal('show');
+                    $('#pt_submit_comment textarea').val('');
                     loadComment(1, dt_id);
                 } else {
                     console.log("评价失败");
+                    alert("发表评价失败");
                 }
             }else {
                 alert('请登录！');
@@ -753,5 +700,93 @@ $('#pt_submit_comment button').click(function () {
             console.log("提交失败");
         }
     });
+});
+
+/*===============星星打分==================*/
+$('#pt_submit_comment .star_score i').click(function () {
+    $(this).prevAll().removeClass('no-star');
+    $(this).prevAll().addClass('rating-star');
+    $(this).removeClass('no-star');
+    $(this).addClass('rating-star');
+    $(this).nextAll().removeClass('rating-star');
+    $(this).nextAll().addClass('no-star');
+    $('#score_span').text(($(this).index()+1)+"分!");
+});
+
+
+/*===============分页=====================*/
+// 初始化咨询分页
+let initConsultPagination = function (PageSum, page) {
+    let dom = $('#book_consult_page_ul>ul');
+    dom.html('');
+    drawPagination(dom, consultPageSum, page);
+};
+//咨询点击下一页
+$('#book_consult_page_ul').on('click', 'li:last-child', function () {
+    if ($(this).hasClass('disabled') == false) {   //如果下一页可以点击
+        let ul = $('#book_consult_page_ul>ul');    //ul 分页的ul
+        let page = getNextPage(ul, consultPageSum);
+        loadConsult(page); //重新请求下一页
+    }
+});
+//咨询点击上一页
+$('#book_consult_page_ul').on('click', 'li:first-child', function () {
+    if ($(this).hasClass('disabled') == false) {
+        let ul = $('#book_consult_page_ul>ul');
+        let page = getPrePage(ul, consultPageSum);
+        loadConsult(page); //重新请求上一页
+    }
+});
+//咨询点击某一页
+$('#book_consult_page_ul').on('click', 'li', function () {
+    let toPage =Number($(this).text());
+    if(!isNaN(toPage)){
+        clickAnyPage($('#book_consult_page_ul>ul'),toPage);
+        loadConsult(page);
+    }
+});
+//初始化评论分页
+let initCommentPagination = function (sum, page) {
+    let ul = $('#book_comment_page_ul>ul');
+    ul.html('');
+    drawPagination(ul, commentPageSum, page);
+};
+//评论点击下一页
+$('#book_comment_page_ul').on('click', 'li:last-child', function () {
+    if ($(this).hasClass('disabled') == false) {
+        let ul = $('#book_comment_page_ul>ul');
+        let page = getNextPage(ul, commentPageSum);
+        if (getUrlFlag()) {   //从支付消息过来的！！
+            let dt_id = JSON.parse(localStorage.getItem('consumeList'))[getUrlFlag().consumeIndex].mr.doctor.dt_id;
+            loadComment(page, dt_id);
+        } else
+            loadComment(page, Doctor.getDoctor().dt_id);//重新请求下一页
+    }
+});
+//评论点击上一页
+$('#book_comment_page_ul').on('click', 'li:first-child', function () {
+    if ($(this).hasClass('disabled') == false) {
+        let ul = $('#book_comment_page_ul>ul');
+        let page = getPrePage(ul, commentPageSum);
+        if (getUrlFlag()) {
+            let dt_id = JSON.parse(localStorage.getItem('consumeList'))[getUrlFlag().consumeIndex].mr.doctor.dt_id;
+            loadComment(page, dt_id);//重新请求上一页
+        }
+        else
+            loadComment(page, Doctor.getDoctor().dt_id); //重新请求上一页
+    }
+});
+//评论点击某一页
+$('#book_comment_page_ul').on('click', 'li', function () {
+    let toPage =Number($(this).text());
+    if(!isNaN(toPage)){
+        clickAnyPage($('#book_comment_page_ul>ul'),toPage);
+        if (getUrlFlag()) {
+            let dt_id = JSON.parse(localStorage.getItem('consumeList'))[getUrlFlag().consumeIndex].mr.doctor.dt_id;
+            loadComment(toPage, dt_id);//请求当前页
+        }
+        else
+            loadComment(toPage, Doctor.getDoctor().dt_id); //请求当前页
+    }
 });
 

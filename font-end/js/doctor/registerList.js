@@ -109,7 +109,7 @@ let registrationButton = function () {
                         data: {
                             rf_id: rf_id
                         },
-                        success: function () {
+                        success: function (res) {
                             if (res.status == 'login') {
                                 console.log("呼叫成功");
                             }else {

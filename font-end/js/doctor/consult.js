@@ -5,6 +5,9 @@ $(function () {
     if (flag.index) {
         console.log('从医生主页进来');
         consult = JSON.parse(localStorage.getItem('dt_allConsult'))[flag.index];
+        fillDoctor(consult.doctor);
+        fillTitle(consult);
+        loadDialog(consult.ad_id);
     }
     else if (flag.msgConsultIndex) {
         console.log('从消息列表进来');
@@ -56,6 +59,10 @@ let reply;
 let fillDialog = function (res) {
     console.log(res);
     let dom = $('#messageList');
+    if(res.replyArray.length <= 0){
+        dom.parent().html('');
+        return ;
+    }
     dom.html('');
     let dt = res.doctor;
     let pt = res.patient;
