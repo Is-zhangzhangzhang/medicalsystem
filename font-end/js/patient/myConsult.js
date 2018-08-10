@@ -80,7 +80,7 @@ $('#myConsult>ul').on('click','li',function () {
     event.stopPropagation();
     //把医生资料保存到localStorage
     let index = $(this).index();
-    localStorage.setItem('doctor',JSON.stringify(consult[index].doctor));
+    // localStorage.setItem('doctor',JSON.stringify(consult[index].doctor));
     // localStorage.setItem('consultIndex',index);
     window.location.href = "../../html/patient/consult.html?pt_consultList=true&index="+index;
 });

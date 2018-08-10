@@ -100,8 +100,10 @@ let loadPatient = function (uid) {
         },
         success:function(res){
             if (res.status == 'login'){
+                console.log("获取病人信息成功！");
                 console.log(res);
                 localStorage.setItem('patient',JSON.stringify(res));
+                window.location.href = "/font-end/html/patient/main.html";
             }
         },
         error:function(){

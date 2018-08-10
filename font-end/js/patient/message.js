@@ -128,7 +128,7 @@ let fillConsume = function () {
 $('#collapse0>ul').on('click', 'li', function () {
     let index = $(this).index();
     let pt_id = JSON.parse(localStorage.getItem('user_id'));
-    window.location.href = "/font-end/html/patient/consult.html?newReply=true&replyId=" + reply[index].re_Consultaion.ad_id;
+    window.location.href = "/font-end/html/patient/consult.html?newReply=true&index=" + index;
     $.ajax({
         type: "post",
         async: false,

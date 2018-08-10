@@ -1,7 +1,18 @@
 $(function () {
-    fillDoctor();
-    fillTitle();
-    loadDialog();
+    let flag = getUrlFlag();
+    console.log(flag);
+    let consult;
+    if (flag.index) {
+        console.log('从医生主页进来');
+        consult = JSON.parse(localStorage.getItem('dt_allConsult'))[flag.index];
+    }
+    else if (flag.msgConsultIndex) {
+        console.log('从消息列表进来');
+        consult = JSON.parse(localStorage.getItem('dt_consultList'))[flag.msgConsultIndex];
+        fillDoctor(consult.re_Consultaion.doctor);
+        fillTitle(consult.re_Consultaion);
+        loadDialog(consult.re_Consultaion.ad_id);
+    }
 });
 let getUrlFlag = function () {
     let url_param = location.search;
@@ -13,25 +24,8 @@ let getUrlFlag = function () {
     }
     return flag;
 };
-let flag = getUrlFlag();
-console.log(flag);
-let consult;
-if (flag.index) {
-    console.log('从医生主页进来');
-    consult = JSON.parse(localStorage.getItem('dt_allConsult'))[flag.index];
-}
-else if (flag.ad_id) {
-    console.log('从消息列表进来');
-    let cs = JSON.parse(localStorage.getItem('dt_allConsult'));
-    for (let i = 0, data; data = cs[i++];) {
-        if (flag.ad_id == data.ad_id) {
-            consult = data;
-        }
-    }
-}
-console.log(consult);
-let fillDoctor = function () {
-    let dt = consult.doctor;
+
+let fillDoctor = function (dt) {
     $('#consult_dt_intro').first().find('img').attr('src', dt.dt_image);
     let dom = $('#consult_dt_intro .intro_dt_content');
     console.log(dom);
@@ -43,7 +37,7 @@ let fillDoctor = function () {
     str += '<h4>' + dt.introduction + '</h4>';
     dom.append(str);
 };
-let fillTitle = function () {
+let fillTitle = function (consult) {
     let dom = $('#consult_title');
     dom.find('h3').text(consult.ad_title);
     let span = "";
@@ -92,7 +86,7 @@ let fillDialog = function (res) {
         dom.append(div);
     }
 };
-let loadDialog = function () {
+let loadDialog = function (ad_id) {
     $.ajax({
         url: 'http://134.175.21.162:8080/medicalSystem/doctor/consultDetail.do',
         type: 'POST',
@@ -103,7 +97,7 @@ let loadDialog = function () {
         dataType: 'jsonp',
         jsonp: 'callback',
         data: {
-            ad_id: consult.ad_id
+            ad_id: ad_id
         },
     })
         .done(function (res) {

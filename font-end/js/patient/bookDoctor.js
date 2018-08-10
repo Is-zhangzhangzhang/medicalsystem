@@ -432,8 +432,6 @@ $('#book_modal_btn').click(function () {
     fillMoney();
 });
 
-
-/*================================咨询+评论====================================*/
 let Consult = (function () {
     let consultList;
     let consult;
@@ -648,18 +646,6 @@ $('#submit_new_consult').click(function () {
     });
 });
 
-//点击某一条咨询帖子
-$('#book_consult_ul').on('click', 'li', function () {
-    // event.stopPropagation();
-    //把医生资料保存到localStorage
-    let dt = Doctor.getDoctor();
-    let index = $(this).index();
-    // alert(dt.dt_name);
-    localStorage.setItem('doctor', JSON.stringify(dt));
-    localStorage.setItem('dt_allConsult', JSON.stringify(Consult.getAllConsult()));
-    window.location.href = "../../html/patient/consult.html?dt_consultList=true&index=" + index;
-});
-
 //初始化评论分页
 let commentPage = 3;
 let initCommentPagination = function (sum, page) {
@@ -693,12 +679,22 @@ $('#book_comment_page_ul').on('click', 'li:first-child', function () {
             loadComment(page, Doctor.getDoctor().dt_id); //重新请求上一页
     }
 });
-/*=================咨询和评论点击事件=================*/
 // 点击展开咨询和评论
 $('.tab-show').click(function () {
     loadConsult();
     $('.tab-show').fadeOut();
     $('#consult-tab').fadeIn();
+});
+//点击某一条咨询帖子
+$('#book_consult_ul').on('click', 'li', function () {
+    // event.stopPropagation();
+    //把医生资料保存到localStorage
+    let dt = Doctor.getDoctor();
+    let index = $(this).index();
+    // alert(dt.dt_name);
+    // localStorage.setItem('doctor', JSON.stringify(dt));
+    localStorage.setItem('pt_dtAllConsult', JSON.stringify(Consult.getAllConsult()));
+    window.location.href = "../../html/patient/consult.html?dt_consultList=true&index=" + index;
 });
 //点击医生问答tab
 $('#consult-tab>ul>li:first-child').click(function () {

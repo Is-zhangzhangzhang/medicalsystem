@@ -63,10 +63,12 @@ let callReply = function () {
                 if (res.result == '1') {
                     replyList = [];
                     replyList = res.replyArray;
+                    //如果消息为0 则要把消息提示框移除
                     if (replyList.length <= 0) {
                         $('.msg-alert').remove('.alert_reply');
                         return;
                     }
+                    //生成消息提示框
                     $('#top_myReplyNum').text(replyList.length);
                     let warn_kind = "你有" + replyList.length + "条问答消息,";
                     let warn_class = "alert_reply";
@@ -124,11 +126,13 @@ let callRegister = function () {
                     console.log('被呼叫');
                     registerList = [];
                     registerList = res.registrationForm;
+                    //如果消息为0 则要把消息提示框移除
                     if (registerList.length <= 0) {
                         $('.msg-alert').remove('.alert_register');
                         return;
                     }
                     console.log(res);
+                    //生成消息提示框
                     $('#top_myRegisterNum').text(registerList.length);
                     let warn_kind = "你有" + registerList.length + "条就诊消息,";
                     let open_tab = 2;
@@ -181,10 +185,12 @@ let callConsume = function () {
                 if (res.result == '1') {
                     consumeList = [];
                     consumeList = res.consumptionOrder;
+                    //如果消息为0 则要把消息提示框移除
                     if (consumeList.length <= 0) {
                         $('.msg-alert').remove('alert_pay');
                         return;
                     }
+                    //生成消息提示框
                     $('#top_myPayNum').text(top_myPayNum);
                     let warn_kind = "你有" + consumeList.length + "条支付消息,";
                     let open_tab = 3;

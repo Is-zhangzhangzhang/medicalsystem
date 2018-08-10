@@ -80,8 +80,7 @@ $(function () {
             }
             else if (level == "2")  //患者
             {
-                loadPatient(uid);
-                window.location.href = "/font-end/html/patient/main.html";
+                loadPatient(uid);  //在里面进行页面的跳转
             }
         else
             alert("系统出错！");

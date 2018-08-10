@@ -22,7 +22,7 @@ $(function () {
 let msg_consultList;
 let fillConsultList = function () {
     console.log('填充问答消息！');
-    if (localStorage.hasOwnProperty('dt_consultList') && localStorage.dt_consultList != "[]") {
+    if (localStorage.hasOwnProperty('dt_consultList') && localStorage.dt_consultList != "[]" && localStorage.dt_consultList != "undefined") {
         msg_consultList = JSON.parse(localStorage.getItem('dt_consultList'));
     }else{
         return;
@@ -65,7 +65,7 @@ let msg_commentList;
 //没有新的评论
 let fillCommentList = function () {
     console.log('填充评论消息！');
-    if (localStorage.hasOwnProperty('dt_commentList') && localStorage.dt_commentList != "[]") {
+    if (localStorage.hasOwnProperty('dt_commentList') && localStorage.dt_commentList != "[]" && localStorage.dt_commentList != "undefined") {
         msg_commentList = JSON.parse(localStorage.getItem('dt_commentList'));
     }else{
         return;
@@ -114,46 +114,13 @@ $('#collapse0').on('click','li',function () {
     let index = $(this).index();
     // console.log(msg_consultList[index]re_Consultaion.ad_id);
     if(msg_consultList){
-        window.location.href = "./consult.html?ad_id="+msg_consultList[index].re_Consultaion.ad_id;
+        window.location.href = "./consult.html?msgConsultIndex="+index;
     }
 });
 //点击评论后
 $('#collapse1').on('click',function () {
     let index = $(this).index();
     // TODO 查看挂号消息后！！提交已读！！
-    /*$.ajax({
-        type: "post",
-        async: false,
-        url: "http://localhost:8080/medicalSystem/patient/markRegistration.do",
-        xhrFields: {
-            withCredentials: true
-        },
-        crossDomain: true,
-        dataType: "jsonp",
-        jsonp: "callback",
-        data: {
-            rf_id: msg_consultList
-            pt_id: encodeURI("13")
-        },
-        success: function (res) {
-            console.log(res);
-            if (res.status == 'login') {
-                if (res.result == '1') {
-                    console.log('标记成功');
-                    console.log('移除呼叫的挂号消息');
-                }
-                else {
-                    console.log('标记失败');
-                }
-            }
-            else {
-                console.log('请登录！');
-            }
-        },
-        error: function () {
-            console.log("提交失败");
-        }
-    });*/
     // console.log(msg_consultList[index]re_Consultaion.ad_id);
     window.location.href = "./doctorHome.html?toComment=true";
 });

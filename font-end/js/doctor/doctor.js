@@ -48,7 +48,7 @@ let getDoctorId = function () {
     return id;
 };
 //咨询
-let dt_consultList;
+let dt_consultList = [];
 let callConsultList = function () {
     console.log('轮询获得问答消息！');
     $.ajax({
@@ -96,7 +96,7 @@ let callConsultList = function () {
     });
 };
 
-let dt_commentList;
+let dt_commentList = [];
 let callCommentList = function () {
     console.log('轮询获得评论消息！');
     $.ajax({
@@ -160,7 +160,7 @@ $('#top_msg').click(function () {
     localStorage.setItem('dt_commentList', JSON.stringify(dt_commentList));
 });
 
-if(localStorage.dt_consultList.length>9|| localStorage.dt_consultList>9){
+if(dt_consultList.length>0|| dt_commentList.length>9){
     $('#dt_top_span').text('...');
 }
 
