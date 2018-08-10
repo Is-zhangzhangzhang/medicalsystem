@@ -1057,18 +1057,21 @@
     <div class="page-container">
         <div class="container">
             <div class="row">
+                <h4>我的历史病历</h4>
+            </div>
+            <div class="row">
                 <!--侧边sidebar-->
                 <div class="col-lg-4 col-md-4 col-sm-12 col-xm-12 record-list">
-                    <h4>我的历史病历</h4>
                     <ul class="list-group" id="my_record_ul">
-                        <li class="list-group-item">医生：xxx <span class="badge">2018年7月26日</span></li>
-                        <li class="list-group-item">医生：xxx <span class="badge">2018年6月30日</span></li>
-                        <li class="list-group-item">医生：xxx <span class="badge">2018年6月5日</span></li>
-                        <li class="list-group-item">医生：xxx <span class="badge">2018年5月26日</span></li>
-                        <li class="list-group-item">医生：xxx <span class="badge">2018年4月30日</span></li>
+                        <li class="list-group-item">暂时无历史病历记录！</li>
                     </ul>
+                    <nav aria-label="Page navigation" class="text-right" id="mr_page">
+                        <ul class="pagination">
+
+                        </ul>
+                    </nav>
                 </div>
-                <div class="col-lg-8 col-md-8 col-sm-12 col-xm-12">
+                <div class="col-lg-8 col-md-8 col-sm-12 col-xm-12" style="border: 1px solid #ddd; border-radius: 5px; padding:10px">
                     <div>
                         <h4>病历信息</h4>
                         <div class="wrapping85">
@@ -1081,7 +1084,7 @@
                             <div class="row">
                                 <span class="col-lg-3 col-md-3">科室：<span name="mr_msg"></span></span>
                                 <span class="col-lg-3 col-md-3">门诊：<span name="mr_msg"></span></span>
-                                <span class="col-lg-4 col-md-4">时间：<span name="mr_msg"></span></span>
+                                <span class="col-lg-6 col-md-6">时间：<span name="mr_msg"></span></span>
                             </div>
                             <hr>
                             <div>
@@ -1092,14 +1095,16 @@
                                 <h1>Rp:</h1>
                                 <!--药品列表-->
                                 <div>
-                                    <table id="rp_table" class="table table-striped table-hover table-bordered" style="margin: 15px;">
-
-                                        <tbody>
-                                        <tr>
-                                            <td>1111</td>
-                                            <td>2222</td>
-                                            <td>3333</td>
+                                    <table class="table table-striped table-hover table-bordered" style="margin: 15px;">
+                                        <thead>
+                                        <tr><th>药品编号</th>
+                                            <th>药品名称</th>
+                                            <th>药品用量</th>
+                                            <th>药品价格</th>
                                         </tr>
+                                        </thead>
+                                        <tbody id="medicalRecord_tbody">
+                                        <tr><td colspan="4" class="text-center">暂无药品</td></tr>
                                         </tbody>
                                     </table>
                                 </div>
@@ -1137,6 +1142,7 @@
 <script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
 <!--当前界面js-->
 <script src="../../js/patient/myRecord.js"></script>
+<script src="../../js/util/commons.js"></script>
 <script src="../../js/patient/patient.js"></script>
 <script src="../../js/util/background.js"></script>
 </html>

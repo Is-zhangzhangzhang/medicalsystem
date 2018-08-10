@@ -109,10 +109,42 @@ let fillCommentList = function () {
     }
 };
 
-//点击某一条咨询消息
+//医生点击某一条咨询消息  失败了！！！
 $('#collapse0').on('click','li',function () {
     let index = $(this).index();
     // console.log(msg_consultList[index]re_Consultaion.ad_id);
+    /*$.ajax({
+        type: "post",
+        async: false,
+        url: "http://134.175.21.162:8080/medicalSystem/doctor/setRead.do",
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
+        dataType: "jsonp",
+        jsonp: "callback",
+        data: {
+            co_id: msg_consultList[index].re_Consultaion.ad_id,  //咨询id？
+            pt_id: msg_consultList[index].re_Consultaion.patient.pt_id
+        },
+        success: function (res) {
+            console.log(res);
+            if (res.status == 'login') {
+                if (res.result == '1') {
+                    console.log('标记咨询已读成功');
+                }
+                else {
+                    console.log('标记咨询已读失败');
+                }
+            }
+            else {
+                console.log('请登录！');
+            }
+        },
+        error: function () {
+            console.log("提交失败");
+        }
+    });*/
     if(msg_consultList){
         window.location.href = "./consult.html?msgConsultIndex="+index;
     }

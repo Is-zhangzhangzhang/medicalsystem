@@ -112,6 +112,8 @@ let registrationButton = function () {
                         success: function (res) {
                             if (res.status == 'login') {
                                 console.log("呼叫成功");
+                                $('#rf_modal h3>span').text('呼叫病人成功，请稍候！');
+                                $('#rf_modal').modal('show');
                             }else {
                                 alert('请登录！');
                                 window.location.href = "../../index.html";
@@ -151,6 +153,8 @@ let registrationButton = function () {
                         success: function () {
                             if (res.status == 'login') {
                                 console.log("忽略成功");
+                                $('#rf_modal h3>span').text('忽略病人成功！');
+                                $('#rf_modal').modal('show');
                             }else {
                                 alert('请登录！');
                                 window.location.href = "../../index.html";

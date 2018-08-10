@@ -2,17 +2,9 @@ $(function () {
     loadDoctorInformation();
 });
 
-let getUserId = function () {
-    let id = "";
-    if(localStorage.hasOwnProperty('user_id')){
-        id = parseInt(localStorage.getItem('user_id'));
-    }
-    return id;
-};
-
 let doctor;
 let loadDoctorInformation = function () {
-    let day = (new Date()).getDay() + 1;
+    let day = (new Date()).getDay();
     $.ajax({
         url: 'http://134.175.21.162:8080/medicalSystem/doctor/dmain.do',
         xhrFields: {
@@ -23,7 +15,7 @@ let loadDoctorInformation = function () {
         dataType: 'jsonp',
         jsonp: 'callback',
         data: {
-            user_id: getUserId(),
+            user_id: parseInt(localStorage.getItem('user_id')),
             dayOfWeek: day
         },
     })
@@ -34,6 +26,7 @@ let loadDoctorInformation = function () {
                 localStorage.setItem('doctor', JSON.stringify(doctor));
                 let registerNum = result.registerFormNumber; //医生今天挂号数
                 $('#registerNum').append(registerNum);
+                fillTopInformation();
                 console.log("loadDoctor success");
             }else {
                 alert('请登录！');

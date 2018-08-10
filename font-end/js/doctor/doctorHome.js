@@ -217,6 +217,14 @@ $('#book_consult_page_ul').on('click', 'li:last-child', function () {
         loadConsult(page); //重新请求下一页
     }
 });
+//咨询点击某一页
+$('#book_consult_page_ul').on('click', 'li', function () {
+    let toPage = Number($(this).text());
+    if (!isNaN(toPage)) {
+        clickAnyPage($('#book_consult_page_ul>ul'), toPage);
+        loadConsult(toPage);
+    }
+});
 
 let commentPage = 3;
 let initCommentPagination = function (sum, page) {
@@ -239,6 +247,14 @@ $('#book_comment_page_ul').on('click', 'li:first-child', function () {
         let ul = $('#book_comment_page_ul>ul');
         let page = getPrePage(ul, pages);
         loadComment(page, dt.dt_id); //重新请求上一页
+    }
+});
+//评论点击某一页
+$('#book_comment_page_ul').on('click', 'li', function () {
+    let toPage = Number($(this).text());
+    if (!isNaN(toPage)) {
+        clickAnyPage($('#book_comment_page_ul>ul'), toPage);
+        loadComment(toPage, dt.dt_id);
     }
 });
 

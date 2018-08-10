@@ -7,7 +7,7 @@ if (localStorage.hasOwnProperty('patient')) {
 }
 let initSetting = function () {
     $("#pt_id").val(patient.pt_id);
-    $("#head-img").css('background-image', 'url('+patient.pt_image+')');
+    $("#head-img").css('background-image', 'url(' + patient.pt_image + ')');
     $("#pt_name").val(patient.pt_name);
     $("#pt_sex").val(patient.pt_sex);
     $("#pt_born").val(patient.born);
@@ -23,11 +23,37 @@ if ($('#pt_born'))
         minView: "month",
         autoclose: 1
     });
-
+//更新localstorage中patient的信息
+let loadPatient = function (uid) {
+    $.ajax({
+        type: "post",
+        async: false,
+        url: "http://134.175.21.162:8080/medicalSystem/patient/loadPatient.do",
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
+        dataType: "jsonp",
+        jsonp: "callback",
+        data: {
+            userId: uid,
+        },
+        success: function (res) {
+            if (res.status == 'login') {
+                console.log("获取病人信息成功！");
+                // localStorage.removeItem('patient');
+                localStorage.setItem('patient', JSON.stringify(res));
+            }
+        },
+        error: function () {
+            console.log("获取病人信息失败");
+        }
+    });
+};
 $("#pt_setting_save").on("click", function () {
     var formData = new FormData();
     formData.append('image', $("#upload-file")[0].files[0]);   //将文件转成二进制形式
-    formData.append('pt_id', encodeURI(patient.pt_id));
+    formData.append('pt_id', encodeURI($("#pt_id").val()));
     formData.append('pt_name', encodeURI($("#pt_name").val()));
     formData.append('pt_sex', encodeURI($("#pt_sex").val()));
     formData.append('born', encodeURI($("#pt_born").val()));
@@ -50,9 +76,10 @@ $("#pt_setting_save").on("click", function () {
             if (res.status == 'login') {
                 if (res.result == '1') {
                     console.log('success!');
-                    $('#setting_modal').modal('show');
+                    loadPatient($("#pt_id").val());
+                     $('#setting_modal').modal('show');
                     //保存修改后localstorage也需要更新
-                    location.reload();
+                     location.reload();
                 } else {
                     console.log('fail');
                 }

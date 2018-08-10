@@ -101,3 +101,11 @@ $('#mycs_nav_page').on('click','li:first-child',function () {
         loadMyConsult(page); //重新请求上一页
     }
 });
+//咨询点击某一页
+$('#mycs_nav_page').on('click', 'li', function () {
+    let toPage =Number($(this).text());
+    if(!isNaN(toPage)){
+        clickAnyPage($('#mycs_nav_page>ul'),toPage);
+        loadMyConsult(page);
+    }
+});

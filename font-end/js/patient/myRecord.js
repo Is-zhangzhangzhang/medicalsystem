@@ -9,6 +9,9 @@ if (localStorage.hasOwnProperty('patient')) {
 }
 let fillRecordList = function () {
     let ul = $('#my_record_ul');
+    if(_record.length <= 0){
+        return;
+    }
     ul.html('');
     let li = "";
     for (let i = 0, data; data = _record[i++];) {
@@ -38,10 +41,11 @@ let loadRecord = function (page) {
         success: function (res) {
             if (res.status == 'login') {
                 console.log('resultNumber:' + res.resultNum);
-                pageSum = parseInt(res.resultNum / 10) + 1;
+                let sum = parseInt(res.resultNum / 10) + 1;
                 _record = res.mrArray;
                 console.log(_record);
                 fillRecordList();
+                initConsultPagination(sum,page);
                 mrArr = res.mrArray;
                 for (var i in mrArr) {
                     console.log('mr_id:' + mrArr[i].mr_id + ',mr_time:' + mrArr[i].mr_time + ',mr_taken_times:' + mrArr[i].mr_taken_times + ',mr_taken_days:' + mrArr[i].mr_taken_days + ',mr_score:' + mrArr[i].mr_score);
@@ -137,4 +141,36 @@ $('#my_record_ul').on('click', 'li', function () {
             console.log("提交失败");
         }
     });
+});
+
+
+// 初始化历史病历分页
+let initConsultPagination = function (sum, page) {
+    let dom = $('#mr_page>ul');
+    dom.html('');
+    drawPagination(dom, pageSum, page);
+};
+//历史病历点击下一页
+$('#mr_page').on('click', 'li:last-child', function () {
+    if ($(this).hasClass('disabled') == false) {   //如果下一页可以点击
+        let ul = $('#mr_page>ul');    //ul 分页的ul
+        let page = getNextPage(ul, pageSum);
+        loadRecord(page); //重新请求下一页
+    }
+});
+//历史病历点击上一页
+$('#mr_page').on('click', 'li:first-child', function () {
+    if ($(this).hasClass('disabled') == false) {
+        let ul = $('#mr_page>ul');
+        let page = getPrePage(ul, pageSum);
+        loadRecord(page); //重新请求上一页
+    }
+});
+//历史病历点击某一页
+$('#mr_page').on('click', 'li', function () {
+    let toPage =Number($(this).text());
+    if(!isNaN(toPage)){
+        clickAnyPage($('#mr_page>ul'),toPage);
+        loadRecord(page);
+    }
 });

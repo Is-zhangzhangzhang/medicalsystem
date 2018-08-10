@@ -127,7 +127,7 @@ let fillConsume = function () {
 //点击问答消息中的任意一条
 $('#collapse0>ul').on('click', 'li', function () {
     let index = $(this).index();
-    let pt_id = JSON.parse(localStorage.getItem('user_id'));
+    let pt_id = JSON.parse(localStorage.getItem('patient')).pt_id;
     window.location.href = "/font-end/html/patient/consult.html?newReply=true&index=" + index;
     $.ajax({
         type: "post",
@@ -191,9 +191,10 @@ $('#collapse1>ul').on('click', '#call_del_btn', function () {
         success: function (res) {
             if (res.status == 'login') {
                 if (res.result == '1') {
-                    console.log('标记成功');
                     console.log('移除呼叫的挂号消息提示');
-                    callRegister();
+                    $('#message_modal h3>span').text('标记已读成功！将不再推送此条消息提示！');
+                    $('#message_modal').modal('show');
+                    callRegister();  //获取未读挂号消息
                     fillRegisterMsg();
                 }
                 else {

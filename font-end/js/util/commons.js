@@ -89,31 +89,3 @@ let clickAnyPage = function (ul,pages,toPage) {
     nowPage.removeClass('active');
     $(ul.find('li').get(toPage)).addClass('active');
 };
-//加载病人基本信息
-let loadPatient = function (uid) {
-    $.ajax({
-        type : "post",
-        async:false,
-        url : "http://134.175.21.162:8080/medicalSystem/patient/loadPatient.do",
-        xhrFields: {
-            withCredentials: true
-        },
-        crossDomain: true,
-        dataType:"jsonp",
-        jsonp:"callback",
-        data: {
-            userId:uid,
-        },
-        success:function(res){
-            if (res.status == 'login'){
-                console.log("获取病人信息成功！");
-                console.log(res);
-                localStorage.setItem('patient',JSON.stringify(res));
-                window.location.href = "/font-end/html/patient/main.html";
-            }
-        },
-        error:function(){
-            console.log("获取病人信息失败");
-        }
-    });
-};

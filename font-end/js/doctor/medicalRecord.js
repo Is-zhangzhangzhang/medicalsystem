@@ -154,3 +154,6 @@ $('#medicalRecord_save').click(function () {
         }
     });
 });
+$('#submit_mdRecord button').click(function () {
+    window.location.href = './registerList.html';
+});

@@ -191,7 +191,7 @@ let callConsume = function () {
                         return;
                     }
                     //生成消息提示框
-                    $('#top_myPayNum').text(top_myPayNum);
+                    $('#top_myPayNum').text(consumeList.length);
                     let warn_kind = "你有" + consumeList.length + "条支付消息,";
                     let open_tab = 3;
                     let warn_class = "alert_pay";

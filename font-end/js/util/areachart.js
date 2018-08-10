@@ -6,7 +6,7 @@ $(function () {
     }
     console.log(id);
     $.ajax({
-        url: 'http://134.175.21.162:8080/medicalSystem//doctor/score.do',
+        url: 'http://134.175.21.162:8080/medicalSystem/doctor/score.do',
         type: 'POST',
         xhrFields: {
             withCredentials: true

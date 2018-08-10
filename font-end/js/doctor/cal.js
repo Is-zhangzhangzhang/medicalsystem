@@ -27,7 +27,7 @@ Dragon.prototype = {
             html += "<div class='oneday'><div class='oneday_number'><span></span></div><div class='oneday_workcontent'></div></div>";
         }
         for (let i = 1; i <= currentDays.days; i++) {
-            console.log(i + "," + date.getDay());
+            // console.log(i + "," + date.getDay());
             //判断是否日期（day）相同
             if (i == currentDate) {
                 console.log(now_Date.getMonth(), date.getMonth());

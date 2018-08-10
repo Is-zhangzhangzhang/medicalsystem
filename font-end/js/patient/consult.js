@@ -58,7 +58,7 @@ function getUrlFlag () {
 
 //不是作者不能显示回复窗口！！
 let hideReplyDialog = function (consult) {
-    if (consult.patient.pt_id != localStorage.getItem('user_id')) {
+    if (consult.patient.pt_id != (parseInt(localStorage.getItem('patient'))).pt_id) {
         $('#consult_reply').hide();
     }
 };

@@ -15,10 +15,41 @@ let initSetting = function () {
     $("#dt_money").val(doctor.money);
     $("#dt_tel").val(doctor.dt_tel);
     $("#dt_introduction").val(doctor.introduction);
-}
+};
 
-$("#dt_setting_save").on("click", function () {
-    var formData = new FormData();
+let loadDoctorInformation = function () {
+    let day = (new Date()).getDay();
+    console.log(doctor.dt_id);
+    $.ajax({
+        url: 'http://134.175.21.162:8080/medicalSystem/doctor/dmain.do',
+        xhrFields: {
+            withCredentials: true
+        },
+        crossDomain: true,
+        type: 'POST',
+        dataType: 'jsonp',
+        jsonp: 'callback',
+        data: {
+            user_id: doctor.dt_id,
+            dayOfWeek: day
+        },
+    })
+        .done(function (result) {
+            // console.log(result);
+            if (result.status == 'login') {
+                doctor = result.doctor; //医生信息
+                localStorage.setItem('doctor', JSON.stringify(doctor));
+            } else {
+                alert('请登录！');
+                window.location.href = "../../index.html";
+            }
+        })
+        .fail(function () {
+            console.log("error");
+        })
+};
+$("#dt_setting_save").click(function () {
+    let formData = new FormData();
     formData.append('image', $("#upload-file")[0].files[0]);   //将文件转成二进制形式
     formData.append('dt_id', encodeURI(doctor.dt_id));
     formData.append('dt_name', encodeURI($("#dt_name").val()));
@@ -40,18 +71,21 @@ $("#dt_setting_save").on("click", function () {
         success: function (res) {
             res = JSON.parse(res);
             console.log(res);
-            // if (res.status == 'login') {
+            if (res.status == 'login') {
                 if (res.result == '1') {
                     console.log('success!');
-                    // $('#setting_modal').modal('show');
+                    $('#setting_modal').modal('show');
+                    loadDoctorInformation();
                     //保存修改后localstorage也需要更新
+                    window.reload();
                 } else {
                     console.log('fail');
+                    alert('修改失败！');
                 }
-            // } else {
-            //     alert('请登录！');
-            //     window.location.href = "../../index.html";
-            // }
+            } else {
+                alert('请登录！');
+                window.location.href = "../../index.html";
+            }
         },
         error: function (XMLHttpRequest, textStatus, errorThrown, data) {
             alert(errorThrown);

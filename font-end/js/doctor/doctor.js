@@ -6,9 +6,12 @@ $(function () {
     window.setInterval(callCommentList, 300000);
 });
 let fillTopInformation = function () {
-    let doctor = JSON.parse(localStorage.getItem('doctor'));
-    $('#top_head_img').css('background-image', "url(" + doctor.dt_image + ")");
-    $('#top_head_name').text(doctor.dt_name);
+    let doctor;
+    if(localStorage.hasOwnProperty('doctor') && localStorage.doctor != "undefined") {
+        doctor = JSON.parse(localStorage.getItem('doctor'));
+        $('#top_head_img').css('background-image', "url(" + doctor.dt_image + ")");
+        $('#top_head_name').text(doctor.dt_name);
+    }
 };
 /*================轮询=================*/
 //判断msg-alert中是否含有要添加的子元素的class

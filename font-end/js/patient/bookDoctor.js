@@ -651,6 +651,21 @@ $('#consult-tab>ul>li:last-child').click(function () {
     loadComment(1, Doctor.getDoctor().dt_id);
     $('#comment').tab('show');
 });
+/*===============星星打分==================*/
+let initStar = function (){
+    let str = "<i class='no-star'></i><i class='no-star'></i><i class='no-star'></i><i class='no-star'></i><i class='no-star'></i><i class='no-star'></i>";
+    $('#pt_submit_comment .star_score').html(str);
+    $('#score_span').text("");
+};
+$('#pt_submit_comment .star_score i').click(function () {
+    $(this).prevAll().removeClass('no-star');
+    $(this).prevAll().addClass('rating-star');
+    $(this).removeClass('no-star');
+    $(this).addClass('rating-star');
+    $(this).nextAll().removeClass('rating-star');
+    $(this).nextAll().addClass('no-star');
+    $('#score_span').text(($(this).index()+1)+"分!");
+});
 
 //点击发表评论按钮
 $('#pt_submit_comment button').click(function () {
@@ -677,7 +692,7 @@ $('#pt_submit_comment button').click(function () {
             patientId: pt_id,
             doctorId: dt_id,
             ev_content: $('#pt_submit_comment textarea').val(),
-            ev_score: $('#pt_submit_comment select').val(),
+            ev_score: $('#score_span').text().substr(0,1),
             rf_id: encodeURI('1')
         },
         success: function (res) {
@@ -685,6 +700,7 @@ $('#pt_submit_comment button').click(function () {
                 if (res.result == '1') {
                     console.log('评价成功');
                     $('#book_comment_modal').modal('show');
+                    initStar();
                     $('#pt_submit_comment textarea').val('');
                     loadComment(1, dt_id);
                 } else {
@@ -700,17 +716,6 @@ $('#pt_submit_comment button').click(function () {
             console.log("提交失败");
         }
     });
-});
-
-/*===============星星打分==================*/
-$('#pt_submit_comment .star_score i').click(function () {
-    $(this).prevAll().removeClass('no-star');
-    $(this).prevAll().addClass('rating-star');
-    $(this).removeClass('no-star');
-    $(this).addClass('rating-star');
-    $(this).nextAll().removeClass('rating-star');
-    $(this).nextAll().addClass('no-star');
-    $('#score_span').text(($(this).index()+1)+"分!");
 });
 
 
