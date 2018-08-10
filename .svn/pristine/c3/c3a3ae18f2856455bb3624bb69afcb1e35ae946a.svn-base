@@ -1,0 +1,13 @@
+/*doctorHome tab css*/
+.consult-tab{
+    display: none;
+}
+/*doctorHome 评论css*/
+.comment-context img{
+    max-width: 30px;
+    max-height: 30px;
+    border-radius: 50%;
+}
+.comment-reply + div{
+    display: none;
+}

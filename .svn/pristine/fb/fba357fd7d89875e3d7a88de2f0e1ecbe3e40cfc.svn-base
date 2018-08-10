@@ -1,0 +1,95 @@
+$(function () {
+    let url_param = location.search;
+    let flag = {};
+    if (url_param) {
+        if (url_param.indexOf("?") != -1) {
+            flag[url_param.substr(1).split('=')[0]] = url_param.substr(1).split('=')[1];
+        }
+        switch (flag.tab) {
+            case '1': //加载问答消息
+                $('#collapse1').removeClass('in');
+                break;
+            case '2':
+                $('#collapse0').removeClass('in');
+                $('#collapse1').addClass('in');
+                break;
+        }
+    }
+    fillConsultList();
+    fillCommentList();
+});
+
+let fillConsultList = function () {
+    let msg_consultList;
+    if (localStorage.hasOwnProperty('dt_consultList')) {
+        msg_consultList = JSON.parse(localStorage.getItem('dt_consultList'));
+    }
+    console.log(msg_consultList);
+    let li = "";
+    let ul = $('#collapse0>ul');
+    ul.html('');
+    for (let i=0,data;data = msg_consultList[i++];) {
+        if (data.re_status == "unread") {
+            li = "";
+            li = `<li class="list-group-item text-left">
+                   <div class="row wrapping85">
+                     <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
+                            <img src="${data.re_Consultaion.patient.pt_image}" class="head_img" alt="">
+                     </div>
+                    <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                        <span class="pull-right msg_time" id="msg_cs_time">时间：${data.re_time}</span>
+                        <h4>${data.re_Consultaion.patient.pt_name}</h4>
+                        <h5>${data.re_Consultaion.ad_title}</h5>
+                        <p>${data.re_content}</p>
+                    </div>
+                 </div>
+                </li>`;
+            ul.append(li);
+        }
+    }
+};
+
+//没有新的评论
+let fillCommentList = function () {
+    let msg_commentList;
+    if (localStorage.hasOwnProperty('dt_commentList')) {
+        msg_commentList = JSON.parse(localStorage.getItem('dt_commentList'));
+    }else{
+        msg_commentList = callConsultList();
+    }
+    let ul = $('#collapse1>ul');
+    ul.html('');
+    let li = "";
+    for (let i in msg_commentList) {
+        li = "<li class=\"list-group-item\"><div class=\"comment-context\"><div class=\"row\"><div class=\"col-lg-2 col-md-2 text-center\">";
+        li += "<img src=\"" + result[i].patient.pt_image + "\" alt=\"评论者头像\">";
+        li += "</div><div class=\"col-lg-7 col-md-7\">";
+        li += "<h4>" + result[i].patient.pt_name + "</h4>";
+        li += "<span>";
+        let score = result[i].ev_score;
+        let integer = parseInt(score);
+        let decimal = score - integer;
+        for (let j = 1; j <= integer; j++) {
+            li += "<i class=\"rating-star\"></i>";  //满星
+        }
+        if (decimal > 0) {
+            li += "<i class=\"half-star\"></i>"; // 半星
+            if ((integer + 1) < 5) {
+                for (let k = integer + 2; k <= 5; k++) {
+                    li += "<i class=\"no-star\"></i>"  //没星
+                }
+            }
+        }
+        else if (integer < 5) {
+            for (let k = integer + 1; k <= 5; k++) {
+                li += "<i class=\"no-star\"></i>"  //没星
+            }
+        }
+        li += "</span><br>";
+        li += "<span>" + result[i].ev_content + "</span>";
+        li += "</div><div class=\"col-lg-3 col-md-3\">";
+        li += "<span class=\"pull-right\">" + result[i].ev_time + "</span>";
+        li += "</div></div></div></li>";
+        ul.append(li);
+    }
+};

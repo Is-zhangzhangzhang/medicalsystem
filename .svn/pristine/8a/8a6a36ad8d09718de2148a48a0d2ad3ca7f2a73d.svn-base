@@ -1,0 +1,27 @@
+function sendData(){
+    $.ajax({    
+     type : "post",    
+     async:false,    
+     url : "http://localhost:8080/ssm/patient/advisoryWithReply.do",
+     dataType:"jsonp", 
+     jsonp:"callback",
+     data: {
+        ad_id:encodeURI("1"),
+     }, 
+     success:function(res){   
+        console.log('reulstNumber:'+res.resultNum);
+        var reArr = res.replyArray;
+        for(var i in reArr){
+           console.log('re_id:'+ reArr[i].re_id+',re_content:'+reArr[i].re_content+',re_time:'+reArr[i].re_time);
+        } 
+        console.log('dt_id:'+res.doctor.dt_id+',dt_name:'+res.doctor.dt_name+',dt_sex:'+res.doctor.dt_sex+',dt_tel:'+res.doctor.dt_tel+',dt_image:'+res.doctor.dt_image+',dt_title:'+res.doctor.dt_title+',introduction:'+res.doctor.introduction+',money:'+res.doctor.money);
+        console.log('cl_id:'+res.doctor.clinic.cl_id+',cl_dept:'+res.doctor.clinic.cl_dept+',cl_part:'+res.doctor.clinic.cl_part+',cl_place:'+res.doctor.clinic.cl_place);
+        console.log('pt_id:'+res.patient.pt_id+', pt_name:'+res.patient.pt_name+',pt_sex:'+res.patient.pt_sex+',born:'+res.patient.born+',IDCardNumber:'+res.patient.IDCardNumber+',pt_tel:'+res.patient.pt_tel+',pt_image:'+res.patient.pt_image);
+     },    
+     error:function(){ 
+        console.log("提交失败");
+     }    
+ });   
+}
+
+sendData();

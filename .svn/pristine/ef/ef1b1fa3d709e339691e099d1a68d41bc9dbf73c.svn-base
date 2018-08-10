@@ -1,0 +1,112 @@
+$(function () {
+    window.setInterval(callConsultList(), 30000);
+    window.setInterval(callCommentList(), 30000);
+});
+/*================轮询=================*/
+//判断msg-alert中是否含有要添加的子元素的class
+let existClass = function (newClass) {
+    let divList = $('.msg-alert').find('div');
+    for(let i=0,data;data = divList[i++];){
+        if($(data).hasClass(newClass)){
+            return true;
+        }
+        else
+            return false;
+    }
+};
+let getDoctorId = function () {
+    let id = "";
+    if(localStorage.hasOwnProperty('doctor')){
+        id = JSON.parse(localStorage.getItem('doctor')).dt_id;
+    }
+    return id;
+};
+//咨询
+let dt_consultList;
+let callConsultList = function () {
+    $.ajax({
+        type: "post",
+        async: false,
+        url: "http://134.175.21.162:8080/medicalSystem/doctor/unreadAdvisoryAndReply.do",
+        dataType: "jsonp",
+        jsonp: "callback",
+        data: {
+            doctorId: getDoctorId(),
+        },
+        success: function (res) {
+            if (res.totalNum != "0") {
+                dt_consultList = res.unreadArr;
+                console.log(dt_consultList);
+                let warn_kind = "你有"+res.totalNum+"条问答消息,";
+                let warn_class = "alert_dt_consult";
+                let open_tab = 1;
+                let warn_html = `<div class="alert alert-warning alert-dismissible ${warn_class}" role="alert">
+                    <button class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong><span class="alert_msg_amount">${warn_kind}</span><a href="/font-end/html/doctor/message.html?tab=${open_tab}" class="alert_msg">立即查看</a></strong>
+                </div>`;
+                if( existClass("alert_dt_consult") ){
+                    $('.alert_dt_consult .alert_msg_amount').text(warn_kind);
+                }
+                else{
+                    $('.msg-alert').append(warn_html);
+                }
+                console.log(warn_html);
+            }
+        },
+        error: function () {
+            console.log("提交失败");
+        }
+    });
+};
+
+let dt_commentList;
+let callCommentList = function () {
+    $.ajax({
+        type: "post",
+        async: false,
+        url: "http://134.175.21.162:8080/medicalSystem/doctor/unreadEvaluation.do",
+        dataType: "jsonp",
+        jsonp: "callback",
+        data: {
+            doctorId: getDoctorId(),
+        },
+        success: function (res) {
+            dt_commentList = res.evaluationArray;
+            if (res.totalNum != "0") {
+                let warn_kind = "你有"+res.totalNum+"条新的评论,";
+                let warn_class = "alert_dt_comment";
+                let open_tab = 2;
+                let warn_html = `<div class="alert alert-warning alert-dismissible ${warn_class}" role="alert">
+                    <button class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong><span class="alert_msg_amount">${warn_kind}</span><a href="/font-end/html/doctor/message.html?tab=${open_tab}" class="alert_msg">立即查看</a></strong>
+                </div>`;
+                if(existClass("alert_dt_consult")){
+                    $('.alert_dt_comment .alert_msg_amount').text(warn_kind);
+                }
+                else{
+                    $('.msg-alert').append(warn_html);
+                }
+                console.log(warn_html);
+                return "hhhh";
+            }
+        },
+        error: function () {
+            console.log("提交失败");
+        }
+    });
+};
+$('.msg-alert').on('click','a',function () {
+    console.log(dt_commentList);
+    console.log(dt_consultList);
+    localStorage.setItem('dt_commentList',JSON.stringify(dt_commentList));
+    localStorage.setItem('dt_consultList',JSON.stringify(dt_consultList));
+});
+// $('.msg-alert').on('click','.alert_dt_comment a',function () {
+//     localStorage.setItem('registerList',JSON.stringify(dt_commentList));
+//     localStorage.setItem('replyList',JSON.stringify(dt_consultList));
+// });
+
+$('#top_msg').click(function () {
+    localStorage.setItem('dt_consultList',JSON.stringify(dt_consultList));
+    localStorage.setItem('dt_commentList',JSON.stringify(dt_commentList));
+});

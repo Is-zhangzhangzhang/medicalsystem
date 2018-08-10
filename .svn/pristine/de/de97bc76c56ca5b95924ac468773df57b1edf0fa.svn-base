@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+    <meta name="description" content="description of your site"/>
+    <meta name="author" content="author of the site"/>
+    <title>药品管理</title>
+    <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../plugins/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" href="../../css/util/styles.css"/>
+    <link rel="stylesheet" href="../../css/util/commons.css">
+    <link rel="stylesheet" href="../../css/users/administrator.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body>
+<!--顶部导航栏-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="../../index.html"><h4><strong>P&nbsp;<i class="glyphicon glyphicon-plus" style="color:#e52c2c"></i>&nbsp;P</strong>系统</h4></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        我的消息
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">我的挂号</a></li>
+                        <li><a href="#">我的咨询</a></li>
+                        <li><a href="#">回复</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        User
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!--顶部菜单栏-->
+<div id="in-sub-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <ul>
+                    <li>
+                        <a href="medicine.html" class="active"><i class="batch medicine"></i><br/>药品管理</a>
+                    </li>
+                    <li>
+                        <a href="doctorRegister.html"><i class="batch users"></i><br/>医务人员管理</a>
+                    </li>
+                    <li>
+                        <!--<span class="label label-danger pull-right">04</span>-->
+                        <a href="clinic.html"><i class="batch"></i><br/>科室门诊管理</a>
+                    </li>
+                    <li>
+                        <a href="disease.html"><i class="batch book"></i><br/>疾病百科</a>
+                    </li>
+                    <li>
+                        <a href="bookHistory.html"><i class="batch calendar"></i><br/>历史挂号</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--药品管理-->
+<div class="page">
+    <div class="page-container">
+        <!--列出所有的药品信息-->
+        <div class="row wrapping80" id="md_List">
+            <h2>药品管理</h2>
+            <!--添加药品按钮-->
+            <div class="text-right" id="md_add_div">
+                <button class="btn btn-success" id="md_add_btn">添加药品</button>
+            </div>
+            <!--药品列表-->
+            <div class="admin-list">
+                <div id="md_table">
+                    </div>
+                </div>
+            </div>
+            <!--编辑药品模态框-->
+            <div class="modal fade" id="md_modal">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <h4 class="modal-title">编辑药品信息</h4>
+                        </div>
+                        <div class="modal-body wrapping80">
+                            <form class="form-horizontal">
+                                <div class="form-group">
+                                    <label for="md_id" class="control-label col-lg-3 col-md-3">药品编号：</label>
+                                    <div class="col-lg-9 col-md-9">
+                                        <input type="text" id="md_id" placeholder="请输入药品编号" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="md_name" class="control-label col-lg-3 col-md-3">药品名称：</label>
+                                    <div class="col-lg-9 col-md-9">
+                                        <input type="text" id="md_name" placeholder="请输入药品名称" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="md_is_prescription" class="control-label col-lg-3 col-md-3">药品性质：</label>
+                                    <div class="col-lg-9 col-md-9">
+                                        <select class="form-control" id="md_is_prescription">
+                                            <option value="Rx">Rx</option>
+                                            <option value="OTC">OTC</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="md_price" class="control-label col-lg-3 col-md-3">药品单价：</label>
+                                    <div class="col-lg-9 col-md-9">
+                                        <input type="text" id="md_price" placeholder="请输入药品单价" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="md_inventory" class="control-label col-lg-3 col-md-3">药品库存：</label>
+                                    <div class="col-lg-9 col-md-9">
+                                        <input type="text" id="md_inventory" placeholder="请输入药品库存" class="form-control">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="md_detail" class="control-label col-lg-3 col-md-3">药品详情：</label>
+                                    <div class="col-lg-9 col-md-9">
+                                        <textarea rows="10" class="form-control" id="md_detail"></textarea>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                        <div class="modal-footer">
+                            <buton class="btn btn-default" data-dismiss="modal">关闭</buton>
+                            <button type="button" class="btn btn-primary" id="md_save">保存</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- 分页按钮
+            <div class="text-right">
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <li>
+                            <a href="#" aria-label="Previous">
+                                <span aria-hidden="true">&laquo;</span>
+                            </a>
+                        </li>
+                        <li><a href="#">1</a></li>
+                        <li><a href="#">2</a></li>
+                        <li><a href="#">3</a></li>
+                        <li><a href="#">4</a></li>
+                        <li><a href="#">5</a></li>
+                        <li>
+                            <a href="#" aria-label="Next">
+                                <span aria-hidden="true">&raquo;</span>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div> -->
+        </div>
+    </div>
+</div>
+<!--底部信息-->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <p class="pull-right">作者：华俊达 李腾泳 袁晓如 张嘉怡</p>
+                <p>&copy; 2018 P&nbsp;<i class="glyphicon glyphicon-plus"></i>&nbsp;P系统 来源：scau</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+<script src="../../plugins/jQuery/jquery-3.1.1.min.js"></script>
+<script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../js/administrator/medical.js"></script>
+</html>

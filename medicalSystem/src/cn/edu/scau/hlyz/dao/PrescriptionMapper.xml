@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.scau.hlyz.dao.PrescriptionMapper">	
+	
+	
+	<!-- 增加SQL -->
+	<insert id="save" parameterType="prescription">
+		insert into prescription(md_id, mr_id, pr_num) 
+		values(#{medicine.md_id}, #{mr.mr_id}, #{pr_num})
+	</insert>
+
+
+</mapper>

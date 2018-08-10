@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.scau.hlyz.dao.DoctorMapper">	
+	<!-- 包含科室信息 -->
+	<resultMap type="cn.edu.scau.hlyz.entity.Doctor" id="DoctorClinicResultMap">
+	<id column="dt_id" property="dt_id"/>
+	<result column="dt_name" property="dt_name"/>
+	<result column="dt_sex" property="dt_sex"/>
+	<result column="dt_tel" property="dt_tel"/>
+	<result column="dt_image" property="dt_image"/>
+	<result column="dt_title" property="dt_title"/>
+	<result column="dt_introduction" property="introduction"/>
+	<result column="dt_money" property="money"/>
+	<!-- 关联查询单个对象信息 -->
+	<association property="clinic" javaType="Clinic">
+	<id column="cl_id" property="cl_id"/>
+	<result column="cl_dept" property="cl_dept"/>
+	<result column="cl_part" property="cl_part"/>
+	<result column="cl_place" property="cl_place"/>
+	</association>
+	</resultMap>
+
+	<!-- 包含挂号单信息（内包含病人信息） -->
+	<resultMap type="cn.edu.scau.hlyz.entity.Doctor" id="DoctorRegisterationResultMap">
+	<id column="dt_id" property="dt_id"/>
+	<result column="dt_name" property="dt_name"/>
+	<!-- 关联查询多条记录信息 -->
+	<collection property="rfSet" ofType="cn.edu.scau.hlyz.entity.RegistrationForm">
+	<id column="rf_id" property="rf_id"/>
+	<result column="rf_time" property="rf_time"/>
+	<association property="patient" javaType="cn.edu.scau.hlyz.entity.Patient">
+	<id column="pt_id" property="pt_id"/>
+	<result column="pt_name" property="pt_name"/>
+	</association>
+	</collection>
+	</resultMap>
+
+	<!-- 包含咨询信息（内包含回复信息） -->
+	<resultMap type="cn.edu.scau.hlyz.entity.Doctor" id="DoctorAdvisoryResultMap">
+	<id column="dt_id" property="dt_id"/>
+	<result column="dt_name" property="dt_name"/>
+	<!-- 关联查询多条记录信息 -->
+	<collection property="adSet" ofType="cn.edu.scau.hlyz.entity.Advisory">
+	<id column="ad_id" property="ad_id"/>
+	<result column="ad_content" property="ad_content"/>
+	<result column="ad_time" property="ad_time"/>
+	<association property="patient" javaType="cn.edu.scau.hlyz.entity.Patient">
+	<id column="pt_id" property="pt_id"/>
+	<result column="pt_name" property="pt_name"/>
+	</association>
+	<collection property="reSet" javaType="cn.edu.scau.hlyz.entity.Reply">
+	<id column="re_id" property="re_id"/>
+	<result column="re_content" property="re_content"/>
+	<result column="re_time" property="re_time"/>
+	<association property="respondent" javaType="cn.edu.scau.hlyz.entity.Suser">
+	<id column="user_id" property="user_id"/>
+	</association>
+	</collection>
+	</collection>
+	</resultMap>
+	<!-- 查看所有医生信息包含科室 -->
+	<select id="findAllClinic" resultMap="DoctorClinicResultMap">
+		select dt_id,dt_name,dt_sex,dt_tel,dt_image,dt_title,dt_introduction,dt_money,cl_id,cl_dept,cl_part,cl_place
+		from doctor natural join clinic
+	</select>
+	<select id="findByClinic" parameterType="Clinic" resultMap="DoctorClinicResultMap">
+		select dt_id,dt_name,dt_sex,dt_tel,dt_image,dt_title,dt_introduction,dt_money,cl_id,cl_dept,cl_part,cl_place
+		from doctor natural join clinic
+		where cl_dept=#{cl_dept} and cl_part=#{cl_part}
+	</select>
+	<!-- 查看所有医生信息包含科室分页 -->
+	<select id="findAllPage" resultMap="DoctorClinicResultMap">
+		select dt_id,dt_name,dt_sex,dt_tel,dt_image,dt_title,dt_introduction,dt_money,cl_id,cl_dept,cl_part,cl_place
+		from doctor natural join clinic
+		limit #{0},#{1}
+	</select>
+	<!-- 查看对应医生的挂号单
+	<select id="findDoctorRf" resultMap="DoctorRegisterationResultMap">
+		select d.dt_id,d.dt_name,r.rf_id,r.rf_time,p.pt_id,p.pt_name
+		from doctor d,RegistrationForm r,patient p
+		where d.dt_id=r.dt_id and r.pt_id=p.pt_id and d.dt_id=#{id}
+	</select>
+	查看对应医生的咨询 
+	<select id="findDoctorAd" resultMap="DoctorAdvisoryResultMap">
+		select d.dt_id,d.d_name,a.ad_id,a.ad_content,a.ad_time,p.pt_id,p.pt_name,r.re_id,r.re_content,r.re_time,r.re_respondent
+		from doctor d,advisory a,reply r,patient p
+		where d.dt_id=a.ad_doctor and a.ad_asker=p.pt_id and a.ad_id=r.re_consultation and d.dt_id=#{id}
+		order by re_time asc
+	</select>
+	 -->
+	<!-- 查看对应医生包含科室信息 -->
+	<select id="findDoctorClinic" parameterType="Suser" resultMap="DoctorClinicResultMap">
+	    select dt_id,dt_name,dt_sex,dt_tel,dt_image,dt_title,dt_introduction,dt_money,cl_id,cl_dept,cl_part,cl_place
+		from doctor natural join clinic 
+		where dt_id=#{user_id}
+	</select>
+	<!-- 插入医生 -->
+	<insert id="addDoctor" parameterType="Doctor">
+		insert into doctor(dt_id,dt_name,dt_sex,dt_tel,dt_title,dt_introduction,dt_money,dt_image,cl_id) 
+		values (#{dt_id},#{dt_name},#{dt_sex},#{dt_tel},#{dt_title},#{introduction},#{money},#{dt_image},#{clinic.cl_id})
+	</insert>
+
+	<!--删除医生 -->
+	<delete id="deleteDoctor" parameterType="doctor">
+		delete from doctor where dt_id=#{dt_id}
+	</delete>
+
+	<!-- 修改SQL -->
+	<update id="updateDoctor" parameterType="doctor">
+		update doctor set dt_name=#{dt_name},dt_sex=#{dt_sex},dt_tel=#{dt_tel},dt_title=#{dt_title},dt_introduction=#{introduction},dt_money=#{money},dt_image=#{dt_image},cl_id=#{clinic.cl_id} 
+		where dt_id=#{dt_id}
+	</update>
+    
+</mapper>

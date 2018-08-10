@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="  
+           http://www.springframework.org/schema/beans  
+           http://www.springframework.org/schema/beans/spring-beans-3.2.xsd  
+           http://www.springframework.org/schema/aop  
+           http://www.springframework.org/schema/aop/spring-aop-3.2.xsd
+           http://www.springframework.org/schema/context  
+           http://www.springframework.org/schema/context/spring-context-3.2.xsd
+           http://www.springframework.org/schema/tx
+           http://www.springframework.org/schema/tx/spring-tx-3.2.xsd">
+	
+	
+	<!-- 读取解析properties文件 -->
+	<bean id="propertyConfigurer" class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer" >
+		<property name="location">
+			<value>classpath:jdbc.properties</value>
+		</property>
+	</bean>
+	
+	
+	
+	<!-- 配置数据源 -->
+	
+    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName" value="${jdbc.driver}"></property>
+		<property name="url" value="${jdbc.url}"></property>
+		<property name="username" value="${jdbc.username}"></property>
+		<property name="password" value="${jdbc.password}"></property>
+	</bean>
+    
+    
+    
+    <!-- 配置数据库连接 -->
+     <bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">  
+        <!-- 得到数据源 -->
+        <property name="dataSource" ref="dataSource" />  
+        <!-- 加载MyBatis配置 -->
+        <property name="configLocation" value="classpath:MyBatisConf.xml" />  
+        <!-- 
+                              它一般对应我们的实体类所在的包，这个时候会自动取对应包中不包括包名的简单类名作为包括包名的别名。
+                              多个package之间可以用逗号或者分号等来进行分隔。(value的值一定要是包的全名)
+          -->
+        <property name="typeAliasesPackage" value="cn.edu.scau.hlyz.entity"  />  
+    </bean> 
+    
+    <!-- 注入映射器  
+     为了代替手工使用 SqlSessionDaoSupport 或 SqlSessionTemplate 编写数据访问对象 (DAO)的代码,
+  MyBatis-Spring 提供了一个动态代理的实现:MapperFactoryBean。这个类 可以让你直接注入数据映射器接口到你的 service 层 bean 中。
+     当使用映射器时,你仅仅如调 用你的 DAO 一样调用它们就可以了,但是你不需要编写任何 DAO 实现的代码,因为 MyBatis-Spring 将会为你创建代理。
+     使用注入的映射器代码,在 MyBatis,Spring 或 MyBatis-Spring 上面不会有直接的依赖。
+  MapperFactoryBean 创建的代理控制开放和关闭 session,翻译任意的异常到 Spring 的 DataAccessException 异常中。
+     此外,如果需要或参与到一个已经存在活动事务中,代理将 会开启一个新的 Spring 事务。
+    -->
+    <!-- <bean id="userDao" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  value="lx.dao.UserDao" />  
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>  -->
+    
+    <bean id="patientDao" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  value="cn.edu.scau.hlyz.dao.PatientMapper" />  
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    
+    <bean id="medicineDao" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  value="cn.edu.scau.hlyz.dao.MedicineMapper" />  
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    
+    <bean id="advisoryDao" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  value="cn.edu.scau.hlyz.dao.AdvisoryMapper" />  
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    
+    <bean id="illnessDao" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  value="cn.edu.scau.hlyz.dao.IllnessMapper" />  
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    
+    <bean id="medicalRecordDao" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  value="cn.edu.scau.hlyz.dao.MedicalRecordMapper" />  
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    
+    <bean id="prescriptionDao" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  value="cn.edu.scau.hlyz.dao.PrescriptionMapper" />  
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    
+    <bean id="registrationFormDao" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  value="cn.edu.scau.hlyz.dao.RegistrationFormMapper" />  
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    
+    <bean id="replyDao" class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  value="cn.edu.scau.hlyz.dao.ReplyMapper" />  
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    
+    <bean id="clinicDao"
+    	class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  value="cn.edu.scau.hlyz.dao.ClinicMapper" />  
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <bean id="consumptionOrderDao"
+    	class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  value="cn.edu.scau.hlyz.dao.ConsumptionOrderMapper" />  
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <bean id="doctorDao"
+    	class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  value="cn.edu.scau.hlyz.dao.DoctorMapper" />  
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <bean id="evaluationDao"
+    	class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  value="cn.edu.scau.hlyz.dao.EvaluationMapper" />  
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+
+    <bean id="userDao"
+    	class="org.mybatis.spring.mapper.MapperFactoryBean">  
+       <property name="mapperInterface"  value="cn.edu.scau.hlyz.dao.UserMapper" />  
+       <property name="sqlSessionFactory" ref="sqlSessionFactory" />
+    </bean>
+    
+    <!-- 自动扫描注解的bean -->	
+	<!--  <context:component-scan base-package="cn.edu.scau.hlyz.*" /> -->
+	<context:component-scan base-package="cn.edu.scau.hlyz.*">
+    <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.web.bind.annotation.ControllerAdvice"/>
+	</context:component-scan> 
+    
+    <!-- 事务管理器 -->  
+	<bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">  
+     <property name="dataSource" ref="dataSource" />  
+	</bean>
+	<!-- 开启事务注解，标注@Transactional的类和方法将具有事务性 -->
+	<tx:annotation-driven transaction-manager="transactionManager" proxy-target-class="true"/>
+	
+	 <!-- 拦截器方式配置事物 -->
+   <!-- <tx:advice id="transactionAdvice" transaction-manager="txManager">
+        <tx:attributes>
+            <tx:method name="add*" propagation="REQUIRED" />
+            <tx:method name="append*" propagation="REQUIRED" />
+            <tx:method name="insert*" propagation="REQUIRED" />
+            <tx:method name="save*" propagation="REQUIRED" />
+            <tx:method name="update*" propagation="REQUIRED" />
+            <tx:method name="modify*" propagation="REQUIRED" />
+            <tx:method name="edit*" propagation="REQUIRED" />
+            <tx:method name="delete*" propagation="REQUIRED" />
+            <tx:method name="remove*" propagation="REQUIRED" />
+            <tx:method name="repair" propagation="REQUIRED" />
+            <tx:method name="delAndRepair" propagation="REQUIRED" />
+
+            <tx:method name="get*" propagation="SUPPORTS" />
+            <tx:method name="find*" propagation="SUPPORTS" />
+            <tx:method name="load*" propagation="SUPPORTS" />
+            <tx:method name="search*" propagation="SUPPORTS" />
+            <tx:method name="datagrid*" propagation="SUPPORTS" />
+
+            <tx:method name="*" propagation="SUPPORTS" />
+        </tx:attributes>
+    </tx:advice>
+    <aop:config>
+        <aop:pointcut id="transactionPointcut" expression="execution(* cn.edu.scau.hlyz.service.impl.*.*(..))" />
+        <aop:advisor pointcut-ref="transactionPointcut"
+            advice-ref="transactionAdvice" />
+    </aop:config> -->
+
+
+</beans>

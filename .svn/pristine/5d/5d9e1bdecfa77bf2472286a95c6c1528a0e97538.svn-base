@@ -1,0 +1,251 @@
+$(function () {
+    /**
+     *========== @module 登录正则验证 ===========
+     */
+    // var reg_en = /[a-z][A-Z]/g;
+    // var reg_zh = /[\u4e00-\u9fa5]/g;
+    var reg_symb = /[^a-zA-Z0-9]/g;
+    var lo_user_check = false;
+    var lo_pwd_check = false;
+    // 用户名正则
+    $("input[id='lo-username']").on('input', function () {
+        lo_user_check = false;
+        var name = $(this).val();
+        var reg = /^[0-9]{1,20}/g;
+        var span = $($(this).next().find('span').get(0));
+        if (name != "") {
+            if (name.length > 20) {
+                span.text('用户名长度不大于6');
+            }
+            else if (!reg.test(name)) {
+                span.text('用户名不能含有非数字');
+            }
+            else {
+                span.text('');
+                lo_user_check = true;
+                loginCheck();
+            }
+        }
+        else {
+            span.text('输入不能为空');
+        }
+    });
+
+    //登录密码验证
+    $("input[id='lo-password']").on('input', function () {
+        lo_pwd_check = false;
+        var pwd = $(this).val();
+        var span = $($(this).next().find('span').get(0));
+        if (pwd != "") {
+            if (pwd.length > 20) {
+                span.text('密码长度不能多于20位');
+            }
+            else {
+                span.text("");
+                lo_pwd_check = true;
+                loginCheck();
+            }
+        }
+        else {
+            span.text('输入不能为空');
+        }
+    });
+
+    //全部验证通过点亮button
+    function loginCheck(){
+        var btn = $('#login-button');
+        if(lo_user_check && lo_pwd_check){
+            btn.removeAttr('disabled');
+        }
+        else{
+            btn.attr('disabled',true);
+        }
+    }
+    /**
+     * 登录界面点击登录跳转到主界面
+     */
+    $('#login-button').click(function(event){
+        event.preventDefault();
+        username = $('#lo-username').val();
+        // TODO 账号密码验证
+        /*if(fail){
+            $('#lo_fail_span').fadeIn();
+        }*/
+        sessionStorage.setItem('username',username);
+        $('.lo-form').fadeOut(500);
+        $('.wrapper').addClass('form-success');
+        setTimeout(function () {
+            // TODO 获得登录用户名和密码后判断身份进行页面跳转
+            // ajax
+            if(username == "0") //管理员
+            {
+                //TODO 跳转管理员
+                window.location.href = "/font-end/html/administrator/medicine.html";
+            }
+            else if(username == "1")  //医生
+            {
+                window.location.href = "/font-end/html/doctor/main.html";
+            }
+            else
+                window.location.href = "/font-end/html/patient/main.html";
+        },1000);
+    });
+
+    /**
+     * ==============@module 注册！！！ ================
+     */
+    if ($('#re-born'))
+        $('#re-born').datetimepicker({
+            format: 'yyyy-mm-dd',
+            minView: "month",
+            autoclose: 1
+        });
+
+    //注册正则
+    var re_name_check = false;
+    var re_pwd_check = false;
+    var re_spwd_check = false;
+    var re_rname_check = false;
+    var re_credit_check = false;
+    var re_tel_check = false;
+    //var span = $($(this).parent().next().find('span').get(0));
+    $("input[id='re-username']").on('input',function () {
+        re_name_check = false;
+        var name = $(this).val();
+        var reg = /^[0-9]{1,20}/g;
+        var span = $($(this).parent().next().find('span').get(0));
+        if(name != ""){
+            if(name.length > 20){
+                span.text('用户名太长！');
+            }
+            else if(!reg.test(name)){
+                span.text('用户名不能含有非数字！');
+            }
+            else{
+                span.text("");
+                re_name_check = true;
+                checkRegister()
+            }
+        }
+        else{
+            span.text('用户名不能为空！');
+        }
+    });
+    $("input[id='re-password']").on('input',function () {
+        re_pwd_check = false;
+        var pwd = $(this).val();
+        var span = $($(this).parent().next().find('span').get(0));
+        if(pwd != ""){
+            if(pwd.length > 20){
+                span.text('密码长度不能多于20位！');
+            }
+            else if(reg_symb.test(pwd)){
+                span.text('密码不能含有非英文和数字字符！');
+            }
+            else{
+                span.text("");
+                re_pwd_check = true;
+                checkRegister()
+            }
+        }
+        else{
+            span.text('输入不能为空！');
+        }
+    });
+    $("input[id='re-spassword']").on('input',function () {
+        re_spwd_check = false;
+        var pwd = $('#re-password').val();
+        var spwd = $(this).val();
+        var span = $($(this).parent().next().find('span').get(0));
+        if(spwd != ""){
+            if(pwd != spwd){
+                span.text('两次密码输入不一致！');
+            }
+            else{
+                span.text("");
+                re_spwd_check = true;
+                checkRegister()
+            }
+        }
+        else{
+            span.text('输入不能为空！');
+        }
+    });
+    $("input[id='re-realname']").on('input',function () {
+        re_rname_check = false;
+        var span = $($(this).parent().next().find('span').get(0));
+        var rname = $(this).val();
+        if(rname != ""){
+            if(rname.length < 2){
+                span.text('太短！');
+            }
+            else if(rname.length > 20){
+                span.text('输入不能大于20字符！');
+            }
+            else{
+                span.text("");
+                re_rname_check = true;
+                checkRegister()
+            }
+        }
+        else{
+            span.text('输入不能为空！');
+        }
+    });
+    $("input[id='re-creditCard']").on('input',function () {
+        re_credit_check = false;
+        var credit = $(this).val();
+        var span = $($(this).parent().next().find('span').get(0));
+        var reg=/(^\d{15}$)|(^\d{17}(\d|X|x)$)/;
+        if(credit != ""){
+            if(!reg.test(credit)){
+                span.text('身份证号不存在！');
+            }
+            else{
+                span.text('');
+                re_credit_check = true;
+                checkRegister();
+            }
+        }else{
+            span.text('输入不能为空！');
+        }
+
+    });
+    $("input[id='re-tel']").on('input',function () {
+        re_tel_check = false;
+        var tel = $(this).val();
+        var reg = /^1[3|4|5|8][0-9]\d{8}$/;
+        var span = $($(this).parent().next().find('span').get(0));
+        if(tel != "")
+        {
+            if(!reg.test(tel)){
+                span.text('手机号不符合格式！');
+            }
+            else{
+                span.text("");
+                re_tel_check = true;
+                checkRegister();
+            }
+        }else{
+            span.text('输入不能为空！');
+        }
+    });
+    function checkRegister() {
+        var btn = $('#re-button');
+        if(re_name_check && re_pwd_check && re_spwd_check && re_rname_check && re_credit_check && re_tel){
+            btn.removeAttr('disabled');
+        }
+        else{
+            btn.attr('disabled',true);
+        }
+    }
+    /**
+     * @description 点击去注册
+     */
+    $('#to-register').click(function (event) {
+        $('.lo-form').fadeOut(100);
+        $('.re-form').fadeIn();
+    });
+});
+
+

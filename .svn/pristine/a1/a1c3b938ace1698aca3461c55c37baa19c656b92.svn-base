@@ -1,0 +1,109 @@
+/*=====doctor and patient 问答帖子tab====*/
+/*tab显示的css*/
+.consult-writer{
+    margin: 0 10px;
+}
+.consult li{
+    cursor: pointer;
+}
+.consult-writer{
+    margin: 0 10px;
+}
+/*patient and doctor 医生主页评论css*/
+.comment-context img{
+    max-width: 50px;
+    max-height: 50px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+}
+#comment .comment-context h4{
+    margin-bottom: 0;
+}
+/*==========咨询界面============*/
+.co-reply-btn{
+    margin-top: 5px;
+    height: auto !important;
+    padding: 6px 12px !important;
+}
+
+.co-reply-textarea{
+    margin:30px 0;
+}
+/*.comment-reply + div{*/
+    /*display: none;*/
+/*}*/
+.pa_comment{
+    display: none;
+}
+.pa_comment div{
+    margin: 10px 0;
+}
+
+/*=====doctor and patient 个人资料 =====*/
+.form-wrap{
+    width: 50%;
+    margin: 0 auto;
+}
+#head-show{
+    margin-bottom: 20px;
+}
+#head-img{
+    background-image: url("../../img/inithead.jpg");
+    background-size: cover;
+    height: 150px;
+    width: 150px;
+    margin: 10px auto;
+    border-radius: 50%;
+    box-shadow: 0 0 10px gray;
+}
+/*设置上传头像按钮透明*/
+#upload-file{
+    display: none;
+    opacity: 0;
+    width: 0;
+}
+/*===========医生简介=========*/
+.doctor-page{
+    margin: 30px 0;
+}
+.img_dt_head img{
+    max-width: 250px;
+    max-height: 250px;
+}
+.intro_dt_content{
+    min-height: 200px;
+    max-height: 250px;
+    *margin-top: -20px;
+    vertical-align: middle;
+}
+/*===========咨询的医生简介=======*/
+#consult_title{
+    margin-top: 30px;
+}
+#consult_title h3{
+    font-weight: 500;
+    display: inline-block;
+}
+#consult_dt_intro{
+    margin-top: 50px;
+}
+#consult_title .green-title>span{
+    line-height: 65px;
+}
+.consult-detial{
+    padding: 20px 5px;
+    border: 1px solid #ccc;
+}
+/*==============消息列表界面=================*/
+#msg_list .head_img{
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+}
+.msg_time{
+    display: inline-block;
+    margin-top: 8px;
+}
+#msg_list .panel-heading{
+    cursor:pointer;
+}

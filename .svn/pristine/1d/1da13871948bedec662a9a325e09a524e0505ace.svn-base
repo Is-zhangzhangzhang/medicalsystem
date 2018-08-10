@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.scau.hlyz.dao.PatientMapper">	
+
+	<resultMap type="patient" id="patientResult">
+		<id property="pt_id" column="pt_id"/>
+		<result property="pt_name" column="pt_name"/>
+		<result property="pt_sex" column="pt_sex" />
+		<result property="born" column="pt_born"/>
+		<result property="IDCardNumber" column="pt_IDCardNumber"/>
+		<result property="pt_tel" column="pt_tel"/>
+		<result property="pt_image" column="pt_image"/>
+	</resultMap>
+	
+	<!-- 增加SQL -->
+	<insert id="save" parameterType="patient">
+		insert into patient(pt_id, pt_name, pt_sex, pt_born, pt_IDCardNumber, pt_tel, pt_image) values(#{pt_id}, #{pt_name}, #{pt_sex}, #{born}, #{IDCardNumber}, #{pt_tel}, #{pt_image})
+	</insert>
+
+	<!-- 删除SQL -->
+	<delete id="delete" parameterType="String">
+		delete from patient where pt_id=#{pt_id}
+	</delete>
+
+	<!-- 修改SQL -->
+	<update id="update" parameterType="patient">
+		update patient set pt_name=#{pt_name}, pt_sex=#{pt_sex}, pt_born=#{born}, pt_IDCardNumber=#{IDCardNumber}, pt_tel=#{pt_tel}, pt_image=#{pt_image} where pt_id=#{pt_id}
+	</update>
+
+	<!-- 根据ID  SQL -->
+	<select id="findById" parameterType="String" resultMap="patientResult">
+         select * from patient where pt_id=#{id}
+    </select>
+    
+</mapper>

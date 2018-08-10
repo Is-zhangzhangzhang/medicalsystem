@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.scau.hlyz.dao.MedicineMapper">	
+	
+	<resultMap type="medicine" id="MedicineResult">
+		<id property="md_id" column="md_id"/>
+		<result property="md_name" column="md_name"/>
+		<result property="md_is_prescription" column="md_is_prescription"/>
+		<result property="md_price" column="md_price"/>
+		<result property="md_inventor" column="md_inventory"/>
+		<result property="md_details" column="md_details"/>
+	</resultMap>
+	
+	<!-- 增加SQL -->
+	<insert id="save" parameterType="medicine">
+		insert into medicine(md_id, md_name, md_is_prescription, md_price, md_inventory, md_details) values(#{md_id}, #{md_name}, #{md_is_prescription}, #{md_price}, #{md_inventor}, #{md_details})
+	</insert>
+
+	<!-- 删除SQL -->
+	<delete id="delete" parameterType="String">
+		delete from medicine where md_id=#{id}
+	</delete>
+
+	<!-- 修改SQL -->
+	<update id="update" parameterType="medicine">
+		update medicine set md_name=#{md_name}, md_is_prescription=#{md_is_prescription}, md_price=#{md_price}, md_inventory=#{md_inventor}, md_details=#{md_details} where md_id=#{md_id}
+	</update>
+
+	<!-- 根据ID  SQL -->
+	<select id="findById" parameterType="String" resultMap="MedicineResult">
+         select * from medicine where md_id=#{id}
+    </select>
+    
+    <!-- 查询所有结果数 SQL -->
+    <select id="getFindAllCount" resultType="int">
+    	select count(*) from medicine
+    </select>
+    
+    <!-- 分页查询所有 SQL -->
+    <select id="findAll" resultMap="MedicineResult">
+    	select * from medicine limit #{0}, #{1}
+    </select>
+    
+    <!-- 根据name SQL -->
+    <select id="findByName" resultMap="MedicineResult">
+    	select * from medicine where md_name=#{name}
+    </select>
+    
+</mapper>

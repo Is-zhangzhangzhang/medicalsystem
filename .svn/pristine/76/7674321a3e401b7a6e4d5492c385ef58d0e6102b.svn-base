@@ -1,0 +1,25 @@
+$(function () {
+
+
+    /**
+     * main.html中点击查看当日行程
+     * 当天挂号列表
+     */
+    $('#register-queue').click(function (event) {
+        window.location.href = "/font-end/html/doctor/registerList.html";
+    });
+
+//问答详情界面
+//     $('#consult>ul li').click(function () {
+//         console.log(this.innerHTML);
+//         var username = sessionStorage.getItem("username");
+//         username = "1";
+//         console.log(username);
+//         if(username == "1"){
+//             window.location.href = "../../html/doctor/consult.html";
+//         }
+//         else if(username == "2") {
+//             window.location.href = "../../html/patient/consult.html";
+//         }
+//     });
+});

@@ -1,0 +1,433 @@
+/**
+ * @module 立即执行函数
+ * @description 病人付款结束后到挂号的医生主页处对医生进行评价
+ */
+$(function () {
+        //当url上的paid=true时执行
+        let url_param = location.search;
+        // console.log(url_param);
+        let flag = {};
+        if (url_param) {
+            if (url_param.indexOf("?") != -1) {
+                flag[url_param.substr(1).split('=')[0]] = url_param.substr(1).split('=')[1];
+            }
+        }
+        // 隐藏显示 支付完毕后跳转到评价医生，打开评价tab
+        if(flag.paid){
+            let book_content = $('#book_content').children('div');
+            $(book_content.get(0)).hide();   // 隐藏科室医生的选择面板
+            let intro = $(book_content.get(1));
+            intro.show();  //直接显示医生主页
+            intro.find(".time-table").hide();  //隐藏时间选择表格
+
+            $('.tab-show').hide();  //隐藏展开咨询和评论
+            $('#consult-tab').show();
+            //打开tab的医生评论
+            $('#consult-tab>ul li:first-child').removeClass('active');
+            $('#consult-tab>ul li:last-child').addClass('active');
+            $('#consult').removeClass('in active');
+            $('#comment').addClass('in active');
+            $('.pa_comment').show();
+        }
+
+        //页面加载时请求科室
+        loadDept();
+});
+
+//挂号信息 标签选择切换
+let tagChange = function () {
+    let a = $(this);
+    // 标签选择
+    a.addClass('tag-active').siblings().removeClass('tag-active');
+};
+$('.tag').on('click','a',tagChange);
+
+//闭包 填充界面的科室和门诊
+let fillDeptClinic = (function () {
+    let data = {};
+    return {
+        setData:function (result) {
+            // arr是每一行的result，包含所有的门诊所有的信息
+            // console.log(result);
+            for(let i=0,arr; arr=result[i++];){
+                if( !(data[arr.cl_dept] instanceof Array)){
+                    data[arr.cl_dept] = [];
+                }
+                let obj = {};
+                obj[arr.cl_part] = arr.cl_id;
+                data[arr.cl_dept].push(obj);
+            }
+            // console.log(data);
+        },
+        // 把科室展示在界面中
+        fillDept:function () {
+            let newDept = "";
+            for(let i=0,dept;dept=Object.keys(data)[i++];){
+                newDept += "<a href=\"void:javascript(0)\" class=\"tag\">"+dept+"</a>";
+            }
+            $('#book_content .book-dept .tag').append(newDept);
+        },
+        // 把所选择科室的对应门诊展示在界面中
+        fillClinic:function (dept) {
+            //选择门诊标题
+            $('.book-clinic h5').text(" -- "+dept);
+            let dom = $('#book_content .book-clinic .tag');
+            dom.html(""); //清空
+            let newClinic = "";
+            for(let i=0,cli_obj;cli_obj=data[dept][i++];){
+                for(let clinic in cli_obj){
+                    newClinic += "<a href=\"void:javascript(0)\" class=\"tag\">"+clinic+"</a>";
+                }
+            }
+            dom.append(newClinic);
+            $('.book-clinic').fadeIn();
+        },
+        //把获得所选择的门诊id
+        getClinicId:function (dept,clinic) {
+            let id;
+            // console.log(data[dept]);
+            for(let i=0,cli_obj;cli_obj=data[dept][i++];){
+                if(cli_obj[clinic]){
+                    id = cli_obj[clinic];
+                    break;
+                }
+            }
+            return id;
+        }
+    }
+})();
+let loadDept = function () {
+    $.ajax({
+        url: 'http://134.175.21.162:8080/medicalSystem/patient/loadClinic.do',
+        type: 'POST',
+        dataType: 'jsonp',
+        jsonp: 'callback',
+    })
+        .done(function (result) {
+            fillDeptClinic.setData(result);
+            fillDeptClinic.fillDept();
+        })
+        .fail(function () {
+            console.log("请求失败！");
+        })
+};
+//选择科室完毕 展示对应的门诊，调用闭包方法
+let deptChosen;
+//点击科室
+$('.book-dept .tag').on('click','a',function () {
+    deptChosen = $(this).text();
+    // $('.book-clinic').fadeOut();
+    $('.book-day').fadeOut();
+    $('.book-who').fadeOut();
+    $('.doctor-page').fadeOut();
+    fillDeptClinic.fillClinic(deptChosen);
+});
+//日期显示
+let fillDay = function () {
+    let dom = $('.book-day');
+    let tag = dom.find('.tag');
+    tag.html('');
+    let dayList = ['星期一','星期二','星期三','星期四','星期五'];
+    let today = new Date().getDay();
+    today = 1;
+    if(today > 5){
+        alert('今天周六不能挂号哦！');
+    }
+    let str = '';  //代码语句
+    for(let i=today; i<=5;i++){
+        str += "<a href=\"void:javascript(0)\" class=\"tag\">"+dayList[i-1]+"</a>";
+    }
+    dom.find('.tag').append(str);
+    dom.fadeIn();
+};
+let Doctor = (function (){
+    let name;
+    let result;
+    let day = 0;
+    let dt;
+    let timeIndex = -1;
+    return {
+        //门诊下的所有医生信息
+        setResult: function(res){
+            result = res;
+        },
+        setDay: function(dayOfWeek){
+            let dayList = ['星期一','星期二','星期三','星期四','星期五'];
+            let i,d;
+            for(i=0,d;d=dayList[i++];){
+                if(d == dayOfWeek){
+                    day = i+1;
+                    break;
+                }
+            }
+        },
+        getDay: function(){
+            return day;
+        },
+        setDoctor: function(name){
+            for(let i=0,doc;doc=result[i++];) {
+                if(doc.dt_name == name){
+                    dt = doc;
+                }
+            }
+        },
+        getDoctor: function(){
+            return dt;
+        },
+        setTimeIndex: function(index){
+            timeIndex = index;
+        },
+        getTimeIndex: function (){
+            return timeIndex;
+        },
+        //显示对应门诊下的所有医生
+        fillDoctorsName:function () {
+            let dom = $('.book-who .tag');
+            let str = "";
+            dom.html('');
+            for(let i=0,doc;doc=result[i++];) {
+                str += "<a href=\"void:javascript(0)\" class=\"tag\">"+doc.dt_name+"</a>";
+            }
+            dom.append(str);
+        },
+        //显示医生简介和头像
+        fillIntro:function () {
+            let dom = $('#book_dt_intro');
+            let div1 = $(dom.find('div').get(0));
+            let img = div1.find('img');
+            img.attr('src',dt.dt_image);
+            let div2 = div1.next();
+            div2.html('');
+            let str = '<h4>【医生信息】</h4>';
+            str += '<h4>姓名：'+dt.dt_name+'</h4>';
+            str += '<h4>职称：'+dt.dt_title+'</h4>';
+            str += '<h4>联系方式：'+dt.dt_tel+'</h4>';
+            str += '<h4>【医生简介】</h4>'
+            str += '<p>'+dt.introduction+'</p>';
+            div2.append(str);
+        }
+    }
+})();
+//POST门诊编号，Get医生信息
+let loadDoctorOfClinic = function (clinicId){
+    $.ajax({
+        type:'POST',
+        url: 'http://134.175.21.162:8080/medicalSystem/patient/doctorOfClinic.do',
+        dataType: 'jsonp',
+        jsonp: 'callback',
+        data:{
+            clinicId:clinicId
+        }
+    })
+        .done(function (result) {
+            // console.log('医生信息：');
+            // console.log(result);
+            Doctor.setResult(result);
+            Doctor.fillDoctorsName();
+            //TODO 处理医生信息
+        })
+        .fail(function () {
+            console.log('请求医生失败！');
+        })
+};
+//获取各个时间段的剩余挂号个数
+let loadDoctorRemainNum = function (){
+    let dt = Doctor.getDoctor();
+    $.ajax({
+        type:'POST',
+        url:'http://134.175.21.162:8080/medicalSystem/patient/remainingNumber.do',
+        dataType: 'jsonp',
+        jsonp: 'callback',
+        data:{
+            doctorId: dt.dt_id,
+            dayOfWeek: Doctor.getDay()
+        }
+    })
+        .done(function (result) {
+            // 把剩余挂号数放到时间表中
+            let spanList = $("span[name='book_remain']");
+            for(let i=0,$span,remain;$span=spanList[i],remain=result[i++];){
+                $span.innerText = remain;
+            }
+        })
+        .fail(function () {
+            console.log('剩余挂号数获取失败！');
+        })
+};
+let fillMoney = function(){
+    let dt = Doctor.getDoctor();
+    let spanList = $("span[name='book_money']");
+    let money = dt.money;
+    for(let i=0,$span;$span=spanList[i++];){
+        $span.innerText = "　("+money + "元)";
+    }
+};
+let getBookTime = function () {
+    let timeIndex = Doctor.getTimeIndex();
+    let timeList = ['8:00 - 10:00','10:00 - 12:00','14:00 - 16:00','16:00 - 18:00'];
+    return timeList[timeIndex];
+};
+let toSureBookMsg = function(){
+    let dt = Doctor.getDoctor();
+    let li = $('.book-sure-msg>ul').find('li');
+    li[0].innerText = '医生：'+dt.dt_name;
+    li[1].innerText = '科室：'+dt.clinic.cl_dept+dt.clinic.cl_part;
+    li[2].innerText ='就诊人：病人13号';
+    li[3].innerText ='检查费：'+dt.money;
+    //TODO 没有病人信息！！
+    li[4].innerText ='就诊时间：'+ getBookTime();
+    // console.log(li);
+};
+//点击门诊,去选择时间
+$('.book-clinic .tag').on('click','a',function () {
+    let clinicChosen = $(this).text();
+    let clinicId = fillDeptClinic.getClinicId(deptChosen,clinicChosen);
+    $('.book-who').fadeOut();
+    $('.doctor-page').fadeOut();
+    fillDay(); //展开日期选择
+    loadDoctorOfClinic(clinicId); //请求医生信息
+});
+// 点击日期
+$('.book-day .tag').on('click','a',function () {
+    let dayOfWeek = $(this).text();
+    Doctor.setDay(dayOfWeek);
+    $('.book-who').fadeIn();
+});
+// 点击医生
+$('.book-who .tag').on('click','a',function () {
+    let dtName = $(this).text();
+    Doctor.setDoctor(dtName);
+    Doctor.fillIntro();//填充医生头像和简介
+    loadDoctorRemainNum(); //请求各时段剩余挂号
+    fillMoney();
+    $('.doctor-page').fadeIn();
+});//点击医生，请求医生剩余挂号数
+// 点击预约挂号
+$('.time-table table tr td:nth-of-type(2)').click(function () {
+    // alert("挂号成功，去付款！");
+    let $timeStartIndex = $(this).parent().index();
+    Doctor.setTimeIndex($timeStartIndex);
+    getBookTime();
+    toSureBookMsg();
+    $('.book-sure-msg').fadeIn();
+}); //点击预约时间 end
+// 点击取消预约挂号
+$('#book-cancel').click(function () {
+    $('.book-sure-msg').fadeOut();
+});
+//点击确认挂号
+$('#book-ok').click(function () {
+    //    TODO 提交挂号信息
+    let dt = Doctor.getDoctor();
+    let timeList = [8,10,14,16];
+    let startTime = timeList[Doctor.getTimeIndex()];
+    $.ajax({
+        type : "post",
+        async:false,
+        url : "http://134.175.21.162:8080/medicalSystem/patient/submitRegistration.do",
+        dataType:"jsonp",
+        jsonp:"callback",
+        data: {
+            doctorId:dt.dt_id,
+            patientId:encodeURI("13"),
+            dayOfWeek:Doctor.getDay(),
+            startTime:startTime
+        },
+        success:function(res){
+            console.log(res)
+            if(res.result == 1){
+                console.log("确认挂号success!");
+                $('#book-modal').modal('show');
+            }
+            else{
+                console.log("确认挂号fail!");
+            }
+        },
+        error:function(){
+            console.log("提交失败");
+        }
+    });
+});
+
+let fillConsultList = function (data){
+    let dom = $('#book_consult_ul');
+    dom.html('');
+    let li;
+    for(let i in data)
+    {
+        li = "";
+        li += "<li class=\"list-group-item\">";
+        li += "<strong>"+data[i].ad_title+"</strong>";
+        li += "<span class=\"label label-primary pull-right \">"+data[i].ad_time+"</span>";
+        li += "<span class=\"pull-right consult-writer\">作者："+data[i].patient.pt_name+"</span>";
+        li += "</li>";
+        dom.append(li);
+    }
+};
+let loadConsult = function(page){
+    page = page || 1;
+    $.ajax({
+        type : "post",
+        async:false,
+        url : "http://134.175.21.162:8080/medicalSystem/patient/advisoryOfDoctor.do",
+        dataType:"jsonp",
+        jsonp:"callback",
+        data: {
+            doctorId:Doctor.getDoctor().dt_id,
+            page:page
+        },
+        success:function(res){
+            if(res){
+                fillConsultList(res.advisoryArray);
+                let pageSum = parseInt(res.resultNum/10) +1;
+                initConsultPagination(pageSum,page);
+            }
+        },
+        error:function(){
+            console.log("咨询获取失败！");
+        }
+    });
+};
+// 初始化分页
+let pageSum = 3; //分页总页数
+//pages 分页总数，page当前页
+let initConsultPagination = function (pages, page){
+   let dom = $('#book_consult_page_ul>ul');
+    pageSum = pages;
+    console.log(pageSum);
+   dom.html('');
+   let li = drawPagination(dom,pageSum,page);
+};
+
+//点击下一页
+$('#book_consult_page_ul').on('click','li:last-child',function () {
+    if($(this).hasClass('disabled') == false)
+    {
+        let ul = $('#book_consult_page_ul>ul');
+        let page = getNextPage(ul,pageSum);
+        loadConsult(page); //重新请求下一页
+    }
+});
+//点击上一页
+$('#book_consult_page_ul').on('click','li:first-child',function () {
+    if($(this).hasClass('disabled') == false){
+        let ul = $('#book_consult_page_ul>ul');
+        let page = getPrePage(ul,pages);
+        loadConsult(page); //重新请求上一页
+    }
+});
+// 点击展开咨询和评论
+$('.tab-show').click(function () {
+    loadConsult();
+    $('.tab-show').fadeOut();
+    $('#consult-tab').fadeIn();
+});
+
+//点击咨询tab
+$('#consult a').click(function () {
+    $(this).tab('show');
+});
+//点击评论tab
+$('#comment a').click(function () {
+    $(this).tab('show');
+});

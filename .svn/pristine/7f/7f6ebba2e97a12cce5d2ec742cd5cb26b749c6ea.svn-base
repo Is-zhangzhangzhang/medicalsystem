@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+    <meta name="description" content="description of your site"/>
+    <meta name="author" content="author of the site"/>
+    <title>挂号</title>
+    <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../css/util/styles.css"/>
+    <link rel="stylesheet" href="../../css/doctor/doctorHome.css">
+    <link rel="stylesheet" href="../../css/patient/main.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+
+<body>
+<!--顶部导航栏-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../index.html"><h4>不知道叫什么<strong>系统</strong></h4></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        我的消息
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">我的挂号</a></li>
+                        <li><a href="#">我的咨询</a></li>
+                        <li><a href="#">回复</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        User
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!--顶部菜单栏-->
+<div id="in-sub-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <ul>
+                    <li>
+                        <a href="main.html"><i class="batch home"></i><br/>主页</a>
+                    </li>
+                    <li>
+                        <a href="bookDoctor.html" class="active"><i class="batch book-doctor"></i><br/>我要挂号</a>
+                    </li>
+                    <li>
+                        <span class="label label-danger pull-right">04</span>
+                        <a href="registerList.html"><i class="batch comment"></i><br/>我的问答</a>
+                    </li>
+                    <li>
+                        <a href="doctorScore.html"><i class="batch forms"></i><br/>我的病历</a>
+                    </li>
+                    <li>
+                        <a href="setting.html"><i class="batch book"></i><br/>疾病百科</a>
+                    </li>
+                    <li>
+                        <a href="setting.html"><i class="batch users"></i><br/>个人资料</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--挂号-->
+<div class="page">
+    <div class="page-container">
+        <div class="container">
+            <div class="row">
+                <div class="wrapping80">
+                    <!--选择科室-->
+                    <div class="book-dept">
+                        <h4>选择科室</h4>
+                        <div class="tag">
+                            <a href="#" class="tag">内科</a>
+                            <a href="#" class="tag">外科</a>
+                            <a href="#" class="tag">儿科</a>
+                        </div>
+                    </div>
+                    <!--选择门诊-->
+                    <div class="book-clinic">
+                        <h4>选择门诊</h4>
+                        <span>————内科</span>
+                        <div class="tag">
+                            <a href="#" class="tag">呼吸门诊</a>
+                            <a href="#" class="tag">消化门诊</a>
+                            <a href="#" class="tag">内分泌门诊</a>
+                            <a href="#" class="tag">血液门诊</a>
+                        </div>
+                    </div>
+                    <!--选择日期-->
+                    <div class="book-day">
+                        <h4>选择日期</h4>
+                        <div class="tag">
+                            <a href="#" class="tag">星期一</a>
+                            <a href="#" class="tag">星期二</a>
+                            <a href="#" class="tag">星期三</a>
+                            <a href="#" class="tag">星期四</a>
+                            <a href="#" class="tag">星期五</a>
+                        </div>
+                    </div>
+                    <!--选择医生-->
+                    <div class="book-who">
+                        <h4>选择医生</h4>
+                        <div class="tag">
+                            <a href="#" class="tag">华医生</a>
+                            <a href="#" class="tag">李医生</a>
+                            <a href="#" class="tag">陈医生</a>
+                            <a href="#" class="tag">张医生</a>
+                            <a href="#" class="tag">找医生</a>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="doctor-page">
+                        <!--医生简介+照片-->
+                        <div class="row">
+                            <div class="col-md-4 text-center">
+                                <img src="../../img/doctor.jpg" alt="医生照片" style="max-width: 250px; max-height: 250px;">
+                            </div>
+                            <div class="col-md-8">
+                                <p>【医生简介】</p>
+                                <p>
+                                    台湾防务部门消息人士指出，日前解放军海军舰艇突然大举由台湾海峡南下，20日、21日两天间，高速通过台湾海峡的舰艇总数有近50艘。台媒还猜测，舰队此举是为了“防台风”。
+                                    据台湾《联合报》7月22日报道，解放军东海舰队的大型舰艇，如052C/052D“中华神盾”驱逐舰及其他型号的大吨位补给舰几乎全部南下。舰队通过台湾海峡时，在白天以密集纵队行进。
+                                    报道称，甚至有游客搭乘民航机从台湾往来金门、马祖时拍到了照片。</p>
+                                <p>【观察者网 综合报道】台湾防务部门消息人士指出，日前解放军海军舰艇突然大举由台湾海峡南下，20日、21日两天间，高速通过台湾海峡的舰艇总数有近50艘。台媒还猜测，舰队此举是为了“防台风”。
+                                    据台湾《联合报》7月22日报道，解放军东海舰队的大型舰艇，如052C/052D“中华神盾”驱逐舰及其他型号的大吨位补给舰几乎全部南下。舰队通过台湾海峡时，在白天以密集纵队行进。
+                                    报道称，甚至有游客搭乘民航机从台湾往来金门、马祖时拍到了照片。</p>
+                                <p>【观察者网 综合报道】台湾防务部门消息人士指出，日前解放军海军舰艇突然大举由台湾海峡南下，20日、21日两天间，高速通过台湾海峡的舰艇总数有近50艘。台媒还猜测，舰队此举是为了“防台风”。
+                                    据台湾《联合报》7月22日报道，解放军东海舰队的大型舰艇，如052C/052D“中华神盾”驱逐舰及其他型号的大吨位补给舰几乎全部南下。舰队通过台湾海峡时，在白天以密集纵队行进。
+                                    报道称，甚至有游客搭乘民航机从台湾往来金门、马祖时拍到了照片。</p>
+                            </div>
+                        </div>
+                        <!--挂号时间选择-->
+                        <div class="time-table">
+                            <table class="table table-striped table-bordered">
+                                <tbody>
+                                    <tr>
+                                        <th rowspan="2">上午</th>
+                                        <td>8:00 - 10:00</td>
+                                        <td>可预约，剩余：x&nbsp;(20元)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>10:00 - 12:00</td>
+                                        <td>可预约，剩余：x&nbsp;(20元)</td>
+                                    </tr>
+                                    <tr>
+                                        <th rowspan="2">下午</th>
+                                        <td>14:00 - 16:00</td>
+                                        <td>可预约，剩余：x&nbsp;(20元)</td>
+                                    </tr>
+                                    <tr>
+                                        <td>16:00 - 18:00</td>
+                                        <td>可预约，剩余：x&nbsp;(20元)</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <!--确认挂号？ 模态框-->
+                        <!--TODO !!!!!!模态框！！！！-->
+                        <hr>
+                        <!--展开评论和咨询链接-->
+                        <div class="row text-center">
+                            <a href="void:javascript(0)" class="tab-show">查看医生问答和评论 ></a>
+                        </div>
+                        <!--评论和咨询-->
+                        <div class="row consult-tab">
+                            <ul class="nav nav-tabs">
+                                <li role="presentation" class="active">
+                                    <a href="#consult" data-toggle="tab">医生问答</a></li>
+                                <li role="presentation">
+                                    <a href="#comment" data-toggle="tab">医生评论</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <!--医生问答标签页内容-->
+                                <div class="tab-pane fade in active" id="consult">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <span class="badge consult-writer">作者：张嘉怡哇</span>
+                                            <strong>问答标题标题标题！！</strong>
+                                            <span class="pull-right ">2018-07-23</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="badge consult-writer">作者：张嘉怡哇</span>
+                                            <strong>问答标题标题标题！！</strong>
+                                            <span class="pull-right ">2018-07-23</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="badge consult-writer">作者：张嘉怡哇</span>
+                                            <strong>问答标题标题标题！！</strong>
+                                            <span class="pull-right ">2018-07-23</span>
+                                        </li>
+                                        <li class="list-group-item">
+                                            <span class="badge consult-writer">作者：张嘉怡哇</span>
+                                            <strong>问答标题标题标题！！</strong>
+                                            <span class="pull-right ">2018-07-23</span>
+                                        </li>
+                                    </ul>
+                                    <!--发帖区 医生没有记得删除-->
+                                    <div>
+                                        <div class="form-group">
+                                            <div class="input-group input-group-lg">
+                                                <span class="input-group-addon">标题：</span>
+                                                <input type="text" class="form-control" placeholder="请输入标题">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea class="form-control" rows="8"></textarea>
+                                        </div>
+                                        <div class="from-group">
+                                            <button class="btn btn-success pull-right">提交</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--评论标签页-->
+                                <div class="tab-pane fade" id="comment">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <div class="comment-context">
+                                                <div class="row">
+                                                    <div class="col-lg-1 col-md-1 text-center">
+                                                        <img src="../../img/inithead.jpg" alt="评论者头像">
+                                                    </div>
+                                                    <div class="col-lg-8 col-md-8">
+                                                        <strong>张嘉怡哇:<br/></strong>
+                                                        <span>我觉得这个医生非常的好！！！</span>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3">
+                                                        <span class="pull-right">2018-07-23</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <!--<div class="text-right">-->
+                                            <!--<button class="btn btn-primary comment-reply">回复</button>-->
+                                            <!--<div>-->
+                                            <!--<textarea class="form-control" rows="3"></textarea>-->
+                                            <!--<button class="btn btn-primary comment-reply">提交</button>-->
+                                            <!--</div>-->
+                                            <!--</div>-->
+                                        </li>
+                                        <li class="list-group-item">
+                                            <div class="comment-context">
+                                                <div class="row">
+                                                    <div class="col-lg-1 col-md-1 text-center">
+                                                        <img src="../../img/inithead.jpg" alt="评论者头像">
+                                                    </div>
+                                                    <div class="col-lg-8 col-md-8">
+                                                        <strong>袁晓如哇:<br/></strong>
+                                                        <span>医生挺好的！！！</span>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3">
+                                                        <span class="pull-right">2018-07-23</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <p class="pull-right">作者：华俊达 李腾泳 袁晓如 张嘉怡</p>
+                <p>&copy; 2018 不知道叫什么系统 来源：scau</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+<!--jQuery-->
+<script src="../../plugins/jQuery/jquery-3.1.1.min.js"></script>
+<!--bootstrap-->
+<script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
+<!--当前界面js-->
+<script src="../../js/util/jump.js"></script>
+<script src="../../js/patient/bookDoctor.js"></script>
+<script src="../../js/doctor/doctorHome.js"></script>
+</html>

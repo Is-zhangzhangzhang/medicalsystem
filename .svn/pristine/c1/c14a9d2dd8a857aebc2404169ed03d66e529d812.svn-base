@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.scau.hlyz.dao.UserMapper">	
+
+	<insert id="addUser" parameterType="cn.edu.scau.hlyz.entity.Suser">
+		insert into suser(user_id,user_password,user_level) values (#{user_id},#{user_password},#{user_level})
+	</insert>
+
+	<!-- 修改SQL -->
+	<update id="updateUser" parameterType="Suser">
+		update suser set user_password=#{user_password} where user_id=#{user_id}
+	</update>
+	
+	<delete id="deleteUser" parameterType="Suser">
+		delete from suser where user_id=#{user_id}
+	</delete>
+
+	<!-- 根据ID  SQL -->
+	<select id="findById" parameterType="String" resultType="Suser">
+         select * from suser where user_id=#{user_id}
+    </select>
+    
+</mapper>

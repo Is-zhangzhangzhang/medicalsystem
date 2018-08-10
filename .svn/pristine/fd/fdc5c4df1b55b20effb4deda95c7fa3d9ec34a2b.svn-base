@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+    <meta name="description" content="description of your site"/>
+    <meta name="author" content="author of the site"/>
+    <title>首页</title>
+    <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../css/util/styles.css"/>
+    <link rel="stylesheet" href="../../css/util/commons.css">
+    <link rel="stylesheet" href="../../css/users/patient.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+
+<body>
+<!--顶部导航栏-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="../../index.html"><h4><strong>P&nbsp;<i class="glyphicon glyphicon-plus" style="color:#e52c2c"></i>&nbsp;P</strong>系统</h4></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        我的消息
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="message.html?tab=1">我的问答<span class="label label-danger pull-right" id="top_myConsultNum">0</span></a></li>
+                        <li><a href="message.html?tab=2">我的评论<span class="label label-danger pull-right" id="top_myCommentNum">0</span></a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        <div id="top_head_img"></div>
+                        <span id="top_head_name">User</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!--顶部菜单栏-->
+<div id="in-sub-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <ul>
+                    <li>
+                        <a href="main.html"><i class="batch home"></i><br/>首页</a>
+                    </li>
+                    <li>
+                        <span class="label label-danger pull-right">04</span>
+                        <a href="doctorHome.html"><i class="batch plane"></i><br/>我的主页</a>
+                    </li>
+                    <li>
+                        <a href="registerList.html"><i class="batch forms"></i><br/>挂号列表</a>
+                    </li>
+                    <li>
+                        <a href="doctorScore.html"><i class="batch users"></i><br/>病患评分</a>
+                    </li>
+                    <li id="top_msg"><a href="message.html"><i class="batch msg"></i><br/>消息列表</a></li>
+                    <li>
+                        <a href="setting.html" class="active"><i class="batch settings"></i><br/>设置</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--消息提示-->
+<div class="msg-alert"></div>
+<!--主界面内容：医生行程表-->
+<div class="page">
+    <div class="page-container">
+        <div class="container">
+            <!--上传头像-->
+            <div class="row">
+                <div class="wrapping">
+                    <div class="text-center">
+                        <input type="file" id="upload-file">
+                        <div id="head-show">
+                            <img src="../../img/inithead.jpg" id="head-img">
+                        </div>
+                        <div>
+                            <button class="btn btn-default" onclick="$('#upload-file').click()">上传头像</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="form-wrap">
+                <form class="form-horizontal">
+                    <!--医生编号-->
+                    <div class="form-group">
+                        <label for="dt_id" class="col-md-2 col-lg-2 col-sm-2 col-xs-12 control-label text-right">医生编号：</label>
+                        <div class="col-md-8 col-lg-8 col-sm-8 col-xs-12">
+                            <input type="text" id="dt_id" class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <!--姓名-->
+                    <div class="form-group">
+                        <label for="dt_name" class="col-md-2 col-lg-2 col-sm-2 col-xs-12 control-label text-right">姓名：</label>
+                        <div class="col-md-8 col-lg-8 col-sm-8 col-xs-12">
+                            <input type="text" id="dt_name" class="form-control" placeholder="姓名">
+                        </div>
+                    </div>
+                    <!--性别-->
+                    <div class="form-group">
+                        <label for="dt_sex" class="col-md-2 col-lg-2 col-sm-2 col-xs-12 control-label text-right">性别：</label>
+                        <div class="col-md-8 col-lg-8 col-sm-8 col-xs-12">
+                            <select class="form-control" id="dt_sex">
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--职称-->
+                    <div class="form-group">
+                        <label for="dt_title" class="col-md-2 col-lg-2 col-sm-2 col-xs-12 control-label text-right">职称：</label>
+                        <div class="col-md-8 col-lg-8 col-sm-8 col-xs-12">
+                            <input type="text" id="dt_title" class="form-control" placeholder="职称" disabled="disabled">
+                        </div>
+                    </div>
+                    <!--门诊-->
+                    <div class="form-group">
+                        <label for="dt_clinic" class="col-md-2 col-lg-2 col-sm-2 col-xs-12 control-label text-right">科室门诊：</label>
+                        <div class="col-md-8 col-lg-8 col-sm-8 col-xs-12">
+                            <input type="text" id="dt_clinic" class="form-control" placeholder="科室门诊" disabled="disabled">
+                        </div>
+                    </div>
+                    <!--诊金-->
+                    <div class="form-group">
+                        <label for="dt_money" class="col-md-2 col-lg-2 col-sm-2 col-xs-12 control-label text-right">诊金：</label>
+                        <div class="col-md-8 col-lg-8 col-sm-8 col-xs-12">
+                            <input type="text" id="dt_money" class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <!--联系方式-->
+                    <div class="form-group">
+                        <label for="dt_tel" class="col-md-2 col-lg-2 col-sm-2 col-xs-12 control-label text-right">联系方式：</label>
+                        <div class="col-md-8 col-lg-8 col-sm-8 col-xs-12">
+                            <input type="text" id="dt_tel" class="form-control" placeholder="联系方式">
+                        </div>
+                    </div>
+                    <!--简介-->
+                    <div class="form-group">
+                        <label for="dt_introduction" class="col-md-2 col-lg-2 col-sm-2 col-xs-12 control-label text-right">简介：</label>
+                        <div class="col-md-8 col-lg-8 col-sm-8 col-xs-12">
+                            <textarea rows="5" id="dt_introduction" class="form-control"></textarea>
+                        </div>
+                    </div>
+                    <!--保存修改-->
+                    <div class="form-group">
+                        <div class="col-md-10 col-lg-10">
+                            <button class="btn btn-success pull-right" id="dt_setting_save">保存修改</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="modal fade" id="setting_modal">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>提示</h4>
+            </div>
+            <div class="modal-body text-center">
+                <h3><span class="glyphicon glyphicon-ok-circle"></span>&nbsp;修改资料成功！</h3>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-primary" data-dismiss="modal">确定</button>
+            </div>
+        </div>
+    </div>
+</div>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <p class="pull-right">作者：华俊达 李腾泳 袁晓如 张嘉怡</p>
+                <p>&copy; 2018 P&nbsp;<i class="glyphicon glyphicon-plus"></i>&nbsp;P系统 来源：scau</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+<!--jQuery-->
+<script src="../../plugins/jQuery/jquery-3.1.1.min.js"></script>
+<!--bootstrap-->
+<script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../plugins/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js"></script>
+<!--当前界面js-->
+<script src="../../js/doctor/doctor.js"></script>
+<script src="../../js/util/jump.js"></script>
+<script src="../../js/util/commons.js"></script>
+<script src="../../js/doctor/setting.js"></script>
+</html>

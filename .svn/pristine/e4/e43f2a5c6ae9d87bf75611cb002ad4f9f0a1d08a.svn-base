@@ -1,0 +1,30 @@
+package cn.edu.scau.hlyz.entity;
+
+public class Prescription {
+
+	private Medicine medicine;
+	private MedicalRecord mr;
+	private int mr_num;
+	public Medicine getMedicine() {
+		return medicine;
+	}
+	public void setMedicine(Medicine medicine) {
+		this.medicine = medicine;
+	}
+	public MedicalRecord getMr() {
+		return mr;
+	}
+	public void setMr(MedicalRecord mr) {
+		this.mr = mr;
+	}
+	public int getMr_num() {
+		return mr_num;
+	}
+	public void setMr_num(int mr_num) {
+		this.mr_num = mr_num;
+	}
+	@Override
+	public String toString() {
+		return "Prescription [medicine=" + medicine + ", mr=" + mr + ", mr_num=" + mr_num + "]";
+	}
+}

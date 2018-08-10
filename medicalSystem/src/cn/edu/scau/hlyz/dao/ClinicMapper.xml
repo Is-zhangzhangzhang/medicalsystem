@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.scau.hlyz.dao.ClinicMapper">	
+
+
+<resultMap type="cn.edu.scau.hlyz.entity.Clinic" id="ClinicResultMap">
+	<id column="cl_id" property="cl_id"/>
+	<result column="cl_dept" property="cl_dept"/>
+	<result column="cl_part" property="cl_part"/>
+	<result column="cl_place" property="cl_place"/>
+	</resultMap>
+	<!-- 查询SQL -->
+	<select id="findAll" parameterType="int" resultMap="ClinicResultMap">
+		select * from clinic limit #{0},#{1}
+	</select>
+	<select id="getClinicNum" resultType="int">
+	select count(*) from clinic
+	</select>
+	<insert id="addClinic" parameterType="Clinic">
+		insert into clinic(cl_id,cl_dept,cl_part,cl_place) values (#{cl_id},#{cl_dept},#{cl_part},#{cl_place})
+	</insert>
+
+	<delete id="deleteClinic" parameterType="Clinic">
+		delete from clinic where cl_id=#{cl_id}
+	</delete>
+
+	<update id="updateClinic" parameterType="Clinic">
+		update clinic set cl_dept=#{cl_dept},cl_part=#{cl_part},cl_place=#{cl_place} where cl_id=#{cl_id}
+	</update>
+
+	<select id="findById" parameterType="String" resultMap="ClinicResultMap">
+         select * from clinic where cl_id=#{cl_id}
+    </select>
+    </mapper>

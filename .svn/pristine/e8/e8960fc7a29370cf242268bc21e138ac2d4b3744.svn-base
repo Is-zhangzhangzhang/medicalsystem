@@ -1,0 +1,51 @@
+$(function () {
+    var addOrEdit = 0;
+    // 立即执行请求获得 医生列表
+    var cl_list = [];
+    var obj ={};
+    obj.id = "0101";
+    obj.dept = "内科";
+    obj.clinic ="呼吸门诊";
+    obj.place = "1栋101室";
+    cl_list.push(obj);
+    var str="";
+    initTable(str,cl_list,"cl_table");
+
+
+    var tr;
+    /**
+     * @module 点击行 编辑门诊信息 初始化模态框中的值
+     *
+     * @property list_index 点击行的下标
+     */
+    $('#cl_table tbody').on('click','tr',function () {
+        addOrEdit = 1;
+        tr = $(this);
+        $('#cl_modal').modal('show');
+        assignToModalText(cl_list,tr.index(), "cl_text");
+    });
+
+    // 点击添加门诊
+    $('#cl_add_btn').click(function () {
+        $('#cl_modal').modal('show');
+        addOrEdit = 2;
+        modalToNull('cl_text');
+    });
+
+    $('#cl_save').click(function () {
+        console.log(addOrEdit);
+        if(addOrEdit == 1){  //修改门诊信息
+            //TODO 要加一个判断 值是否已经修改
+            assignToList("cl_text",cl_list,tr.index());
+            //TODO 修改完后要把data_List[list_index]返回给后台，如果成功，才执行下面
+            var td = tr.children();
+            updateTable(td,cl_list[tr.index()]);
+        }
+        else{  //添加门诊
+            addToList("cl_text",cl_list);
+            addTable("","cl_table",cl_list[cl_list.length - 1]);
+        }
+        $('#cl_modal').modal('hide');
+        addOrEdit = 0;
+    });
+});

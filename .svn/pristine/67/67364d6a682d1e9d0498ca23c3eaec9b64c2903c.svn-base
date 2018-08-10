@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+    <meta name="description" content="description of your site"/>
+    <meta name="author" content="author of the site"/>
+    <title>病历</title>
+    <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../plugins/jquery-ui/jquery-ui.min.css">
+    <link rel="stylesheet" href="../../css/util/styles.css"/>
+    <link rel="stylesheet" href="../../css/users/doctor.css">
+    <link rel="stylesheet" href="../../css/util/commons.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body>
+<!--顶部导航栏-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="index.html"><h4>不知道叫什么<strong>系统</strong></h4></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        我的消息
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="registerList.html">今天挂号</a></li>
+                        <li><a href="/font-end/html/doctor/doctorHome.html?toConsult=true">我的问答<span class="label label-danger pull-right">03</span></a></li>
+                        <li><a href="/font-end/html/doctor/doctorHome.html?toComment=true">我的评论<span class="label label-danger pull-right">20</span></a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        User
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--顶部菜单栏-->
+<div id="in-sub-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <ul>
+                    <li>
+                        <a href="main.html"><i class="batch home"></i><br/>首页</a>
+                    </li>
+                    <li>
+                        <span class="label label-danger pull-right">04</span>
+                        <a href="doctorHome.html"><i class="batch plane"></i><br/>我的主页</a>
+                    </li>
+                    <li>
+                        <a href="registerList.html" class="active"><i class="batch forms"></i><br/>挂号列表</a>
+                    </li>
+                    <li>
+                        <a href="doctorScore.html"><i class="batch users"></i><br/>病患评分</a>
+                    </li>
+                    <li>
+                        <a href="setting.html"><i class="batch settings"></i><br/>设置</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--挂号列表-->
+<div class="page">
+    <div class="page-container">
+        <div class="container">
+            <div class="wrapping60">
+                <h2 class="text-center">病历</h2>
+            <!--抬头信息-->
+                <div class="row">
+                    <span class="col-lg-3 col-md-3 text-center">姓名：<span name="mr_msg">病人</span></span>
+                    <span class="col-lg-3 col-md-3 text-center">性别：<span name="mr_msg"></span></span>
+                    <span class="col-lg-3 col-md-3 text-center">年龄：<span name="mr_msg"></span></span>
+                    <span class="col-lg-3 col-md-3 text-center">病历号：<span name="mr_msg"></span></span>
+                </div>
+                <div class="row">
+                    <span class="col-lg-3 col-lg-offset-3 col-md-3 col-md-offset-3 text-center">科室：<span name="mr_msg"></span></span>
+                    <span class="col-lg-3 col-md-3 text-center">门诊：<span name="mr_msg"></span></span>
+                    <span class="col-lg-3 col-md-3 text-center">日期：<span name="mr_msg"></span></span>
+                </div>
+                <hr>
+             <!--抬头信息end-->
+                <!--临床诊断-->
+                <div class="row">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label for="disease" class="control-label col-md-2 col-lg-2">临床诊断：</label>
+                            <div class="col-md-10 col-lg-10">
+                                <input type="text" id="disease" class="form-control" placeholder="临床诊断">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <!--药品名称+用量-->
+                <div class="row">
+                    <form class="form-horizontal">
+                        <div class="form-group col-lg-6 col-md-6">
+                            <label for="medical-name" class="control-label col-md-4 col-lg-4">药品名称：</label>
+                            <div class="col-md-8 col-lg-8">
+                                <input type="text" id="medical-name" class="form-control" placeholder="药品名称">
+                            </div>
+                        </div>
+                        <div class="form-group col-lg-6 col-md-6">
+                            <label for="medical-amount" class="control-label col-md-4 col-lg-4">药品用量：</label>
+                            <div class="col-md-8 col-lg-8">
+                                <input type="text" id="medical-amount" class="form-control" placeholder="一次用量">
+                            </div>
+                        </div>
+                        <div>
+                            <button class="btn btn-success pull-right" id="medicine_button">添加</button>
+                        </div>
+                    </form>
+                </div>
+                <!--药品列表-->
+                <div class="row">
+                    <table class="table table-striped table-hover table-bordered" style="margin: 15px;">
+                        <thead>
+                            <tr><th>药品名称</th>
+                                <th>药品用量</th>
+                                <th>药品价格</th>
+                            </tr>
+                        </thead>
+                        <tbody id="medicalRecord_tbody">
+                            <tr>
+                                <td>1111</td>
+                                <td>2222</td>
+                                <td>3333</td>
+                            </tr>
+                            <tr>
+                                <td>4444</td>
+                                <td>2244</td>
+                                <td>3331</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <!--用法-->
+                <div class="row">
+                    <form class="form-horizontal">
+                        <div class="form-group col-lg-6 col-md-6">
+                            <label for="eat_times" class="control-label col-lg-3 col-md-3">用法：</label>
+                            <div class="col-lg-6 col-md-6">
+                                <input type="text" id="eat_times" class="form-control">
+                            </div>
+                            <label class="control-label">次,服用:</label>
+                        </div>
+                        <div class="form-group col-lg-6 col-md-6 text-left">
+                            <div class="col-lg-6 col-md-6" style="margin-left: -25px;">
+                                <input type="text" id="eat_days" class="form-control">
+                            </div>
+                            <label class="control-label">天</label>
+                        </div>
+                    </form>
+                </div>
+                <!--评分-->
+                <div class="row">
+                    <form class="form-horizontal">
+                        <div class="form-group">
+                            <label class="control-label col-lg-2 col-md-2">健康评分：</label>
+                            <div class="form-group col-lg-10 col-md-10">
+                                <select class="form-control" id="mr_score">
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
+                                    <option value="3">3</option>
+                                    <option value="4">4</option>
+                                    <option value="5">5</option>
+                                </select>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <hr>
+                <div class="row text-center">
+                    <button class="btn btn-success btn-lg" id="medicalRecord_save">提交</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--底部信息-->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <p class="pull-right">作者：华俊达 李腾泳 袁晓如 张嘉怡</p>
+                <p>&copy; 2018 不知道叫什么系统 来源：scau</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+<script src="../../plugins/jQuery/jquery-3.1.1.min.js"></script>
+<script src="../../plugins/jquery-ui/jquery-ui.min.js"></script>
+<script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../js/util/jump.js"></script>
+<script src="../../js/doctor/doctor.js"></script>
+<script src="../../js/doctor/medicalRecord.js"></script>
+</html>

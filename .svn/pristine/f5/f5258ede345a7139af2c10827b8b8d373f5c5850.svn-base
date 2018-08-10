@@ -1,0 +1,203 @@
+$(function () {
+    var addOrEdit = 0;
+    // 立即执行请求获得 医生列表
+    var cl_list = [];
+    var obj ={};
+    obj.id = "0101";
+    obj.dept = "内科";
+    obj.clinic ="呼吸门诊";
+    obj.place = "1栋101室";
+    cl_list.push(obj);
+    var str="";
+    initTable(str,cl_list,"cl_table");
+
+
+    var tr;
+    /**
+     * @module 点击行 编辑门诊信息 初始化模态框中的值
+     *
+     * @property list_index 点击行的下标
+     */
+    $('#cl_table').on('click','tr',function () {
+        addOrEdit = 1;
+        tr = $(this);
+        $('#cl_modal').modal('show');
+        $('#cl_id').attr('disabled',true);  //设置id不可编辑
+        //assignToModalText(cl_list,tr.index(), "cl_text");
+        td=tr.children();
+        $('#cl_id').val( td[0].innerHTML);
+        $('#cl_dept').val( td[1].innerHTML);
+        $('#cl_name').val( td[2].innerHTML);
+        $('#cl_place').val( td[3].innerHTML);
+    });
+
+    // 点击添加门诊
+    $('#cl_add_btn').click(function () {
+        $('#cl_modal').modal('show');
+        addOrEdit = 2;
+        $('#cl_id').removeAttr('disabled'); //移除id的disable
+        modalToNull('cl_text');
+    });
+
+    $('#cl_save').click(function () {
+        console.log(addOrEdit);
+        var modal = $('#cl_modal');
+        var input = modal.find('input');
+        if(addOrEdit==1)
+        {
+            $.ajax({
+                type: "post",
+                async: false,
+                url: "http://134.175.21.162:8080/medicalSystem/admin/updateClinic.do",
+                dataType: "jsonp",
+                jsonp: "callback",
+                data: {
+                    cl_id: encodeURI(input[0].value),
+                    cl_dept: encodeURI(input[1].value),
+                    cl_part: encodeURI(input[2].value),
+                    cl_place: encodeURI(input[3].value)
+                },
+                success: function (res) {
+                    // TODO 把修改的值update给数据库，如果提交成功执行下面
+                   if(res.result == '1'){
+                    tr=document.getElementsByTagName('tr');
+                    var i=1;
+                    for(;i<tr.length;i++)
+                    {
+                        if(tr[i].getElementsByTagName('td')[0].innerText==encodeURI(input[0].value))
+                         {
+                             break;
+                         }
+                    }
+                    td=tr[i].getElementsByTagName('td');
+                    td[0].innerHTML = input[0].value;
+                    td[1].innerHTML = input[1].value;
+                    td[2].innerHTML = input[2].value;
+                    td[3].innerHTML = input[3].value;
+                    console.log('修改成功');
+                   }
+                   else{
+                       console.log('修改失败');
+                   }
+                },
+                error: function () {
+                    console.log("提交失败");
+                }
+            });
+        }        
+
+        else{  //添加门诊
+            // TODO insert 到数据库，如果提交成功执行下面
+            var modal = $('#cl_modal');
+            var input = modal.find('input');
+            $.ajax({
+                type: "post",
+                async: false,
+                url: "http://134.175.21.162:8080/medicalSystem/admin/submitClinic.do",
+                dataType: "jsonp",
+                jsonp: "callback",
+                data: {
+                    cl_id: encodeURI(input[0].value),
+                    cl_dept: encodeURI(input[1].value),
+                    cl_part: encodeURI(input[2].value),
+                    cl_place: encodeURI(input[3].value)
+                },
+                success: function (res) {
+                    // TODO 把修改的值update给数据库，如果提交成功执行下面
+                   if(res.result == '1'){
+                    var table = $('#cl_table table tbody');
+                    var input_i = 0;
+                    var data = "";
+                    for (var i = 0; i < 4; i++) {
+                           //给4个input对应的td赋值
+                            data += "<td>" + input[input_i].value + "</td>"
+                            input_i++;
+                        }
+                    table.append("<tr>" + data + "</tr>");
+                    console.log('添加成功');
+                   }
+                   else{
+                       console.log('添加失败');
+                   }
+                },
+                error: function () {
+                    console.log("提交失败");
+                }
+            });
+        }
+        // 关闭模态框
+        addOrEdit = 0;
+        tr = null;
+        modal.modal('hide');
+        
+    });
+
+    showPage(1);
+});
+
+function showPage(page) {
+    $.ajax({
+        type: "post",
+        async: false,
+        url: "http://134.175.21.162:8080/medicalSystem/admin/allClinic.do",
+        dataType: "jsonp",
+        jsonp: "callback",
+        data: {
+            page: encodeURI(page)
+        },
+        success: function (res) {
+            //var endData = res;
+            console.log(page, res);
+            var table = $('#cl_table');
+            var input_i = 0;
+            var data = "";
+            var eachPageNum = 10;//每页显示个数
+            var pageNum = Math.ceil(res.resultNum / eachPageNum);
+            var mds = res.clinicArray;
+            console.log(mds);
+            //每页添加信息
+            data += "<table class='table table-hover table-striped text-center'>" 
+                 +"<thead><th>门诊编号</th><th>科室名称</th><th>门诊名称</th><th>门诊位置</th></thead>"
+                 +"<tbody>";
+            for (var i = 0; i < mds.length; i++) {
+                var md = mds[i];
+                //console.log(mds[i],md);
+                //给select的对应td赋值
+                data += "<tr>"
+                data += "<td>" + md.cl_id + "</td>"
+                data += "<td>" + md.cl_dept + "</td>"
+                data += "<td>" + md.cl_part + "</td>"
+                data += "<td>" + md.cl_place + "</td>"
+                data += "</tr>"
+            }
+            console.log(data);
+            data += '</tbody></table>';
+            data += '<div class="text-right"><nav aria-label="Page navigation"><div class="pagination">'
+                + '<ul class="pagination" id="page">';
+            //判断前面是否还有页面
+            if (page == 1) {
+                data += '<li class="am-disabled"><a href="#">«</a></li>';
+            } else {
+                data += '<li><a href="javascript:showPage(' + (page - 1) + ')">«</a></li>';
+            }
+            for (var i = 1; i <= pageNum; i++) {
+                if (i == page) {
+                    data += '<li class="am-active"><a href="javascript:showPage(' + i + ')">' + i + '</a></li>';
+                } else {
+                    data += '<li><a href="javascript:showPage(' + i + ')">' + i + '</a></li>';
+                }
+            }
+            //判断后面是否还有页面
+            if (page == pageNum) {
+                data += '<li class="am-disabled"><a href="#">»</a></li>';
+            } else {
+                data += '<li><a href="javascript:showPage(' + (page + 1) + ')">»</a></li>';
+            }
+            data += '</ul>' + '</div>' + '</div>';
+
+            table.empty();
+            table.append(data);
+        }
+    });
+
+};

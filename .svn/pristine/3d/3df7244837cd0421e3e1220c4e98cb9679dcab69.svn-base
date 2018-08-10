@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="description" content="description of your site" />
+    <meta name="author" content="author of the site" />
+    <title>挂号列表</title>
+    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/doctor/main.css">
+    <link rel="stylesheet" href="../css/doctor/doctorHome.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+<body>
+<!--顶部导航栏-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"> <h4>不知道叫什么<strong>系统</strong></h4></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        我的消息
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">我的挂号</a></li>
+                        <li><a href="#">我的咨询</a></li>
+                        <li><a href="#">回复</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        User
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!--顶部菜单栏-->
+<div id="in-sub-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <ul>
+                    <li><a href="main.html"><i class="batch home"></i><br />主页</a></li>
+                    <li><span class="label label-danger pull-right" class="active">04</span><a href="doctorHome.html"><i class="batch plane"></i><br />我的主页</a></li>
+                    <!--<li><span class="label label-danger pull-right">04</span><a href="messages.html"><i class="batch comment"></i><br />我的评论</a></li>-->
+                    <li><a href="./registerList.html"><i class="batch forms"></i><br />挂号列表</a></li>
+                    <li><a href="users.html"><i class="batch users"></i><br />病患评分</a></li>
+                    <li><a href="settings.html"><i class="batch settings"></i><br />设置</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="page">
+    <div class="page-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <img src="../img/doctor.jpg" alt="医生照片" style="max-width: 250px; max-height: 250px;">
+                </div>
+                <div class="col-md-8">
+                    <p>【医生简介】</p>
+                    <p>
+                        台湾防务部门消息人士指出，日前解放军海军舰艇突然大举由台湾海峡南下，20日、21日两天间，高速通过台湾海峡的舰艇总数有近50艘。台媒还猜测，舰队此举是为了“防台风”。
+                        据台湾《联合报》7月22日报道，解放军东海舰队的大型舰艇，如052C/052D“中华神盾”驱逐舰及其他型号的大吨位补给舰几乎全部南下。舰队通过台湾海峡时，在白天以密集纵队行进。
+                        报道称，甚至有游客搭乘民航机从台湾往来金门、马祖时拍到了照片。</p>
+                    <p>【观察者网 综合报道】台湾防务部门消息人士指出，日前解放军海军舰艇突然大举由台湾海峡南下，20日、21日两天间，高速通过台湾海峡的舰艇总数有近50艘。台媒还猜测，舰队此举是为了“防台风”。
+                        据台湾《联合报》7月22日报道，解放军东海舰队的大型舰艇，如052C/052D“中华神盾”驱逐舰及其他型号的大吨位补给舰几乎全部南下。舰队通过台湾海峡时，在白天以密集纵队行进。
+                        报道称，甚至有游客搭乘民航机从台湾往来金门、马祖时拍到了照片。</p>
+                    <p>【观察者网 综合报道】台湾防务部门消息人士指出，日前解放军海军舰艇突然大举由台湾海峡南下，20日、21日两天间，高速通过台湾海峡的舰艇总数有近50艘。台媒还猜测，舰队此举是为了“防台风”。
+                        据台湾《联合报》7月22日报道，解放军东海舰队的大型舰艇，如052C/052D“中华神盾”驱逐舰及其他型号的大吨位补给舰几乎全部南下。舰队通过台湾海峡时，在白天以密集纵队行进。
+                        报道称，甚至有游客搭乘民航机从台湾往来金门、马祖时拍到了照片。</p>
+                </div>
+            </div>
+            <div class="row">
+                <hr/>
+                <div class="text-center">
+                    <a href="void:javascript(0)" class="tab-show">查看医生问答和评论 ></a>
+                </div>
+            </div>
+            <!--评论和咨询-->
+            <div class="row consult-tab">
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active">
+                        <a href="#consult" data-toggle="tab">医生问答</a></li>
+                    <li role="presentation" >
+                        <a href="#comment" data-toggle="tab">医生评论</a></li>
+                </ul>
+                <div class="tab-content">
+                    <!--医生问答标签页内容-->
+                    <div class="tab-pane fade in active" id="consult">
+                        <!--<p>这里是咨询咨询咨询！！！</p>-->
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <span class="badge consult-writer">作者：张嘉怡哇</span>
+                                <strong>问答标题标题标题！！</strong>
+                                <span class="pull-right " >2018-07-23</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge consult-writer">作者：张嘉怡哇</span>
+                                <strong>问答标题标题标题！！</strong>
+                                <span class="pull-right " >2018-07-23</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge consult-writer">作者：张嘉怡哇</span>
+                                <strong>问答标题标题标题！！</strong>
+                                <span class="pull-right " >2018-07-23</span>
+                            </li>
+                            <li class="list-group-item">
+                                <span class="badge consult-writer">作者：张嘉怡哇</span>
+                                <strong>问答标题标题标题！！</strong>
+                                <span class="pull-right " >2018-07-23</span>
+                            </li>
+                        </ul>
+                        <div>
+                            <div class="input-group input-group-lg">
+                                <span class="input-group-addon">标题：</span>
+                                <input type="text" class="form-control" placeholder="请输入标题">
+                            </div>
+                            <textarea class="form-control" rows="8"></textarea>
+                            <button class="btn btn-default pull-right">提交</button>
+                        </div>
+                    </div>
+                    <!--评论标签页-->
+                    <div class="tab-pane fade" id="comment">
+                        <!--<p>这里是评论评论评论！！！</p>-->
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <div>
+                                    <strong>张嘉怡哇:</strong>
+                                    <span>我觉得这个医生非常的好！！！</span>
+                                    <span class="pull-right " >2018-07-23</span>
+                                </div>
+                                <div class="text-right">
+                                    <button class="btn btn-primary comment-reply">回复</button>
+                                    <div>
+                                        <textarea class="form-control" rows="3"></textarea>
+                                        <button class="btn btn-primary comment-reply">提交</button>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div>
+                                    <strong>袁晓如哇:</strong>
+                                    <span>医生挺好的！！！</span>
+                                    <span class="pull-right " >2018-07-23</span>
+                                </div>
+                                <div class="text-right">
+                                    <button class="btn btn-primary comment-reply">回复</button>
+                                    <div>
+                                        <textarea class="form-control" rows="3"></textarea>
+                                        <button class="btn btn-primary">提交</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <p class="pull-right">Admin Theme by Nathan Speller</p>
+                <p>&copy; 2013 FreelanceLeague  来源:<a href="http://h2design.taobao.com/" target="_blank">氢设计</a></p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+<script src="../plugins/jquery-3.1.1.min.js"></script>
+<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../js/doctor/doctorHome.js"></script>
+</html>

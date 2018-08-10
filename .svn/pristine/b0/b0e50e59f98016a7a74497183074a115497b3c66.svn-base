@@ -1,0 +1,65 @@
+$(function () {
+    /**
+     * @module 药品管理
+     * @param addOrEdit 全局变量，编辑或者是添加的标兵 {1：编辑；2：添加}
+     */
+    var addOrEdit = 0;
+    /**
+     * @description 点击编辑修改药品信息
+     * @param tr 点击表格的行
+     * @param td 点击行的所有单元格
+     * @param modal 编辑列表元素的弹框
+     * @param input 弹框中的所有input输入框 长度：4
+     * @param input_i 遍历input的下标
+     */
+    $('.medicine-list tr').click(function () {
+        addOrEdit = 1;
+        var tr = $(this);
+        var td = tr.children();
+        var modal = $('#md_modal');
+        $('.modal-title').text("编辑药品信息");
+        var input = modal.find('input');
+        // 弹出模态框
+        modal.modal('show');
+        var input_i = 0;
+        for(var i=0; i<td.length; i++){
+            var value = td[i].innerHTML;
+            if(i == 2){   //给select框赋值
+                $('#md_is_prescription').val(value);
+            }
+            else if(i == 5){  //给textarea赋值
+                $('#md_detail').val(value);
+            }
+            else{   //给4个input赋值
+                // console.log(value);
+                input[input_i].value = value;
+                input_i++;
+            }
+        }
+    });
+
+    /**
+     * @description 添加药品 点击按钮弹出添加药品模态框
+     */
+    $('#md_add_btn').click(function () {
+        addOrEdit = 2;
+        var modal = $('#md_modal');
+        $('.modal-title').text("添加药品");
+        modal.modal('show');
+        var input = modal.find('input');
+        // 清空模态框中所有文本框的值
+        for(var index of input)
+            index.value = "";
+        $('#md_is_prescription').val("");
+        $('#md_detail').val("");
+    });
+
+    /**
+     * @description 添加/编辑药品模态框点击保存
+     */
+    $('#md_save').click(function () {
+        if(addOrEdit == 1){  //修改药品信息
+
+        }
+    });
+});

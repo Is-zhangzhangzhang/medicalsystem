@@ -1,0 +1,39 @@
+//医生挂号列表
+$(function () {
+    loadDoctorRegistration();
+});
+let loadDoctorRegistration= function() {
+    let dt_id;
+    if(localStorage.hasOwnProperty('doctor')) {
+        dt_id = JSON.parse(localStorage.getItem('doctor')).dt_id;
+    }
+    $.ajax({
+        type: "post",
+        async: false,
+        url: "http://134.175.21.162:8080/medicalSystem/doctor/registration.do",
+        dataType: "jsonp",
+        jsonp: "callback",
+        data: {
+            dt_id: dt_id
+        },
+        success:function(res){
+            console.log(res)
+            let tr;
+            for(var i in res){
+                tr="";
+                tr+="<tr>";
+                tr+="<td>"+i+"</td>";
+                tr+="<td>"+res[i].patient.pt_name+"</td>";
+                tr+="<td class=\"list-action\">";
+                tr+="<button class=\"btn btn-warning\">呼叫</button>";
+                tr+="<button class=\"btn btn-info\">就诊</button>";
+                tr+="<button class=\"btn btn-danger\">忽略</button>";
+                tr+="</td></tr>";
+                $('#registerList_html').append(tr);
+            }
+        },
+        error:function(){
+            console.log("失败");
+        }
+    });
+});

@@ -1,0 +1,89 @@
+<!doctype html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>登录界面</title>
+<link rel="stylesheet" type="text/css" href="./plugins/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/util/login.css">
+<link rel="stylesheet" type="text/css" href="./plugins/bootstrap-datetimepicker-master/css/bootstrap-datetimepicker.min.css">
+</head>
+<body>
+
+
+<div class="wrapper">
+
+	<div class="container">
+		<h1>不知道叫什么系统</h1>
+		<form class="form lo-form" >
+			<input class="form-common" type="text" id="lo-username" placeholder="用户名">
+			<input class="form-common" type="password" id="lo-password" placeholder="密码">
+			<div class="form-common text-right lo-register">
+				<a href="void:javascript(0)" id="to-register">注册</a>
+			</div>
+			<button class="form-common" type="submit" id="login-button">登录</button>
+		</form>
+		<form class="form re-form">
+			<div class="form-group">
+				<label for="re-username" class="text-right">用户名:</label>
+				<input class="form-common" id="re-username" type="text" placeholder="用户名">
+			</div>
+			<div class="form-group">
+				<label for="re-password" class="text-right">密码:</label>
+				<input class="form-common" type="text" id="re-password" placeholder="密码">
+			</div>
+			<div class="form-group">
+				<label for="re-spassword" class="text-right">确认密码:</label>
+				<input class="form-common" type="password" id="re-spassword" placeholder="确认密码">
+			</div>
+			<div class="form-group">
+				<label for="re-realname" class="text-right">真实姓名:</label>
+				<input class="form-common" id="re-realname" type="text" placeholder="真实姓名">
+			</div>
+			<div class="form-group">
+				<label for="re-born" class="text-right">出生日期:</label>
+				<input id="re-born" class="form-common" type="text" placeholder="出生日期">
+			</div>
+			<div class="form-group">
+				<label for="re-createCard" class="text-right">身份证:</label>
+				<input id="re-createCard" class="form-common" type="text" placeholder="身份证">
+			</div>
+			<div class="form-group">
+				<label for="re-tel" class="text-right">联系方式:</label>
+				<input id="re-tel" class="form-common" type="text" placeholder="联系方式">
+			</div>
+			<button class="form-common" type="submit" id="re-button">注册</button>
+		</form>
+	</div>
+
+	
+	<ul class="bg-bubbles">
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+		<li></li>
+	</ul>
+	
+</div>
+
+<!-- jQuery -->
+<script type="text/javascript" src="plugins/jQuery/jquery-3.1.1.min.js"></script>
+
+<!-- bootstrap -->
+<script type="text/javascript" src="./plugins/bootstrap/js/bootstrap.min.js"></script>
+
+<!-- bootstrap datetimepicker -->
+<script type="text/javascript" src="plugins/bootstrap-datetimepicker-master/js/bootstrap-datetimepicker.min.js"></script>
+<script type="text/javascript" src="plugins/bootstrap-datetimepicker-master/js/locales/bootstrap-datetimepicker.fr.js"></script>
+<script type="text/javascript" src="js/util/login.js"></script>
+<script type="text/javascript" src="js/util/jump.js"></script>
+</body>
+</html>

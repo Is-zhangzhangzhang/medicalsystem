@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+    <meta name="description" content="description of your site"/>
+    <meta name="author" content="author of the site"/>
+    <title>首页</title>
+    <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../css/util/styles.css"/>
+    <link rel="stylesheet" href="../../css/util/commons.css">
+    <link rel="stylesheet" href="../../css/users/doctor.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+
+<body>
+<!--顶部导航栏-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="../../index.html"><h4><strong>P&nbsp;<i class="glyphicon glyphicon-plus" style="color:#e52c2c"></i>&nbsp;P</strong>系统</h4></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        我的消息
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="message.html?tab=1">我的问答<span class="label label-danger pull-right" id="top_myConsultNum">0</span></a></li>
+                        <li><a href="message.html?tab=2">我的评论<span class="label label-danger pull-right" id="top_myCommentNum">0</span></a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        <div id="top_head_img"></div>
+                        <span id="top_head_name">User</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!--顶部菜单栏-->
+<div id="in-sub-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <ul>
+                    <li><a href="main.html"><i class="batch home"></i><br/>首页</a></li>
+                    <li><span class="label label-danger pull-right">04</span><a href="doctorHome.html"><i
+                            class="batch plane"></i><br/>我的主页</a></li>
+                    <li><a href="registerList.html"><i class="batch forms"></i><br/>挂号列表</a></li>
+                    <li><a href="doctorScore.html"><i class="batch users"></i><br/>病患评分</a></li>
+                    <li id="top_msg"><a href="message.html" class="active"><i class="batch msg"></i><br/>消息列表</a></li>
+                    <li><a href="setting.html"><i class="batch settings"></i><br/>设置</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--消息提示-->
+<div class="msg-alert"></div>
+<!--主界面内容：医生行程表-->
+<div class="page">
+    <div class="page-container">
+        <div class="container" id="msg_list">
+            <div>
+                <h4>我的消息列表</h4>
+                <div class="panel-group" id="accordion">
+                    <!--问答-->
+                    <div class="panel panel-default" id="msg_dt_cs">
+                        <!--标题-->
+                        <div class="panel-heading">
+                            <h4 class="panel-title" aria-expanded="false" aria-controls="collapse1"
+                                data-toggle="collapse" data-parent="#accordion" href="#collapse0">问答消息</h4>
+                        </div>
+                        <!--内容-->
+                        <div id="collapse0" class="panel-collapse collapse in">
+                            <ul class="list-group" id="msg_list_ul">
+                                <li class="list-group-item text-center" style="height: 50px;font-size: 22px;">暂无问答回复消息或新问答帖子！</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!--挂号-->
+                    <div class="panel panel-default">
+                        <!--标题-->
+                        <div class="panel-heading">
+                            <h4 class="panel-title" aria-expanded="false" aria-controls="collapse1"
+                                data-toggle="collapse" data-parent="#accordion" href="#collapse1">评论消息</h4>
+                        </div>
+                        <!--评论-->
+                        <div id="collapse1" class="panel-collapse collapse" id="msg_dt_cm">
+                            <ul class="list-group">
+                                <li class="list-group-item text-center" style="height: 50px;font-size: 22px;">暂无问答回复消息！</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <p class="pull-right">作者：华俊达 李腾泳 袁晓如 张嘉怡</p>
+                <p>&copy; 2018 P&nbsp;<i class="glyphicon glyphicon-plus"></i>&nbsp;P系统 来源：scau</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+<!--jQuery-->
+<script src="../../plugins/jQuery/jquery-3.1.1.min.js"></script>
+<!--bootstrap-->
+<script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
+<!--当前界面js-->
+<script src="../../js/doctor/message.js"></script>
+<script src="../../js/doctor/doctor.js"></script>
+
+</html>

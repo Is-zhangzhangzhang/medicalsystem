@@ -1,0 +1,24 @@
+/*顶部导航栏*/
+.navbar{
+    margin-bottom: 0;
+}
+.navbar-default{
+    background-color: #fff;
+}
+#register-queue{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.panel{
+    width: 100%;
+}
+
+/*咨询界面*/
+.co-reply-btn{
+    height: auto !important;
+    padding: 6px 12px !important;
+}
+
+.co-reply-textarea{
+    margin:30px 0;
+}

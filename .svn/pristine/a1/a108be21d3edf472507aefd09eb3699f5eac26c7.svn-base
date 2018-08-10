@@ -1,0 +1,22 @@
+function sendData(){
+    $.ajax({    
+     type : "post",    
+     async:false,    
+     url : "http://localhost:8080/ssm/patient/loadClinic.do",
+     dataType:"jsonp", 
+     jsonp:"callback",
+     data: {
+        
+     }, 
+     success:function(res){    
+       for(var i in res){
+           console.log('id:'+res[i].cl_id+',dept:'+res[i].cl_dept+',part:'+res[i].cl_part+',place:'+res[i].cl_place);
+       } 
+     },    
+     error:function(){ 
+        console.log("提交失败");
+     }    
+ });   
+}
+
+sendData();

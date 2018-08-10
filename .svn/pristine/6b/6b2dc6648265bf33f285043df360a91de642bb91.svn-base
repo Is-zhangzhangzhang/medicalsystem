@@ -1,0 +1,13 @@
+
+/*============病历录入============*/
+.wrapping60{
+    width: 60%;
+    margin: 0 auto;
+}
+#medical-name,
+#medical-amount{
+    *width: 100%;
+}
+textarea{
+    margin-top: 20px;
+}

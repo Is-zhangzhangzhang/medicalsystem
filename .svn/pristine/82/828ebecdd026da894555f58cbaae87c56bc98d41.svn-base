@@ -1,0 +1,88 @@
+$(function () {
+    loadDoctorInformation();
+    /**
+     * 点击就诊跳转到病例界面
+     *
+     * @property el 点击的就诊button
+     * @property tr 点击的button所在tr
+     * @property td 点击的button所在tr下的所有td
+     */
+    document.getElementById('list-table').addEventListener('click',function(e){
+        // console.log(e.target);
+        var el = e.target;
+        if(el.innerText == '就诊')
+        {
+            var tr = el.parentNode.parentNode;
+            var td = tr.childNodes;
+            // 删除空节点
+            for (var i=0; i<td.length;i++)
+            {
+                if(td[i].nodeName.toLowerCase() != "td")
+                {
+                    tr.removeChild(td[i]);
+                }
+            }
+            var patient = {};
+            patient.id = td[0].innerText;
+            patient.name = td[1].innerText;
+            // 保存到localStorage中
+            if(patient != null)
+            {
+                localStorage.setItem("patient",JSON.stringify(patient));
+            }
+            console.log(patient);
+            window.location.href = './medicalRecord.html';
+        }
+    });
+
+    /**
+     * @module 病历录入界面
+     */
+    //药品输入提示
+    $(function () {
+        var medicalMsg = [
+            "阿胶",
+            "茯苓",
+            "感冒药",
+            "止痛药",
+            "感动哈哈哈哈",
+            "感觉哈哈哈"
+        ];
+        $('#medical-name').autocomplete({
+            source: medicalMsg
+        });
+    });
+});
+
+let getUserId = function () {
+    let id = "";
+    if(localStorage.hasOwnProperty('user_id')){
+        id = parseInt(localStorage.getItem('user_id'));
+    }
+    return id;
+};
+
+let doctor;
+let loadDoctorInformation = function () {
+    let day = (new Date()).getDay() + 2;
+    $.ajax({
+        url: 'http://134.175.21.162:8080/medicalSystem//doctor/dmain.do',
+        type: 'POST',
+        dataType: 'jsonp',
+        jsonp: 'callback',
+        data: {
+            user_id: getUserId(),
+            dayOfWeek: day
+        },
+    })
+        .done(function(result) {
+            console.log(result);
+            doctor = result.doctor; //医生信息
+            localStorage.setItem('doctor',JSON.stringify(doctor));
+            let registerNum = result.registerFormNumber; //医生今天挂号数
+            console.log("success");
+        })
+        .fail(function() {
+            console.log("error");
+        })
+};

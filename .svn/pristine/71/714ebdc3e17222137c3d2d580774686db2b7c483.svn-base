@@ -1,0 +1,316 @@
+.ulcal {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.span{
+    font-size:15px;
+    margin:5px;
+}
+.calendT{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    /* margin-left:5px;
+    margin-right:5px; */
+    background-color:#E0DDDD;
+    font-size:20px;
+}
+.calendC{
+    list-style: none;
+    padding:0;
+    margin:0;
+    background-color:#FCF8F8; 
+    border-top: 1px solid #0A0A0A;
+    border-left: 1px solid #0A0A0A;
+
+}
+.calendT li {
+    color: #222121;
+    font-size: 1em;
+    padding-top:10px;
+    padding-bottom:10px;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    line-height: 1em;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+}
+.calendT li span{
+    font-weight:bold;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+#todaybutton{
+    width:50px;
+    height:30px;
+    text-align:center;
+}
+
+.calendC li {
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    font-size: 1em;
+    color: #666666;
+    line-height: calc(70vw/7);
+    height: calc(70vw/7);
+}
+/* .calendC .not_oneday{
+    height:calc(80vw/7);
+    /* line-height:calc(80vw/7); 
+    border-right: 1px solid #0A0A0A;
+    border-bottom: 1px solid #0A0A0A;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+    width:calc(80vw/7);
+} */
+.calendC .oneday{
+    display:flex;
+    flex-direction:column;
+    height:calc(70vw/7);
+    /* line-height:calc(80vw/7); */
+    width:14.5%;
+    border-right: 1px solid #0A0A0A;
+    border-bottom: 1px solid #0A0A0A;
+    -webkit-box-flex: 1;
+    -ms-flex-positive: 1;
+    flex-grow: 1;
+}
+
+
+.calendC .oneday_number{
+    height: calc(35vw/7);
+    line-height:calc(35vw/7);
+    font-size:18px;
+    text-align:right;
+    margin-top:0px;
+    float:right;
+    position: relative;
+    -webkit-box-flex: 10;
+    -ms-flex-positive: 10;
+    flex-grow: 10;
+    /* width: calc(80vw/7); */
+}
+.calendC li .oneday_workcontent{
+    height: calc(35vw/7);
+    padding-left:10px;
+    font-size:16px;
+    line-height:calc(40vw/7);
+    text-align:left;
+}
+.calendC li .oneday_number span{
+    /* padding-left:25px;
+    padding-top:10px; */
+    text-align:right;
+    padding-right:20px;
+    margin-bottom:10px;
+    /* float:right; */
+    position: relative;
+    -webkit-box-flex: 10;
+    -ms-flex-positive: 10;
+    flex-grow: 10;
+    width: calc(80vw/7);
+    /* height:calc(40vw/7); */
+}
+
+.calendC li .oneday_workcontent span{
+    padding-right:10px;
+    margin-bottom:10px;
+    /* float:right; */
+    position: relative;
+    -webkit-box-flex: 10;
+    -ms-flex-positive: 10;
+    flex-grow: 10;
+    width: calc(80vw/7);
+    /* height:calc(40vw/7); */
+}
+
+.calendC li span:nth-child(6),
+.calendC li span:nth-child(7){
+    background: #F3E9DD;
+}
+
+
+.calendC span::before{
+    position: absolute;
+    top: .02rem;
+    left: .02rem;
+    line-height: 1;
+}
+.error,.late,.errorLate {
+    background:#ebb5b5; 
+}
+.error::before {
+    content: "退";
+    font-size: .12rem;
+    color: #bf1515;
+}
+.late::before {
+    content: "迟";
+    font-size: .12rem;
+    color: #bf1515;
+}
+.errorLate::before {
+    content: "迟/退";
+    font-size: .12rem;
+    color: #bf1515;
+    position: absolute;
+}
+#today {
+    background-color:yellow;
+}
+#today:hover {
+    cursor:pointer;
+}
+.containercal{
+    margin:0px 10px 30px 10px;
+    display:flex;
+    flex-direction:column;
+}
+
+.container-head{
+    display:flex;
+    flex-direction:column;
+    margin: 4px 4px;
+}
+.banner_kq1{
+    display:flex;
+    flex-direction:row;
+    flex:1;
+    text-align: center;
+    width:100%;
+}
+
+.banner_kq2{
+    display:flex;
+    flex-direction:row;
+    flex:2;
+    margin-bottom:4px;
+    text-align: center;
+    width:100%;
+}
+
+.banner_kq1 .dtwork{
+    float:left;
+    padding-top:30px;
+    padding-bottom:10px;
+    text-align:left;
+}
+.retoday{
+    padding-top:40px;
+}
+.banner_kq1 p{
+    font-size:30px;
+    float:left;
+}
+
+.container .maincal{
+    flex:3;
+    margin: 4px 4px;
+    padding-left:10px;
+    padding-right:10px;
+    text-align: center;
+}
+
+.date_now{
+    font-size:20px;
+}
+
+.show_info_top{
+    padding-top:20px;
+    display:flex;
+    flex-direction:row;   
+}
+
+.show_info{
+    font-size:18px;
+    padding-top:10px;
+    padding-bottom:10px;
+    display:flex;
+    flex-direction:row;   
+}
+.worktime_top{
+    padding-top:40px;
+    font-size:18px;
+    display:flex;
+    flex-direction:column;
+}
+.worktime_bottom{
+    font-size:18px;
+    display:flex;
+    flex-direction:column;
+}
+.needwork{
+    color:#9975f2;
+}
+.show_info span{
+    font-size:15px;
+    float:bottom;
+}
+.show_info_top span{
+    font-size:15px;
+    float:bottom;
+}
+#span_today{
+    background-color:yellow;
+}
+
+#span_workday{
+    background-color:#1CF11C;
+}
+.show_info .item{
+    width:60px;
+    height:100%;
+}
+.show_info_top .item{
+    width:40px;   
+    height:40px;    
+    margin: 20px 10px 0px 10px;  
+    border: 1px solid #573AF8; 
+    opacity:0.5; 
+    text-align: center;  
+    line-height: 30px;   
+    font-size: 24px;
+    border-radius: 50%;
+}
+.show_info_top .flex{
+    display:flex;
+    flex-direction:row;
+}
+.show_info .flex{
+    display:flex;
+    flex-direction:row;
+}
+
+.info_left{
+    padding-top:10px;
+    padding-bottom:10px;
+    text-align:left;
+}
+.info_right{
+    padding-top:10px;
+    padding-bottom:10px;
+    text-align:right;
+}
+
+.cirle{
+    width:30px;   
+    height:30px;    
+    margin: 30px auto;    
+    border: 2px solid #e4007e;  
+    text-align: center;  
+    line-height: 200px;  
+    font-weight: bold;  
+    font-size: 24px;
+    background: burlywood;
+    border-radius: 50%;     
+}
+

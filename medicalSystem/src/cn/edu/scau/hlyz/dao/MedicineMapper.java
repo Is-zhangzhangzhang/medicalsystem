@@ -1,0 +1,15 @@
+package cn.edu.scau.hlyz.dao;
+
+import java.util.List;
+
+import cn.edu.scau.hlyz.entity.Medicine;
+
+public interface MedicineMapper {
+	Medicine findById(String id);
+	int save(Medicine medicine);
+	int update(Medicine medicine);
+	int delete(String id);
+	int getFindAllCount();
+	List<Medicine> findAll(int start, int num);
+	Medicine findByName(String name);
+}

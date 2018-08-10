@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="lx.dao.UserDao">	
+
+
+
+	<!-- 查询SQL -->
+	<select id="findAll" resultType="User">
+		select * from usertbl
+	</select>
+	
+	<!-- 增加SQL -->
+	<insert id="save" parameterType="User">
+		insert into usertbl(uname) values (#{uname})
+	</insert>
+
+	<!-- 删除SQL -->
+	<delete id="delete" parameterType="int">
+		delete from usertbl where uid=#{uid}
+	</delete>
+
+	<!-- 修改SQL -->
+	<update id="update" parameterType="User">
+		update usertbl set uname=#{uname} where uid=#{uid}
+	</update>
+
+	<!-- 根据ID  SQL -->
+	<select id="findById" parameterType="int" resultType="User">
+         select * from usertbl where uid=#{uid}
+    </select>
+    
+</mapper>

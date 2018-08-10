@@ -1,0 +1,36 @@
+/*========药品管理=======*/
+.admin-list th{
+    min-width: 75px;
+    text-align: center;
+}
+.admin-list tr:hover{
+    cursor: pointer;
+}
+.admin-list img{
+    max-width: 50px;
+    max-height: 50px;
+}
+#bookHistory_table h4{
+    font-size:30px;
+    color:#999;
+    font-weight: 600!important;
+}
+#ds_add_div,#cl_add_div,#dt_add_div,#md_add_div{
+    margin-bottom: 5px;
+}
+#ds_List_div h2,#dt_List h2{
+     line-height: 0;
+     margin-top: 50px;
+}
+#bh_table,#ds_table,#cl_table ,#dt_table,#md_table{
+    border: 1px solid #ccc;
+    padding: 20px;
+    border-top-left-radius:20px;
+    border-top-right-radius:20px;
+}
+#clinic_List h2,#md_List h2{
+    font-size:30px;
+    color:#999;
+    line-height: 0;
+     margin-top: 50px;
+}

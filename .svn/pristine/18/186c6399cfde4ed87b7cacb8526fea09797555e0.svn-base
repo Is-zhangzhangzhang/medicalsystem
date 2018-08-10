@@ -1,0 +1,15 @@
+$(function () {
+    /**
+     * @module 个人资料页面 上传图片 图片预览
+     * @description doctor and patient的上传图片预览功能
+     */
+    $('#upload-file').change(function () {
+        var file = this.files[0];
+        // console.log(this.files[0]);
+        var reader = new FileReader();
+        reader.readAsDataURL(file);
+        reader.onload = function () {
+            $('#head-img').attr("src",this.result);
+        }
+    });
+});

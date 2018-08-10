@@ -1,0 +1,26 @@
+function sendData(){
+    $.ajax({    
+     type : "post",    
+     async:false,    
+     url : "http://localhost:8080/ssm/patient/loadPatient.do",
+     dataType:"jsonp", 
+     jsonp:"callback",
+     data: {
+        userId:encodeURI("13"),
+     }, 
+     success:function(res){    
+        console.log(res.pt_id);
+        console.log(res.pt_name);
+        console.log(res.born);
+        console.log(res.pt_sex);
+        console.log(res.pt_image);
+        console.log(res.IDCardNumber);
+        console.log(res.pt_tel);
+     },    
+     error:function(){ 
+        console.log("提交失败");
+     }    
+ });   
+}
+
+sendData();

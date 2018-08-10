@@ -1,0 +1,74 @@
+package cn.edu.scau.hlyz.service.impl;
+
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import cn.edu.scau.hlyz.dao.RegistrationFormMapper;
+import cn.edu.scau.hlyz.entity.Doctor;
+import cn.edu.scau.hlyz.entity.RegistrationForm;
+import cn.edu.scau.hlyz.service.RegisteredService;
+@Service
+public class RegisteredServiceImpl implements RegisteredService {
+    @Autowired
+    private RegistrationFormMapper rfi;
+	@Override
+	public void loadRegister() {
+		//从数据库中加载当天的挂号信息加入等待队列中
+		// TODO Auto-generated method stub
+        return rfi.findBydate();
+	}
+
+	@Override
+	public RegistrationForm findById(String id) {
+		// TODO Auto-generated method stub
+		return rfi.findById(id);
+	}
+
+	@Override
+	public Boolean addRegister(RegistrationForm rform) {
+		//添加挂号信息到数据库，并检测挂号时间，在范围内则加入对应等待队列，成功，返回true，失败返回false
+		// TODO Auto-generated method stub
+		int a=rfi.save(rform);
+		if(a==1){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	@Override
+	public RegistrationForm getNextRegister(Doctor doctor) {
+		//移除对应医师等待队列的第一个挂号信息,并返回下一个挂号信息
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public RegistrationForm getFirstRegister(Doctor doctor) {
+		//获取对应医师等待队列的第一个挂号信息并返回
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public void registerComplete(String id) {
+		//设置对应挂号的状态为完成
+		// TODO Auto-generated method stub
+		rfi.update(id);
+	}
+
+	@Override
+	public List<RegistrationForm> getDoctorRegisters(Doctor doctor) {
+		//返回对应医师等待队列的挂号信息。
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public List<RegistrationForm> findAll(int start, int num) {
+		// TODO Auto-generated method stub
+		return rfi.findAll(start,num);
+	}
+
+}

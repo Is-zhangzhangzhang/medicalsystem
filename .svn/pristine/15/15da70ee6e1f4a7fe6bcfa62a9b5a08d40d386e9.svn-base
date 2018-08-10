@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+    <meta name="description" content="description of your site" />
+    <meta name="author" content="author of the site" />
+    <title>IndustryApp Template</title>
+    <link rel="stylesheet" href="../plugins/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../plugins/font-awesome.min.css">
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="../css/doctor/main.css">
+    <!--<link rel="stylesheet" href="../css/toastr.css" />-->
+    <link rel="stylesheet" href="../css/fullcalendar.css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+
+  <body>
+  <!--顶部导航栏-->
+    <nav class="navbar navbar-default">
+      <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="../index.html"> <h4>不知道叫什么<strong>系统</strong></h4></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+          <ul class="nav navbar-nav navbar-right">
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                我的消息
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">我的挂号</a></li>
+                <li><a href="#">我的咨询</a></li>
+                <li><a href="#">回复</a></li>
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                User
+                <span class="caret"></span>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="../index.html">退出</a></li>
+              </ul>
+            </li>
+          </ul>
+        </div><!-- /.navbar-collapse -->
+      </div><!-- /.container-fluid -->
+    </nav>
+    <!--顶部菜单栏-->
+    <div id="in-sub-nav">
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-12 col-sm-12 col-md-12">
+            <ul>
+              <li><a href="main.html" class="active"><i class="batch home"></i><br />主页</a></li>
+              <li><span class="label label-danger pull-right">04</span><a href="doctorHome.html"><i class="batch plane"></i><br />我的主页</a></li>
+              <!--<li><span class="label label-danger pull-right">04</span><a href="../messages.html"><i class="batch comment"></i><br />我的评论</a></li>-->
+              <li><a href="registerList.html"><i class="batch forms"></i><br />挂号列表</a></li>
+              <li><a href="doctorScore.html"><i class="batch users"></i><br />病患评分</a></li>
+              <li><a href="settings.html"><i class="batch settings"></i><br />设置</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="page">
+      <div class="page-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-xm-6"><h2>医生行程表</h2></div>
+                <div class="col-md-6 col-sm-6 col-xm- text-right" id="register-queue"><button class="btn btn-default">查看当日行程</button></div>
+            </div>
+            <div class="row">
+        <!--<div id="events" class="col-md-4 col-sm-12 col-xs-12">-->
+          <!--<h4>Upcoming</h4>-->
+          <!--<div class="event">-->
+            <!--<div class="date success">-->
+              <!--<h1>14</h1>-->
+              <!--<h4>NOV</h4>-->
+            <!--</div>-->
+            <!--<h4>Sprint 4</h4>-->
+            <!--<p>2pm @ Convention Center<br />122 Meyran Ave, Pittsburgh PA</p>-->
+          <!--</div>-->
+          <!--<div class="event">-->
+            <!--<div class="date danger">-->
+              <!--<h1>11</h1>-->
+              <!--<h4>NOV</h4>-->
+            <!--</div>-->
+            <!--<h4>Meetup Group</h4>-->
+            <!--<p>2pm @ Convention Center<br />122 Meyran Ave, Pittsburgh PA</p>-->
+          <!--</div>-->
+          <!--<div class="event">-->
+            <!--<div class="date warning">-->
+              <!--<h1>03</h1>-->
+              <!--<h4>NOV</h4>-->
+            <!--</div>-->
+            <!--<h4>Dinner Party</h4>-->
+            <!--<p>2pm @ Convention Center<br />122 Meyran Ave, Pittsburgh PA</p>-->
+          <!--</div>-->
+          <!--<div class="event">-->
+            <!--<div class="date">-->
+              <!--<h1>27</h1>-->
+              <!--<h4>OCT</h4>-->
+            <!--</div>-->
+            <!--<h4>Sprint 3</h4>-->
+            <!--<p>2pm @ Convention Center<br />122 Meyran Ave, Pittsburgh PA</p>-->
+          <!--</div>-->
+          <!--<div class="event">-->
+            <!--<div class="date">-->
+              <!--<h1>20</h1>-->
+              <!--<h4>OCT</h4>-->
+            <!--</div>-->
+            <!--<h4>Birthday Party</h4>-->
+            <!--<p>2pm @ Convention Center<br />122 Meyran Ave, Pittsburgh PA</p>-->
+          <!--</div>-->
+          <!--<div class="event">-->
+            <!--<div class="date success">-->
+              <!--<h1>14</h1>-->
+              <!--<h4>OCT</h4>-->
+            <!--</div>-->
+            <!--<h4>Sprint 4</h4>-->
+            <!--<p>2pm @ Convention Center<br />122 Meyran Ave, Pittsburgh PA</p>-->
+          <!--</div>-->
+          <!--<div class="event">-->
+            <!--<div class="date danger">-->
+              <!--<h1>11</h1>-->
+              <!--<h4>OCT</h4>-->
+            <!--</div>-->
+            <!--<h4>Meetup Group</h4>-->
+            <!--<p>2pm @ Convention Center<br />122 Meyran Ave, Pittsburgh PA</p>-->
+          <!--</div>-->
+          <!--<div class="event">-->
+            <!--<div class="date warning">-->
+              <!--<h1>03</h1>-->
+              <!--<h4>OCT</h4>-->
+            <!--</div>-->
+            <!--<h4>Dinner Party</h4>-->
+            <!--<p>2pm @ Convention Center<br />122 Meyran Ave, Pittsburgh PA</p>-->
+          <!--</div>-->
+          <!--<div class="event">-->
+            <!--<div class="date">-->
+              <!--<h1>27</h1>-->
+              <!--<h4>SEP</h4>-->
+            <!--</div>-->
+            <!--<h4>Sprint 3</h4>-->
+            <!--<p>2pm @ Convention Center<br />122 Meyran Ave, Pittsburgh PA</p>-->
+          <!--</div>-->
+          <!--<div class="event">-->
+            <!--<div class="date">-->
+              <!--<h1>20</h1>-->
+              <!--<h4>SEP</h4>-->
+            <!--</div>-->
+            <!--<h4>Birthday Party</h4>-->
+            <!--<p>2pm @ Convention Center<br />122 Meyran Ave, Pittsburgh PA</p>-->
+          <!--</div>-->
+          <!--<p class="load-more"><a href="">Load More</a></p>-->
+        <!--</div>-->
+        <div class="col-md-12 col-sm-12 col-xm-12">
+            <div id="calendar"></div>
+        </div>
+      </div>
+        </div>
+      </div>
+    </div>
+
+    <footer>
+        <div class="container">
+          <div class="row">
+            <div class="span12">
+              <p class="pull-right">Admin Theme by Nathan Speller</p>
+              <p>&copy; 2013 FreelanceLeague  来源:<a href="http://h2design.taobao.com/" target="_blank">氢设计</a></p>
+            </div>
+          </div>
+        </div>
+      </footer>
+  </body>
+  <script src="../plugins/jquery-3.1.1.min.js"></script>
+  <script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+  <!--knob 旋钮插件-->
+  <script src="../js/jquery.knob.js"></script>
+  <script src="../plugins/d3.v3.min.js"></script>
+  <!--sparkline 图表-->
+  <!--<script src="js/jquery.sparkline.min.js"></script>-->
+  <script src="../js/main.js"></script>
+  <!--<script src="../js/toastr.js"></script>-->
+  <script src="../js/jquery.tablesorter.min.js"></script>
+  <script src="../js/jquery.peity.min.js"></script>
+  <script src="../js/fullcalendar.min.js"></script>
+  <script src="../js/gcal.js"></script>
+  <script src="../js/setup.js"></script>
+  <script src="../js/d3-setup.js"></script>
+  <!--<script>-->
+      <!--protocol = window.location.protocol === 'http:' ? 'ws://' : 'wss://';
+      address = protocol + window.location.host + window.location.pathname + '/ws';
+      socket = new WebSocket(address);-->
+      <!--socket.onmessage = function(msg) {-->
+          <!--msg.data == 'reload' && window.location.reload()-->
+      <!--}-->
+  <!--</script>-->
+</html>

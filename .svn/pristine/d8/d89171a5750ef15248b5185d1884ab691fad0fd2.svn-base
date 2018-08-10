@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.scau.hlyz.dao.ReplyMapper">	
+	
+	<resultMap type="reply" id="ReplyWithSuserResult">
+		<id property="re_id" column="re_id"/>
+		<result property="re_content" column="re_content"/>
+		<result property="re_time" column="re_time"/>
+		<association property="respondent" javaType="suser">
+			<id property="user_id" column="user_id"/>
+			<result property="user_level" column="user_level"/>
+		</association>
+	</resultMap>
+	
+	<!-- 增加SQL -->
+	<insert id="save" parameterType="reply">
+		insert into reply(re_id, user_id, ad_id, re_content, re_time) 
+		values(#{re_id}, #{respondent.user_id}, #{re_Consultaion.ad_id}, #{re_content}, #{re_time})
+	</insert>
+
+	<!-- 按咨询查询结果数 SQL -->
+	<select id="getFindByAdvisoryCount" resultType="int">
+		select count(*) from reply where ad_id=#{advisoryId}
+	</select>
+
+    <!-- 分页按咨询查询 SQL -->
+    <select id="findByAdvisory" resultMap="ReplyWithSuserResult">
+    	 select re_id, re_content, re_time, user_id, user_level
+         from reply natural join suser
+         where ad_id=#{0}
+         limit #{1}, #{2}
+    </select>
+</mapper>

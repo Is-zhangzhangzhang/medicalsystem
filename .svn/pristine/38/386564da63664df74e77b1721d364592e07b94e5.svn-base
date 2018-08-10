@@ -1,0 +1,12 @@
+package cn.edu.scau.hlyz.dao;
+
+import java.util.List;
+
+import cn.edu.scau.hlyz.entity.Advisory;
+
+public interface AdvisoryMapper {
+	int save(Advisory advisory);
+	Advisory findById(String id);
+	List<Advisory> findByDoctor(String doctorId, int start, int num);
+	List<Advisory> findByPatient(String patientId, int start, int num);
+}

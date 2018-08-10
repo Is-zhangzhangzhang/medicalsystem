@@ -1,0 +1,12 @@
+/*========药品管理=======*/
+.admin-list th{
+    min-width: 75px;
+    text-align: center;
+}
+.admin-list tr:hover{
+    cursor: pointer;
+}
+.admin-list img{
+    max-width: 50px;
+    max-height: 50px;
+}

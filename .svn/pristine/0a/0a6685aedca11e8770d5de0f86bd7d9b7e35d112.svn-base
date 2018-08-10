@@ -1,0 +1,98 @@
+/**
+ * @module 立即执行函数
+ * @description 病人付款结束后到挂号的医生主页处对医生进行评价
+ */
+$(function () {
+        //当url上的paid=true时执行
+        var url_param = location.search;
+        console.log(url_param);
+        var flag = {};
+        if (url_param) {
+            if (url_param.indexOf("?") != -1) {
+                flag[url_param.substr(1).split('=')[0]] = url_param.substr(1).split('=')[1];
+            }
+        }
+        // 隐藏显示
+        if(flag.paid){
+            var book_content = $('#book_content').children('div');
+            $(book_content.get(0)).hide();   // 隐藏科室医生的选择面板
+            var intro = $(book_content.get(1));
+            intro.show();  //直接显示医生主页
+            intro.find(".time-table").hide();  //隐藏时间选择表格
+
+            $('.tab-show').hide();  //隐藏展开咨询和评论
+            $('#consult-tab').show();
+            //打开tab的医生评论
+            $('#consult-tab>ul li:first-child').removeClass('active');
+            $('#consult-tab>ul li:last-child').addClass('active');
+            $('#consult').removeClass('in active');
+            $('#comment').addClass('in active');
+            $('.pa_comment').show();
+            // $('.doctor-page').next().show();
+            // $('.time-table').hide();
+        }
+        // if(flag.toComment){
+        //     $('.tab-show').css('display','none');
+        //     $('#consult-tab').css('display','block');
+        //     //    打开tab的医生评论
+        //     $('#consult-tab>ul li:first-child').removeClass('active');
+        //     $('#consult-tab>ul li:last-child').addClass('active');
+        //     $('#consult').removeClass('in active');
+        //     $('#comment').addClass('in active');
+        // }
+});
+
+$('.tag a').click(function () {
+    var a = $(this);
+    // 标签选择
+    a.addClass('tag-active').siblings().removeClass('tag-active');
+});
+
+/**
+ *     选择科室
+ */
+$('.book-dept .tag a').click(function () {
+    // 标签选择
+    // TODO 把门诊信息放到book-clinic中
+    $('.book-clinic').fadeIn();
+});
+
+/**
+ *      选择时间
+ */
+$('.book-clinic .tag a').click(function () {
+    // 标签选择
+    $('.book-day').fadeIn();
+});
+
+/**
+ *      选择医生
+ */
+$('.book-day .tag a').click(function () {
+    // 标签选择
+    $('.book-who').fadeIn();
+});
+
+/**
+ *      显示医生主页
+ */
+$('.book-who .tag a').click(function () {
+    $('.doctor-page').fadeIn();
+});
+
+/**
+ *      点击挂号
+ */
+$('.time-table table tr td:nth-of-type(2)').click(function () {
+    // alert("挂号成功，去付款！");
+    $('.book-sure-msg').fadeIn();
+});
+
+$('#book-cancel').click(function () {
+    $('.book-sure-msg').fadeOut();
+});
+
+
+$('#book-ok').click(function () {
+    //    TODO 提交挂号信息
+});

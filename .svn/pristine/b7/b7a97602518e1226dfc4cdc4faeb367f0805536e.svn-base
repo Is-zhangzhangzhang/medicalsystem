@@ -1,0 +1,55 @@
+/*=====doctor and patient 问答帖子tab====*/
+/*tab显示的css*/
+#consult-tab{
+    display: none;
+}
+.consult-writer{
+    margin: 0 10px;
+}
+#consult li{
+    cursor: pointer;
+}
+.consult-writer{
+    margin: 0 10px;
+}
+/*patient and doctor 医生主页评论css*/
+.comment-context img{
+    max-width: 50px;
+    max-height: 50px;
+    margin-bottom: 10px;
+    border-radius: 50%;
+}
+#comment .comment-context h4{
+    margin-bottom: 0;
+}
+
+/*.comment-reply + div{*/
+    /*display: none;*/
+/*}*/
+.pa_comment{
+    display: none;
+}
+.pa_comment div{
+    margin: 10px 0;
+}
+
+/*=====doctor and patient 个人资料 =====*/
+.form-wrap{
+    width: 50%;
+    margin: 0 auto;
+}
+#head-show{
+    margin-bottom: 20px;
+}
+#head-show img{
+    height: 150px;
+    width: 150px;
+    border-radius: 50%;
+    box-shadow: 0 0 10px gray;
+}
+/*设置上传头像按钮透明*/
+#upload-file{
+    display: none;
+    opacity: 0;
+    width: 0;
+}

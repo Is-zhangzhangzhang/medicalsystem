@@ -1,0 +1,10 @@
+/*问答帖子列表css*/
+.consult-writer{
+    margin: 0 10px;
+}
+#consult li{
+    cursor: pointer;
+}
+.consult-writer{
+    margin: 0 10px;
+}

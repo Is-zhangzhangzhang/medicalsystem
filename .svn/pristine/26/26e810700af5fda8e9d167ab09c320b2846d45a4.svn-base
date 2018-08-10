@@ -1,0 +1,149 @@
+$(function () {
+    let url_param = location.search;
+    let flag = {};
+    if (url_param) {
+        if (url_param.indexOf("?") != -1) {
+            flag[url_param.substr(1).split('=')[0]] = url_param.substr(1).split('=')[1];
+        }
+        switch (flag.tab){
+            case '1': //加载问答消息
+                $('#collapse1').removeClass('in');
+                $('#collapse2').removeClass('in');
+                break;
+            case '2':
+                $('#collapse0').removeClass('in');
+                $('#collapse2').removeClass('in');
+                $('#collapse1').addClass('in');
+                //加载挂号消息
+                break;
+            case '3':
+                $('#collapse0').removeClass('in');
+                $('#collapse1').removeClass('in');
+                $('#collapse2').addClass('in');
+                //加载支付消息
+                break;
+        }
+    }
+    fillReplyMsg();
+    fillRegisterMsg();
+    fillConsume();
+});
+
+let fillReplyMsg = function () {
+    let reply;
+    if(localStorage.hasOwnProperty('replyList')){
+        reply = JSON.parse(localStorage.getItem('replyList'));
+    }
+    console.log(reply);
+    let li = "";
+    let ul = $('#collapse0>ul');
+    ul.html('');
+    for(data of reply){
+        li = "";
+        li = `<li class="list-group-item text-left">
+           <div class="row wrapping85">
+             <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
+                    <img src="${data.re_Consultaion.doctor.dt_image}" class="head_img" alt="">
+             </div>
+            <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                <span class="pull-right msg_time" id="msg_cs_time">时间：${data.re_time}</span>
+                <h4>${data.re_Consultaion.doctor.dt_name}医生</h4>
+                <h5>${data.re_Consultaion.ad_title}</h5>
+                <p>${data.re_content}</p>
+            </div>
+         </div>
+        </li>`;
+        ul.append(li);
+    }
+};
+
+let fillRegisterMsg = function () {
+    let register;
+    if(localStorage.hasOwnProperty('registerList')){
+        register = JSON.parse(localStorage.getItem('registerList'));
+    }
+    console.log(register);
+    let li = "";
+    let ul = $('#collapse1>ul');
+    ul.html('');
+    for(data of register){
+        li = "";
+        li = `<li class="list-group-item text-left">
+            <div class="row wrapping85">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4 text-center">
+                <img src="${data.doctor.dt_image}" class="head_img" alt="">
+              </div>
+              <div class="col-lg-8 col-md-8 col-sm-8 col-xs-8">
+                 <span class="pull-right msg_time" id="msg_re_time">时间：${data.rf_time}</span>
+                 <h4 id="msg_re_name">${data.doctor.dt_name}医生</h4>
+                 <p id="msg_re_content">请<span style="color:red">${data.patient.pt_name}</span>到${data.doctor.clinic.cl_place},${data.doctor.clinic.cl_dept},${data.doctor.clinic.cl_part}就诊</p>
+              </div>
+            </div>
+         </li>`;
+        ul.append(li);
+    }
+};
+
+let consume;
+let fillConsume = function () {
+    if(localStorage.hasOwnProperty('consumeList')){
+        consume = JSON.parse(localStorage.getItem('consumeList'));
+    }
+    console.log(consume);
+    let li = "";
+    let ul = $('#collapse2>ul');
+    ul.html('');
+    for(data of consume){
+        li = "";
+        let status = "";
+        if(data.co_status == "pay")
+            status = "已支付";
+        else
+            status = "待支付";
+        li =` <li class="list-group-item text-left">
+                <div class="wrapping85">
+                   <h4 class="pull-right">支付状态：${status}</h4>
+                   <h4>门诊缴费--${data.mr.doctor.clinic.cl_dept}${data.mr.doctor.clinic.cl_part}</h4>
+                   <h4>${data.mr.patient.pt_name}</h4>
+                   <p style="color:red">金额：${data.co_price}</p>
+                   <p>${data.mr.mr_time}</p>
+                </div>
+              </li>`;
+        ul.append(li);
+    }
+};
+
+//点击问答消息中的任意一条
+$('#collapse0>ul').on('click','li',function () {
+    let index = $(this).index;
+});
+
+
+//点击支付消息中的任意一条
+$('#collapse2>ul').on('click','li',function () {
+    let index = $(this).index();
+    console.log(consume);
+    /*$.ajax({
+        type : "post",
+        async:false,
+        url : "http://134.175.21.162:8080/medicalSystem/patient/markCOrder.do",
+        dataType:"jsonp",
+        jsonp:"callback",
+        data: {
+            co_id:consume[index].co_id,
+            pt_id:consume[index].mr.patient.pt_id
+        },
+        success:function(res){
+            if(res.result == '1'){
+                console.log('标记成功');
+            }
+            else{
+                console.log('标记失败');
+            }
+        },
+        error:function(){
+            console.log("提交失败");
+        }
+    });*/
+    window.location.href = "/font-end/html/patient/pay.html?index="+index;
+});

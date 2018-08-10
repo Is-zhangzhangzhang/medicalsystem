@@ -1,0 +1,56 @@
+$(function () {
+    $('.tag a').click(function () {
+        var a = $(this);
+        // 标签选择
+        a.addClass('tag-active').siblings().removeClass('tag-active');
+    });
+
+    /**
+     *     选择科室
+     */
+    $('.book-dept .tag a').click(function () {
+        // 标签选择
+        // TODO 把门诊信息放到book-clinic中
+       $('.book-clinic').fadeIn();
+    });
+
+    /**
+     *      选择时间
+     */
+    $('.book-clinic .tag a').click(function () {
+        // 标签选择
+        $('.book-day').fadeIn();
+    });
+
+    /**
+     *      选择医生
+     */
+    $('.book-day .tag a').click(function () {
+        // 标签选择
+        $('.book-who').fadeIn();
+    });
+
+    /**
+     *      显示医生主页
+     */
+    $('.book-who .tag a').click(function () {
+        $('.doctor-page').fadeIn();
+    })
+
+    /**
+     *      点击挂号
+     */
+    $('.time-table table tr td:nth-of-type(2)').click(function () {
+        // alert("挂号成功，去付款！");
+        $('.book-sure-msg').fadeIn();
+    });
+
+    $('#book-cancel').click(function () {
+        $('.book-sure-msg').fadeOut();
+    });
+
+    $('#book-ok').click(function () {
+    //    TODO 提交挂号信息
+    });
+
+});

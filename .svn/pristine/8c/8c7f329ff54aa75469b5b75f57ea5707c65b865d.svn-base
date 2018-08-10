@@ -1,0 +1,37 @@
+package cn.edu.scau.hlyz.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import cn.edu.scau.hlyz.dao.ConsumptionOrderMapper；
+import cn.edu.scau.hlyz.entity.ConsumptionOrder;
+import cn.edu.scau.hlyz.service.ChargePaymentService;
+@Service
+public class ChargePaymentServiceImpl implements ChargePaymentService {
+    @Autowired
+    private ConsumptionOrderMapper coi;
+	@Override
+	public Boolean payment(ConsumptionOrder consumptionOrder) {
+    	//支付，成功则修改消费单的支付状态为pay，返回true，失败返回false
+		// TODO Auto-generated method stub
+		int a=coi.pay(consumptionOrder);
+		if(a==1){
+			return true;
+		}else{
+			return false;
+		}
+	}
+
+	@Override
+	public void charge(ConsumptionOrder consumptionOrder) {
+		//生成消费单并写入数据库中
+		// TODO Auto-generated method stub
+		int a=coi.save(consumptionOrder);
+		if(a==1){
+			return true;
+		}else{
+			return false;
+		}
+
+	}
+
+}

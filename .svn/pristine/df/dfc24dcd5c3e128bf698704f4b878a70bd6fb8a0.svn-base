@@ -1,0 +1,49 @@
+package cn.edu.scau.hlyz.service.impl;
+
+import java.util.Map;
+import java.util.Queue;
+import java.util.concurrent.ConcurrentHashMap;
+
+import cn.edu.scau.hlyz.entity.ConsumptionOrder;
+import cn.edu.scau.hlyz.entity.RegistrationForm;
+import cn.edu.scau.hlyz.service.MessagePushService;
+
+public class MessagePushServiceImpl implements MessagePushService {
+	
+	private static Map<String, RegistrationForm> rfMap = new ConcurrentHashMap<>();
+	private static Map<String, ConsumptionOrder> coMap = new ConcurrentHashMap<>();
+	
+	@Override
+	public void addCallRegistration(RegistrationForm registrationForm) {
+		// TODO Auto-generated method stub
+		MessagePushServiceImpl.rfMap.put(registrationForm.getPatient().getPt_id(), registrationForm);
+	}
+
+	@Override
+	public Boolean findCallRegistration(String patientId) {
+		// TODO Auto-generated method stub
+		if(rfMap.containsKey(patientId)){
+			rfMap.remove(patientId);
+			return true;
+		}
+		return false;
+	}
+
+	@Override
+	public void addPushConsumpationOrder(ConsumptionOrder consumptionOrder) {
+		// TODO Auto-generated method stub
+		MessagePushServiceImpl.coMap.put(consumptionOrder.getMr().getPatient().getPt_id(), consumptionOrder);
+	}
+
+	@Override
+	public ConsumptionOrder findPushConsumptionOrder(String PatientId) {
+		// TODO Auto-generated method stub
+		if(coMap.containsKey(PatientId)){
+			ConsumptionOrder co = coMap.get(PatientId);
+			coMap.remove(PatientId);
+			return co;
+		}
+		return null;
+	}
+
+}

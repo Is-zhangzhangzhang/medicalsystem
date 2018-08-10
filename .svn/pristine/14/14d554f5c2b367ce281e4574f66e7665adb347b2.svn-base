@@ -1,0 +1,16 @@
+$(function () {
+    var addOrEdit = 0;
+    // 立即执行请求获得 医生列表
+    var bh_list = [];
+    var obj ={};
+    obj.id ="123456"
+    obj.doctor = "梅毛冰";
+    obj.patient = "李四";
+    obj.time = "2018-6-30 11:00";
+    bh_list.push(obj);
+    initTable("",bh_list,"bh_table");
+
+    // $('#bh_table tbody').on('click','tr',function () {
+        //TODO 把这个病历编号发给后台，跳转到对应的挂号界面
+    // });
+});

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans
+	xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:jdbc="http://www.springframework.org/schema/jdbc"  
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+        http://www.springframework.org/schema/beans/spring-beans-4.1.xsd
+         http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+         http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd 
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+        http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd ">
+
+
+<!-- package scan -->
+
+<!-- <context:component-scan base-package="com"></context:component-scan> -->
+
+
+<!-- aop -->
+
+<!-- <aop:aspectj-autoproxy></aop:aspectj-autoproxy> -->
+
+<!-- <bean id="log" class="com.day2.LogPrint"></bean> -->
+<!-- <aop:config> -->
+<!-- 	<aop:aspect id="myaop" ref="log"> -->
+<!-- 		<aop:pointcut expression="execution(* com.day2.Wotk.some(..))" id="allMethod"/> -->
+<!-- 		<aop:before method="doAccessCheck" pointcut-ref="allMethod"/> -->
+<!-- 		<aop:after method="doReleaseAction" pointcut-ref="allMethod" /> -->
+<!-- 		<aop:around method="doBasicProfiling" pointcut-ref="allMethod" /> -->
+<!-- 		<aop:after-returning method="doReturnCheck" pointcut-ref="allMethod" returning="r"/> -->
+<!-- 	</aop:aspect> -->
+<!-- </aop:config> -->
+
+<!-- <bean id="sampleBean" class="com.day2.Wotk"></bean> -->
+
+
+
+
+<!-- JdbcTemplate -->
+
+<!-- <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer"> -->
+<!-- 	<property name="locations" value="jdbc.properties"></property> -->
+<!-- </bean> -->
+
+<!-- <bean id="dataSource" class="org.apache.commons.dbcp2.BasicDataSource"> -->
+<!-- 	<property name="driverClassName" value="${jdbc.driverClassName}"></property> -->
+<!-- 	<property name="url" value="${jdbc.url}"></property> -->
+<!-- 	<property name="username" value="${jdbc.username}"></property> -->
+<!-- 	<property name="password" value="${jdbc.password}"></property> -->
+<!-- </bean> -->
+
+
+<!-- <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate"> -->
+<!-- 	<property name="dataSource"> -->
+<!-- 		<ref bean="dataSource"/> -->
+<!-- 	</property> -->
+<!-- </bean> -->
+
+<!-- <bean id="tmpDao" class="com.day2.en.edu.scau.dao.impl.TmpDaoImpl"> -->
+<!-- 	<property name="jdbcTemplate"> -->
+<!-- 		<ref bean="jdbcTemplate"/> -->
+<!-- 	</property> -->
+<!-- </bean> -->
+
+
+
+<!-- mybatis -->
+
+<!-- <bean id="sqlSession" class="org.mybatis.spring.SqlSessionFactoryBean"> -->
+<!-- 	<property name="typeAliasesPackage" value="com.day2.en.edu.scau.bean"></property> -->
+<!-- 	<property name="dataSource" ref="dataSource"></property> -->
+<!-- 	<property name="mapperLocations" value="classpath:com/day2/en/edu/scau/mapper/*.xml"></property> -->
+<!-- </bean> -->
+
+<!-- <bean class="org.mybatis.spring.mapper.MapperScannerConfiguer"> -->
+<!-- 	<property name="basePackage" value="com.day2.en.edu.scau.mapper"></property> -->
+<!-- </bean> -->
+
+
+<!-- demo -->
+
+<!--
+
+<bean id="circle" class="day1.bean.Circle">
+	<property name="radio">
+		<value>3.0</value>
+	</property>
+</bean>
+
+<bean id="rectangel" class="day1.bean.Rectangel">
+	<property name="with">
+		<value>2.5</value>
+	</property>
+	<property name="length">
+		<value>5.0</value>
+	</property>
+</bean>
+
+<bean id="anyShape" class="day1.bean.AnyShape">
+	<constructor-arg name="shape">
+		<ref bean="circle"/>
+	</constructor-arg>
+</bean>
+
+<bean id="someBean" class="day1.bean.SomeBean">
+	<property name="myArray">
+		<list>
+		<value>111</value>
+		<value>222</value>
+		</list>
+	</property>
+	<property name="myList">
+		<list>
+		<value>333</value>
+		<value>444</value>
+		</list>
+	</property>
+	<property name="myMap">
+		<map>
+			<entry key="value">
+				<value>555</value>
+			</entry>
+		</map>
+	</property>
+</bean>
+ -->
+</beans>

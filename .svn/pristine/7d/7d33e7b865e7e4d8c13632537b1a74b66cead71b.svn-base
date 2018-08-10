@@ -1,0 +1,56 @@
+package cn.edu.scau.hlyz.entity;
+
+import java.util.Date;
+import java.util.Set;
+
+public class Advisory {
+
+	private String ad_id;
+	private Patient patient;
+	private Doctor doctor;
+	private String ad_content;
+	private Date ad_time;
+	private Set<Reply> reSet;
+	public String getAd_id() {
+		return ad_id;
+	}
+	public void setAd_id(String ad_id) {
+		this.ad_id = ad_id;
+	}
+	public Patient getPatient() {
+		return patient;
+	}
+	public void setPatient(Patient patient) {
+		this.patient = patient;
+	}
+	public Doctor getDoctor() {
+		return doctor;
+	}
+	public void setDoctor(Doctor doctor) {
+		this.doctor = doctor;
+	}
+	public String getAd_content() {
+		return ad_content;
+	}
+	public void setAd_content(String ad_content) {
+		this.ad_content = ad_content;
+	}
+	public Date getAd_time() {
+		return ad_time;
+	}
+	public void setAd_time(Date ad_time) {
+		this.ad_time = ad_time;
+	}
+	public Set<Reply> getReSet() {
+		return reSet;
+	}
+	public void setReSet(Set<Reply> reSet) {
+		this.reSet = reSet;
+	}
+	@Override
+	public String toString() {
+		return "Advisory [ad_id=" + ad_id + ", patient=" + patient + ", doctor=" + doctor + ", ad_content=" + ad_content
+				+ ", ad_time=" + ad_time + ", reSet=" + reSet + "]";
+	}
+	
+}

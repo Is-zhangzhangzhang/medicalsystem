@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.scau.hlyz.dao.EvaluationMapper">	
+
+	<resultMap type="cn.edu.scau.hlyz.entity.Evaluation" id="EvaluationResultMap">
+	<id column="ev_id" property="ev_id"/>
+	<result column="ev_content" property="ev_content"/>
+	<result column="ev_time" property="ev_time"/>
+	<result column="ev_status" property="ev_status"/>
+	<result column="ev_score" property="ev_score"/>
+	<association property="patient" javaType="cn.edu.scau.hlyz.entity.Patient">
+	<id column="pt_id" property="pt_id"/>
+	<result column="pt_name" property="pt_name"/>
+	<result property="pt_image" column="pt_image"/>
+	</association>
+	<association property="doctor" javaType="cn.edu.scau.hlyz.entity.Doctor">
+	<id column="dt_id" property="dt_id"/>
+	<result column="dt_name" property="dt_name"/>
+	</association>
+	</resultMap>
+
+	<!-- 查询SQL -->
+	<select id="findAllByDoctor" resultMap="EvaluationResultMap">
+		select ev.ev_id,ev.ev_content,ev.ev_time,ev.ev_status,ev_score,p.pt_id,p.pt_name,p.pt_image,d.dt_id,d.dt_name 
+		from evaluation ev,doctor d,patient p
+		where ev.dt_id=d.dt_id and p.pt_id=ev.pt_id and ev.dt_id=#{0}
+		limit #{1},#{2}
+	</select>
+	<!-- 查询SQL -->
+	<select id="getAllEvaluationNum" resultType="int">
+		select count(*) 
+		from evaluation ev,doctor d,patient p
+		where ev.dt_id=d.dt_id and p.pt_id=ev.pt_id and ev.dt_id=#{0}
+	</select>
+	<select id="findUreadByDoctor" resultMap="EvaluationResultMap">
+			select ev.ev_id,ev.ev_content,ev.ev_time,ev.ev_status,ev_score,p.pt_id,p.pt_name,p.pt_image,d.dt_id,d.dt_name 
+		from evaluation ev,doctor d,patient p
+		where ev.dt_id=d.dt_id and p.pt_id=ev.pt_id and ev.ev_status='unread' and ev.dt_id=#{0}
+		limit #{1},#{2}
+	</select>
+	<select id="getUnreadEvaluationNum"  parameterType="String" resultType="int">
+			select count(*) 
+		from evaluation ev,doctor d,patient p
+		where ev.dt_id=d.dt_id and p.pt_id=ev.pt_id and ev.ev_status='unread' and ev.dt_id=#{dt_id}
+	</select>
+	<select id="getAverageEvaluationScoreOfMonth"  parameterType="String" resultType="Double">
+			select avg(ev_score) 
+		from evaluation 
+		where dt_id=#{0} and year(ev_time)=#{1} and month(ev_time)=#{2}
+		group by date(ev_time)
+	</select>
+	
+	<insert id="addEvaluation" parameterType="evaluation">
+		insert into evaluation(ev_id,ev_content,ev_status,rf_id,dt_id,pt_id,ev_score) 
+		values (#{ev_id},#{ev_content},#{ev_status},#{rf.rf_id},#{doctor.dt_id},#{patient.pt_id},#{ev_score})
+	</insert>
+
+	<update id="updateEvaluation" parameterType="evaluation">
+		update evaluation set ev_status=#{ev_status} where ev_id=#{ev_id}
+	</update>
+    
+</mapper>

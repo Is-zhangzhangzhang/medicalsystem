@@ -1,0 +1,14 @@
+.consult-tab{
+    display: none;
+}
+.consult-writer{
+    margin: 0 10px;
+}
+
+#consult li{
+    cursor: pointer;
+}
+
+.comment-reply + div{
+    display: none;
+}

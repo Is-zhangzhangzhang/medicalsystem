@@ -1,0 +1,77 @@
+.wrapping80{
+    width: 80%;
+    margin:0 auto;
+}
+/*===手风琴===*/
+.panel-heading{
+    cursor: pointer;
+}
+.panel{
+    width:100%;
+}
+/*====tag===*/
+.tag a{
+    display: inline-block;
+    background-color: #EEE;
+    padding: 3px 8px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+
+.tag a:hover {
+    background-color: #008dcd;
+    color: #FFF;
+}
+
+.tag-active{
+    background-color: #008dcd !important;
+    color: #FFF !important;
+    text-decoration: none !important;
+}
+
+/*===挂号选项===*/
+.book-clinic,
+.book-day,
+.book-who,
+.doctor-page{
+    display: none;
+}
+.book-clinic > h4{
+    display: inline-block;
+}
+
+/**
+ *  轮播图
+ */
+#carousel-img img{
+    margin: 0 auto;
+}
+/**
+ *    医生简介
+ */
+.doctor-page{
+    margin: 30px 0;
+}
+.time-table{
+    width: 65%;
+    margin: 30px auto;
+    border-radius: 5px;
+}
+.time-table tr th{
+    vertical-align: middle !important;
+    text-align: center;
+    font-size: 1.8rem;
+}
+.time-table tr td{
+    text-align: center;
+    font-size: 1.6rem;
+}
+.time-table table tr td:nth-of-type(2){
+    background-color: rgba(187,209,191,0.32);
+    cursor: pointer;
+}
+.time-table table tr td:nth-of-type(2):hover{
+    background-color: rgb(187,209,191);
+}

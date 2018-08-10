@@ -1,0 +1,47 @@
+$(function () {
+    /**
+     * hover显示门诊
+     */
+    $("[data-toggle='popover']").popover({
+        html: true,
+        title: clinic_title(),
+        delay: {show: 500,hide:3000},
+        content: function () {
+            return clinic_card_content();
+        }
+    });
+
+    function clinic_title(data){
+        console.log(data);
+        return data;
+    };
+
+    $('.choose_dept a').mouseover(function () {
+        var clinic = $(this).text();
+        clinic_title(clinic);
+    });
+
+    function clinic_card_content(){
+        // TODO 从后台获取门诊
+        var data = "<a>呼吸门诊</a>";
+        data += "<a>消化门诊</a>";
+        data += "<a>内分泌门诊</a>";
+        data += "<a>血液门诊</a>";
+        console.log(data);
+        return data;
+    }
+
+    /**
+     * 轮播
+     */
+    $('.carousel').carousel({
+        interval:3000
+    });
+
+    /*病人修改出生日期*/
+    $('#pt_born').datetimepicker({
+        format:'yyyy-mm-dd',
+        minView: "month",
+        autoclose:1
+    });
+});

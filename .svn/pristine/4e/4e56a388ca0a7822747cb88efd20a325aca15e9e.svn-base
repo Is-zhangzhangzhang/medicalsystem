@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1" />
+  <meta name="description" content="description of your site" />
+  <meta name="author" content="author of the site" />
+  <title>IndustryApp Template</title>
+  <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css" />
+  <link rel="stylesheet" href="../../plugins/font-awesome.min.css">
+  <link rel="stylesheet" href="../../css/util/styles.css" />
+  <link rel="stylesheet" href="../../css/users/doctor.css">
+  <link rel="stylesheet" href="../../css/users/cal.css">
+  <!--<link rel="stylesheet" href="../css/toastr.css" />-->
+  <link rel="stylesheet" href="../../css/fullcalendar.css" />
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+</head>
+
+<body>
+  <!--顶部导航栏-->
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <!-- Brand and toggle get grouped for better mobile display -->
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"
+          aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+        <a class="navbar-brand" href="../../index.html">
+          <h4>不知道叫什么<strong>系统</strong></h4>
+        </a>
+      </div>
+
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+        <ul class="nav navbar-nav navbar-right">
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        我的消息
+                        <span class="caret"></span>
+                    </a>
+            <ul class="dropdown-menu">
+              <li><a href="#">我的挂号</a></li>
+              <li><a href="#">我的咨询</a></li>
+              <li><a href="#">回复</a></li>
+            </ul>
+          </li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        User
+                        <span class="caret"></span>
+                    </a>
+            <ul class="dropdown-menu">
+              <li><a href="../../index.html">退出</a></li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+  <!--顶部菜单栏-->
+  <div id="in-sub-nav">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12 col-sm-12 col-md-12">
+          <ul>
+            <li><a href="main.html" class="active"><i class="batch home"></i><br/>主页</a></li>
+            <li><span class="label label-danger pull-right">04</span><a href="doctorHome.html"><i
+                            class="batch plane"></i><br/>我的主页</a></li>
+            <li><a href="registerList.html"><i class="batch forms"></i><br/>挂号列表</a></li>
+            <li><a href="doctorScore.html"><i class="batch users"></i><br/>病患评分</a></li>
+            <li><a href="setting.html"><i class="batch settings"></i><br/>设置</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--主界面内容：医生行程表-->
+  <div class="page">
+      <div class="page-container">
+
+      <div class="containercal">
+        <!-- 分类 -->
+        <div class="container-head">
+          <div class="banner_kq1">
+            <div class="col-md-6 col-sm-6 col-xm-6">
+              <div class="dtwork">
+                <p>医生行程表</p>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xm-6 text-center">
+              <div class="show_info_top">
+                <div class="flex">
+                  <div class="item"><span>27</span></div>
+                  <div class="item"><span>26</span></div>
+                  <div class="item" id="span_today"></div>
+                  <div class="item" id="span_workday"></div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xm-6 text-right">
+              <div class="retoday"  id="register-queue">
+                <button class="btn btn-default">查看当日行程</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="banner_kq2">
+            <div class="col-md-6 col-sm-6 col-xm-6">
+              <div class="info_left">
+                <span class="date_">2018年7月</span>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xm-6 text-center">
+              <div class="show_info">
+                <div class="flex">
+                  <div class="item"><span>应工作</span></div>
+                  <div class="item">已工作</div>
+                  <div class="item">今天</div>
+                  <div class="item">工作日</div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-6 col-xm-6 text-right">
+              <div class="info_right">
+                <button class="btn btn-default" id="todaybutton">今日</button>
+                <a href="javascript:;" class="preMonth"><img src="images/to_left_swiper_icon.png" alt="上个月"></a>
+                <a href="javascript:;" class="nextMonth"><img src="images/to_right_swiper_icon.png" alt="下个月"></a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-12 col-sm-12 col-xm-12">
+        <div class="maincal">
+          <ul class="calendT">
+            <!-- late:迟到 error:早退  errorLate:迟到及早退 today: 今天-->
+            <li>
+              <span>Mon</span>
+              <span>Tue</span>
+              <span>Wed</span>
+              <span>Thu</span>
+              <span>Fri</span>
+              <span>Sat</span>
+              <span>Sun</span>
+            </li>
+          </ul>
+          <ul class="calendC">
+            <li>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
+            </li>
+            <li>
+              <span>4</span>
+              <span>5</span>
+              <span>6</span>
+              <span>7</span>
+              <span>8</span>
+              <span>9</span>
+              <span>10</span>
+            </li>
+            <li>
+              <span>11</span>
+              <span>12</span>
+              <span>13</span>
+              <span>14</span>
+              <span>15</span>
+              <span>16</span>
+              <span>17</span>
+            </li>
+            <li>
+              <span>18</span>
+              <span>19</span>
+              <span>20</span>
+              <span>21</span>
+              <span>22</span>
+              <span>23</span>
+              <span>24</span>
+            </li>
+            <li>
+              <span>25</span>
+              <span>26</span>
+              <span>27</span>
+              <span>28</span>
+              <span>29</span>
+              <span>30</span>
+              <span>31</span>
+            </li>
+            <li>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+              <span></span>
+            </li>
+          </ul>
+        </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="span12">
+          <p class="pull-right">作者：华俊达 李腾泳 袁晓如 张嘉怡</p>
+          <p>&copy; 2018 不知道叫什么系统 来源：scau</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+<!--jQuery-->
+<script src="../plugins/jQuery/jquery-3.1.1.min.js"></script>
+<!--bootstrap-->
+<script src="../plugins/bootstrap/js/bootstrap.min.js"></script>
+<!--当前界面js-->
+<script src="../js/util/jump.js"></script>
+<!--日历-->
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script src="../../js/doctor/cal.js"></script>
+
+</html>

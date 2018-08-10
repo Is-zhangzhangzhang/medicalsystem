@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+    <meta name="description" content="description of your site"/>
+    <meta name="author" content="author of the site"/>
+    <title>挂号</title>
+    <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../css/util/styles.css"/>
+    <link rel="stylesheet" href="../../css/users/patient.css">
+    <link rel="stylesheet" href="../../css/util/commons.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+
+<body>
+<!--顶部导航栏-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="../../index.html"><h4>不知道叫什么<strong>系统</strong></h4></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        我的消息
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="myBook.html">我的挂号<span class="label label-danger pull-right">03</span></a></li>
+                        <li><a href="myConsult.html">我的咨询<span class="label label-danger pull-right">03</span></a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        User
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!--顶部菜单栏-->
+<div id="in-sub-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <ul>
+                    <li>
+                        <a href="main.html"><i class="batch home"></i><br/>主页</a>
+                    </li>
+                    <li>
+                        <a href="bookDoctor.html" class="active"><i class="batch book-doctor"></i><br/>我要挂号</a>
+                    </li>
+                    <li>
+                        <a href="myBook.html"><i class="batch calendar"></i><br/>我的挂号</a>
+                    </li>
+                    <li>
+                        <span class="label label-danger pull-right">04</span>
+                        <a href="myConsult.html"><i class="batch comment"></i><br/>我的问答</a>
+                    </li>
+
+                    <li>
+                        <a href="myMedicalRecord.html"><i class="batch forms"></i><br/>我的病历</a>
+                    </li>
+                    <li id="top_msg">
+                         <a href="message.html"><i class="batch msg"></i><br/>消息列表</a>
+                    </li>
+                    <li>
+                        <a href="diseaseKnowledge.html"><i class="batch book"></i><br/>疾病百科</a>
+                    </li>
+                    <li>
+                        <a href="setting.html"><i class="batch users"></i><br/>个人资料</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--消息提示-->
+<div class="msg-alert"></div>
+<!--挂号-->
+<div class="page">
+    <div class="page-container">
+        <div class="container">
+            <div class="row">
+                <div class="wrapping80" id="book_content">
+                    <div>
+                        <!--选择科室-->
+                        <div class="book-dept">
+                            <h4>选择科室</h4>
+                            <div class="tag"></div>
+                        </div>
+                        <!--选择门诊-->
+                        <div class="book-clinic">
+                            <h4>选择门诊</h4>
+                            <h5></h5>
+                            <div class="tag"></div>
+                        </div>
+                        <!--选择日期-->
+                        <div class="book-day">
+                            <h4>选择日期</h4>
+                            <div class="tag">
+                            </div>
+                        </div>
+                        <!--选择医生-->
+                        <div class="book-who">
+                            <h4>选择医生</h4>
+                            <div class="tag">
+                                <a href="#" class="tag">华医生</a>
+                                <a href="#" class="tag">李医生</a>
+                                <a href="#" class="tag">陈医生</a>
+                                <a href="#" class="tag">张医生</a>
+                                <a href="#" class="tag">找医生</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="doctor-page">
+                        <!--医生简介+照片-->
+                        <div class="row" id="book_dt_intro">
+                            <div class="col-md-5 text-center img_dt_head ">
+                                <img src="../../img/doctor.jpg" alt="医生照片">
+                            </div>
+                            <div class="col-md-7 intro_dt_content"></div>
+                        </div>
+                        <!--挂号时间选择-->
+                        <div class="time-table">
+                            <table class="table table-striped table-bordered">
+                                <tbody>
+                                <tr>
+                                    <th rowspan="2">上午</th>
+                                    <td>8:00 - 10:00</td>
+                                    <td>可预约，剩余：<span name="book_remain">x</span>&nbsp;<span
+                                            name="book_money">(20元)</span></td>
+                                </tr>
+                                <tr>
+                                    <td>10:00 - 12:00</td>
+                                    <td>可预约，剩余：<span name="book_remain">x</span>&nbsp;<span
+                                            name="book_money">(20元)</span></td>
+                                </tr>
+                                <tr>
+                                    <th rowspan="2">下午</th>
+                                    <td>14:00 - 16:00</td>
+                                    <td>可预约，剩余：<span name="book_remain">x</span>&nbsp;<span
+                                            name="book_money">(20元)</span></td>
+                                </tr>
+                                <tr>
+                                    <td>16:00 - 18:00</td>
+                                    <td>可预约，剩余：<span name="book_remain">x</span>&nbsp;<span
+                                            name="book_money">(20元)</span></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            <div class="book-sure-msg alert alert-warning">
+                                <h4>确认挂号信息</h4>
+                                <ul class="list-group text-center">
+                                    <li class="list-group-item">检查费：xxx</li>
+                                    <li class="list-group-item">科室：xxxx</li>
+                                    <li class="list-group-item">医生：xxxx</li>
+                                    <li class="list-group-item">就诊时间：xxxx</li>
+                                    <li class="list-group-item">就诊人：xxx</li>
+                                </ul>
+                                <div class="text-right">
+                                    <button class="btn btn-primary" id="book-cancel">取消挂号</button>
+                                    <button class="btn btn-success" id="book-ok" data-target="#book-modal">确认挂号
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!--确认挂号？ 模态框-->
+                        <div class="modal fade" id="book-modal">
+                            <div class="modal-dialog">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h4>提示</h4>
+                                    </div>
+                                    <div class="modal-body text-center">
+                                        <h3><span class="glyphicon glyphicon-ok-circle"></span>&nbsp;挂号成功！</h3>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button class="btn btn-primary" data-dismiss="modal" id="book_modal_btn">确定</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <!--展开评论和咨询链接-->
+                        <div class="row text-center">
+                            <a href="javascript:void(0)" class="tab-show">查看医生问答和评论 ></a>
+                        </div>
+                        <!--评论和咨询-->
+                        <div class="row" id="consult-tab">
+                            <ul class="nav nav-tabs">
+                                <li role="presentation" class="active">
+                                    <a href="#consult" data-toggle="tab">医生问答</a></li>
+                                <li role="presentation">
+                                    <a href="#comment" data-toggle="tab">医生评论</a></li>
+                            </ul>
+                            <div class="tab-content">
+                                <!--医生问答标签页内容-->
+                                <div class="tab-pane fade in active consult" id="consult">
+                                    <ul class="list-group" id="book_consult_ul"></ul>
+                                    <!--问答分页-->
+                                    <nav aria-label="Page navigation" class="text-right" id="book_consult_page_ul">
+                                        <ul class="pagination">
+
+                                        </ul>
+                                    </nav>
+                                    <!--发帖区-->
+                                    <div>
+                                        <div class="form-group">
+                                            <div class="input-group input-group-lg">
+                                                <span class="input-group-addon">标题：</span>
+                                                <input type="text" class="form-control" placeholder="请输入标题" id="consult_new_title">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <textarea class="form-control" rows="8" id="consult_new_content"></textarea>
+                                        </div>
+                                        <div class="from-group">
+                                            <button class="btn btn-primary pull-right" id="submit_new_consult">发表帖子</button>
+                                        </div>
+                                    </div>
+                                    <!--发帖成功 模态框-->
+                                    <div class="modal fade" id="new-consult-modal">
+                                        <div class="modal-dialog">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h4>提示</h4>
+                                                </div>
+                                                <div class="modal-body text-center">
+                                                    <h3><span class="glyphicon glyphicon-ok-circle"></span>&nbsp;发表成功！</h3>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button class="btn btn-primary" data-dismiss="modal">确定</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--评论标签页-->
+                                <div class="tab-pane fade" id="comment">
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <div class="comment-context">
+                                                <div class="row">
+                                                    <div class="col-lg-2 col-md-2 text-center">
+                                                        <img src="../../img/inithead.jpg" alt="评论者头像">
+                                                    </div>
+                                                    <div class="col-lg-7 col-md-7">
+                                                        <h4>袁晓如哇</h4>
+                                                        <span>
+                                                                <i class="rating-star"></i>
+                                                                <i class="rating-star"></i>
+                                                                <i class="rating-star"></i>
+                                                                <i class="rating-star"></i>
+                                                                <i class="half-star"></i>
+                                                        </span>
+                                                        <br>
+                                                        <span>医生挺好的！！！</span>
+                                                    </div>
+                                                    <div class="col-lg-3 col-md-3">
+                                                        <span class="pull-right">2018-07-23</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                    <nav aria-label="Page navigation" class="text-right" id="book_comment_page_ul">
+                                        <ul class="pagination">
+
+                                        </ul>
+                                    </nav>
+                                    <div class="pa_comment" id="pt_submit_comment">
+                                        <select class="form-control" style="margin-bottom: 10px">
+                                            <option value="0" disabled="disabled">分数选择</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                        <textarea class="form-control" rows="3"></textarea>
+                                        <div class="text-right">
+                                            <button class="btn btn-primary">发表评论</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <p class="pull-right">作者：华俊达 李腾泳 袁晓如 张嘉怡</p>
+                <p>&copy; 2018 不知道叫什么系统 来源：scau</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+<!--jQuery-->
+<script src="../../plugins/jQuery/jquery-3.1.1.min.js"></script>
+<!--bootstrap-->
+<script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
+<!--当前界面js-->
+<script src="../../js/util/jump.js"></script>
+<script src="../../js/patient/patient.js"></script>
+<script src="../../js/util/commons.js"></script>
+<script src="../../js/patient/bookDoctor.js"></script>
+</html>

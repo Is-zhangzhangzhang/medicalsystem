@@ -1,0 +1,15 @@
+package cn.edu.scau.hlyz.dao;
+
+import java.util.List;
+
+import cn.edu.scau.hlyz.entity.Clinic;
+
+public interface ClinicMapper {
+
+	public List<Clinic> findAll(int start,int num);
+	public int getClinicNum();
+	public Clinic findById(String cl_id);
+	public int addClinic(Clinic c);
+	public int deleteClinic(Clinic c);
+	public int updateClinic(Clinic c);
+}

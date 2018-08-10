@@ -1,0 +1,54 @@
+$(function () {
+    var addOrEdit = 0;
+    // 立即执行请求获得 医生列表
+    var ds_list = [];
+    var obj ={};
+    obj.id = "1";
+    obj.name = "风寒感冒";
+    obj.symptom ="浑身酸痛、鼻塞流涕、咳嗽有痰";
+    obj.treat = "中成药可选用感冒清热冲剂、" +
+        "正柴胡饮冲剂、感冒软胶囊、川芎茶调散、通宣理肺丸等等。" +
+        "服药后可喝些热粥或热汤，微微出汗，以助药力驱散风寒";
+    obj.clinic = "内科呼吸门诊"
+    ds_list.push(obj);
+    initTable("",ds_list,"ds_table");
+
+    var tr;
+    /**
+     * @module 点击行 编辑疾病信息 初始化模态框中的值
+     *
+     * @property list_index 点击行的下标
+     */
+    $('#ds_table tbody').on('click','tr',function () {
+        addOrEdit = 1;
+        tr = $(this);
+        $('#ds_modal').modal('show');
+        $('#ds_id').attr('disabled',true);
+        assignToModalText(ds_list,tr.index(), "ds_text");
+    });
+
+    // 点击添加疾病
+    $('#ds_add_btn').click(function () {
+        $('#ds_modal').modal('show');
+        addOrEdit = 2;
+        $('#ds_id').removeAttr('disabled');
+        modalToNull('ds_text');
+    });
+
+    $('#ds_save').click(function () {
+        console.log(addOrEdit);
+        if(addOrEdit == 1){  //修改门诊信息
+            //TODO 要加一个判断 值是否已经修改
+            assignToList("ds_text",ds_list,tr.index());
+            //TODO 修改完后要把data_List[list_index]返回给后台，如果成功，才执行下面
+            var td = tr.children();
+            updateTable(td,ds_list[tr.index()]);
+        }
+        else{  //添加门诊
+            addToList("ds_text",ds_list);
+            addTable("","ds_table",ds_list[ds_list.length - 1]);
+        }
+        $('#ds_modal').modal('hide');
+        addOrEdit = 0;
+    });
+});

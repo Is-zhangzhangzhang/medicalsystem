@@ -1,0 +1,355 @@
+/*
+ Navicat Premium Data Transfer
+
+ Source Server         : Ives
+ Source Server Type    : MySQL
+ Source Server Version : 50720
+ Source Host           : localhost:3306
+ Source Schema         : medicalsystem
+
+ Target Server Type    : MySQL
+ Target Server Version : 50720
+ File Encoding         : 65001
+
+ Date: 24/07/2018 15:05:44
+*/
+
+SET NAMES utf8mb4;
+SET FOREIGN_KEY_CHECKS = 0;
+
+-- ----------------------------
+-- Table structure for advisory
+-- ----------------------------
+DROP TABLE IF EXISTS `advisory`;
+CREATE TABLE `advisory`  (
+  `ad_id` varchar(12) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `pt_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `dt_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `ad_content` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `ad_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `ad_title` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`ad_id`) USING BTREE,
+  INDEX `fk_ad_pt_id`(`pt_id`) USING BTREE,
+  INDEX `fk_ad_dt_id`(`dt_id`) USING BTREE,
+  CONSTRAINT `fk_ad_dt_id` FOREIGN KEY (`dt_id`) REFERENCES `doctor` (`dt_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_ad_pt_id` FOREIGN KEY (`pt_id`) REFERENCES `patient` (`pt_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of advisory
+-- ----------------------------
+INSERT INTO `advisory` VALUES ('1', '18', '8', '失眠猝醒，且食欲不振，偶尔幻听', '2018-07-23 11:20:14', '失眠幻听该怎么解决');
+
+-- ----------------------------
+-- Table structure for clinic
+-- ----------------------------
+DROP TABLE IF EXISTS `clinic`;
+CREATE TABLE `clinic`  (
+  `cl_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `cl_dept` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `cl_part` varchar(30) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `cl_place` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`cl_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of clinic
+-- ----------------------------
+INSERT INTO `clinic` VALUES ('0101', '内科', '呼吸门诊', '1栋101室');
+INSERT INTO `clinic` VALUES ('0102', '内科', '消化门诊', '1栋102室');
+INSERT INTO `clinic` VALUES ('0103', '内科', '内分泌门诊', '1栋103室');
+INSERT INTO `clinic` VALUES ('0104', '内科', '血液门诊', '1栋104室');
+INSERT INTO `clinic` VALUES ('0201', '外科', '胃肠门诊', '1栋201室');
+INSERT INTO `clinic` VALUES ('0202', '外科', '骨外科门诊', '1栋202室');
+INSERT INTO `clinic` VALUES ('0203', '外科', '神经外科门诊', '1栋203室');
+INSERT INTO `clinic` VALUES ('0301', '儿科', '儿科门诊', '2栋101室');
+
+-- ----------------------------
+-- Table structure for consumptionorder
+-- ----------------------------
+DROP TABLE IF EXISTS `consumptionorder`;
+CREATE TABLE `consumptionorder`  (
+  `co_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `mr_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `co_price` double(10, 2) NOT NULL DEFAULT 0.00,
+  `co_status` enum('unpay','pay') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`co_id`) USING BTREE,
+  INDEX `fk_co_mr_id`(`mr_id`) USING BTREE,
+  CONSTRAINT `fk_co_mr_id` FOREIGN KEY (`mr_id`) REFERENCES `medicalrecord` (`mr_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of consumptionorder
+-- ----------------------------
+INSERT INTO `consumptionorder` VALUES ('1', '1', 13.20, 'pay');
+
+-- ----------------------------
+-- Table structure for doctor
+-- ----------------------------
+DROP TABLE IF EXISTS `doctor`;
+CREATE TABLE `doctor`  (
+  `dt_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `dt_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `dt_sex` enum('男','女') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '男',
+  `cl_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `dt_image` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  `dt_tel` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `dt_title` enum('住院医师','主治医师','副主任医师','主任医师') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL DEFAULT '住院医师',
+  `dt_introduction` varchar(600) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `dt_money` double(10, 2) NOT NULL,
+  PRIMARY KEY (`dt_id`) USING BTREE,
+  INDEX `fk_cl_id`(`cl_id`) USING BTREE,
+  CONSTRAINT `fk_cl_id` FOREIGN KEY (`cl_id`) REFERENCES `clinic` (`cl_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_dt_id` FOREIGN KEY (`dt_id`) REFERENCES `suser` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of doctor
+-- ----------------------------
+INSERT INTO `doctor` VALUES ('1', 'Jack', '男', '0101', '', '13602799555', '主任医师', '怪异黑杰克', 30.00);
+INSERT INTO `doctor` VALUES ('10', 'Alice', '女', '0101', '', '13602799556', '住院医师', '国际护理学院毕业', 15.00);
+INSERT INTO `doctor` VALUES ('11', 'Simth', '男', '0101', '', '13602799554', '副主任医师', '精研望闻问切', 25.00);
+INSERT INTO `doctor` VALUES ('12', '宛儿', '女', '0102', '', '13602799561', '主治医师', '精通各种药物毒理，主攻消化性解毒剂', 30.00);
+INSERT INTO `doctor` VALUES ('3', '雨行云', '男', '0103', '', '13602799541', '副主任医师', '主攻各种内分泌疾病，目前攻略后天性晕车的家用训练治疗方案', 25.00);
+INSERT INTO `doctor` VALUES ('4', '季与凡', '男', '0103', '', '13602799543', '副主任医师', '主攻先天性内分泌疾病', 25.00);
+INSERT INTO `doctor` VALUES ('40', '初羡仙', '女', '0104', '', '13602799531', '主任医师', '负责各类血液分析与血库调用', 30.00);
+INSERT INTO `doctor` VALUES ('5', '穆空星', '女', '0201', '', '13602799677', '住院医师', '专攻各类食用性中毒等疾病', 15.00);
+INSERT INTO `doctor` VALUES ('50', '傅蝶雨', '女', '0202', '', '13602799431', '副主任医师', '骨科后续治理专家', 25.00);
+INSERT INTO `doctor` VALUES ('6', '吴比纲', '男', '0202', '', '13602799521', '主任医师', '国内首席骨科医治专家', 50.00);
+INSERT INTO `doctor` VALUES ('7', '杨离', '男', '0203', '', '13602799888', '主任医师', '原为中医世家，结合中西医术，专职癫痫治疗', 45.00);
+INSERT INTO `doctor` VALUES ('8', '杨别', '男', '0203', '', '13602799523', '主任医师', '中医世家杨家继承人，已攻克中医与新时代神经性疾病的天堑', 50.00);
+INSERT INTO `doctor` VALUES ('9', '辛夷', '女', '0301', '', '13602799111', '副主任医师', '专攻儿科疾病', 30.00);
+
+-- ----------------------------
+-- Table structure for evaluation
+-- ----------------------------
+DROP TABLE IF EXISTS `evaluation`;
+CREATE TABLE `evaluation`  (
+  `ev_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `ev_content` varchar(35) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `ev_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
+  `ev_status` enum('unread','read') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `rf_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `dt_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `pt_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`ev_id`) USING BTREE,
+  INDEX `fk_ev_rf_id`(`rf_id`) USING BTREE,
+  INDEX `fk_ev_dt_id`(`dt_id`) USING BTREE,
+  INDEX `fk_ev_pt_id`(`pt_id`) USING BTREE,
+  CONSTRAINT `fk_ev_dt_id` FOREIGN KEY (`dt_id`) REFERENCES `doctor` (`dt_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_ev_pt_id` FOREIGN KEY (`pt_id`) REFERENCES `patient` (`pt_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_ev_rf_id` FOREIGN KEY (`rf_id`) REFERENCES `registrationform` (`rf_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of evaluation
+-- ----------------------------
+INSERT INTO `evaluation` VALUES ('1', '给你打82分，剩下的用666给你', '2018-07-23 11:22:15', 'read', '1', '1', '13');
+
+-- ----------------------------
+-- Table structure for illness
+-- ----------------------------
+DROP TABLE IF EXISTS `illness`;
+CREATE TABLE `illness`  (
+  `ill_id` varchar(10) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `ill_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `ill_symptom` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `ill_treatment` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `cl_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`ill_id`) USING BTREE,
+  INDEX `fk_ill_cl_id`(`cl_id`) USING BTREE,
+  CONSTRAINT `fk_ill_cl_id` FOREIGN KEY (`cl_id`) REFERENCES `clinic` (`cl_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of illness
+-- ----------------------------
+INSERT INTO `illness` VALUES ('1', '风寒感冒', '浑身酸痛、鼻塞流涕、咳嗽有痰', '中成药可选用感冒清热冲剂、正柴胡饮冲剂、感冒软胶囊、川芎茶调散、通宣理肺丸等等。服药后可喝些热粥或热汤，微微出汗，以助药力驱散风寒', '0101');
+INSERT INTO `illness` VALUES ('2', '风热感冒', '发热重、微恶风、头胀痛、有汗、咽喉红肿疼痛、咳嗽、痰黏或黄、鼻塞黄涕、口渴喜饮、舌尖边红、苔薄白微黄', '可用抗病毒口服液，板蓝根，银翘解毒片，牛黄解毒片', '0101');
+
+-- ----------------------------
+-- Table structure for medicalrecord
+-- ----------------------------
+DROP TABLE IF EXISTS `medicalrecord`;
+CREATE TABLE `medicalrecord`  (
+  `mr_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `pt_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `dt_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `ill_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `mr_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `mr_taken_times` int(3) NOT NULL,
+  `mr_taken_days` int(3) NOT NULL,
+  `mr_score` double(4, 1) NOT NULL,
+  PRIMARY KEY (`mr_id`) USING BTREE,
+  INDEX `fk_mr_dt_id`(`dt_id`) USING BTREE,
+  INDEX `fk_mr_pt_id`(`pt_id`) USING BTREE,
+  INDEX `fk_mr_ill_id`(`ill_id`) USING BTREE,
+  CONSTRAINT `fk_mr_dt_id` FOREIGN KEY (`dt_id`) REFERENCES `doctor` (`dt_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_mr_ill_id` FOREIGN KEY (`ill_id`) REFERENCES `illness` (`ill_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_mr_pt_id` FOREIGN KEY (`pt_id`) REFERENCES `patient` (`pt_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of medicalrecord
+-- ----------------------------
+INSERT INTO `medicalrecord` VALUES ('1', '13', '1', '1', '2018-07-23 11:05:06', 3, 3, 88.0);
+
+-- ----------------------------
+-- Table structure for medicine
+-- ----------------------------
+DROP TABLE IF EXISTS `medicine`;
+CREATE TABLE `medicine`  (
+  `md_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `md_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `md_is_prescription` enum('Rx','OTC') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `md_price` double(10, 2) NOT NULL,
+  `md_inventory` int(10) NOT NULL,
+  `md_details` varchar(50) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`md_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of medicine
+-- ----------------------------
+INSERT INTO `medicine` VALUES ('1', '复方丹参滴丸', 'Rx', 23.00, 3000, '用于冠心病，心绞痛');
+INSERT INTO `medicine` VALUES ('2', '万爽力 盐酸曲美他嗪片', 'Rx', 46.00, 3000, '作为附加疗法对一线抗心绞痛疗法控制不佳或无法耐受的稳定型心绞痛患者进行对症治疗');
+INSERT INTO `medicine` VALUES ('3', '白敬宇 复合维生素B片', 'Rx', 6.10, 1000, '预防和治疗B族维生素缺乏导致的营养不良，厌食，糙皮病');
+INSERT INTO `medicine` VALUES ('4', '汤臣倍健 叶酸亚铁片', 'OTC', 109.00, 500, '补充铁，叶酸');
+INSERT INTO `medicine` VALUES ('5', '小柴胡', 'OTC', 13.20, 400, '用于风寒感冒');
+
+-- ----------------------------
+-- Table structure for patient
+-- ----------------------------
+DROP TABLE IF EXISTS `patient`;
+CREATE TABLE `patient`  (
+  `pt_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `pt_name` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `pt_sex` enum('男','女') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `pt_born` date NOT NULL,
+  `pt_IDCardNumber` varchar(19) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `pt_tel` varchar(12) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `pt_image` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL,
+  PRIMARY KEY (`pt_id`) USING BTREE,
+  CONSTRAINT `fk_pt_id` FOREIGN KEY (`pt_id`) REFERENCES `suser` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of patient
+-- ----------------------------
+INSERT INTO `patient` VALUES ('13', '谢知非', '女', '1995-01-25', '445121199501251112', '13502508211', NULL);
+INSERT INTO `patient` VALUES ('14', '金钟', '男', '1976-04-25', '445121197604251235', '13502508111', NULL);
+INSERT INTO `patient` VALUES ('15', '鱼羡之', '男', '1990-05-01', '445121199005012224', '13523458236', NULL);
+INSERT INTO `patient` VALUES ('16', '华国郭', '男', '1980-07-23', '445121198007234561', '17902794520', NULL);
+INSERT INTO `patient` VALUES ('17', '江邢昉', '男', '1974-10-23', '445115197410237910', '17944521342', NULL);
+INSERT INTO `patient` VALUES ('18', '徐弦诗', '女', '1994-05-20', '443115199405204520', '13645204520', NULL);
+INSERT INTO `patient` VALUES ('19', '萧琰', '女', '1996-07-27', '445121199607274520', '13602434066', NULL);
+INSERT INTO `patient` VALUES ('2', '张彬听', '男', '1996-12-25', '445121199612257774', '13945316786', NULL);
+INSERT INTO `patient` VALUES ('41', '袁纪辞', '女', '2000-01-01', '445121200001010101', '13946875823', NULL);
+
+-- ----------------------------
+-- Table structure for prescription
+-- ----------------------------
+DROP TABLE IF EXISTS `prescription`;
+CREATE TABLE `prescription`  (
+  `md_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `mr_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `pr_num` int(10) NOT NULL,
+  PRIMARY KEY (`mr_id`, `md_id`) USING BTREE,
+  INDEX `fk_pr_md_id`(`md_id`) USING BTREE,
+  CONSTRAINT `fk_pr_md_id` FOREIGN KEY (`md_id`) REFERENCES `medicine` (`md_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_pr_mr_id` FOREIGN KEY (`mr_id`) REFERENCES `medicalrecord` (`mr_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of prescription
+-- ----------------------------
+INSERT INTO `prescription` VALUES ('5', '1', 9);
+
+-- ----------------------------
+-- Table structure for registrationform
+-- ----------------------------
+DROP TABLE IF EXISTS `registrationform`;
+CREATE TABLE `registrationform`  (
+  `rf_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `dt_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `pt_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `rf_time` timestamp(0) NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP(0),
+  `rf_status` enum('completed','uncompleted') CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  PRIMARY KEY (`rf_id`) USING BTREE,
+  INDEX `fk_rf_dt_id`(`dt_id`) USING BTREE,
+  INDEX `fk_rf_pt_id`(`pt_id`) USING BTREE,
+  CONSTRAINT `fk_rf_dt_id` FOREIGN KEY (`dt_id`) REFERENCES `doctor` (`dt_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_rf_pt_id` FOREIGN KEY (`pt_id`) REFERENCES `patient` (`pt_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of registrationform
+-- ----------------------------
+INSERT INTO `registrationform` VALUES ('1', '1', '13', '2018-07-23 11:03:04', 'completed');
+
+-- ----------------------------
+-- Table structure for reply
+-- ----------------------------
+DROP TABLE IF EXISTS `reply`;
+CREATE TABLE `reply`  (
+  `re_id` varchar(12) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `user_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `ad_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `re_content` varchar(100) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `re_time` datetime(0) NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`re_id`) USING BTREE,
+  INDEX `fk_re_suser_id`(`user_id`) USING BTREE,
+  INDEX `fk_re_ad_id`(`ad_id`) USING BTREE,
+  CONSTRAINT `fk_re_ad_id` FOREIGN KEY (`ad_id`) REFERENCES `advisory` (`ad_id`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  CONSTRAINT `fk_re_suser_id` FOREIGN KEY (`user_id`) REFERENCES `suser` (`user_id`) ON DELETE RESTRICT ON UPDATE RESTRICT
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of reply
+-- ----------------------------
+INSERT INTO `reply` VALUES ('1', '8', '1', '耳鸣频率如何，是否有低血糖病史，作息时间如何', '2018-07-23 11:25:50');
+INSERT INTO `reply` VALUES ('2', '18', '1', '大概一周一两次，不定时间，作息规律', '2018-07-23 11:27:21');
+INSERT INTO `reply` VALUES ('3', '18', '1', '工作忙时两三天通宵熬夜，靠咖啡提神', '2018-07-23 11:28:19');
+INSERT INTO `reply` VALUES ('4', '8', '1', '目测推断是压力导致的失眠，建议合理调整好作息时间，如果不能的话，建议离职，身体要紧', '2018-07-23 11:30:12');
+
+-- ----------------------------
+-- Table structure for suser
+-- ----------------------------
+DROP TABLE IF EXISTS `suser`;
+CREATE TABLE `suser`  (
+  `user_id` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `user_password` varchar(20) CHARACTER SET utf8 COLLATE utf8_general_ci NOT NULL,
+  `user_level` int(4) NOT NULL DEFAULT 2,
+  PRIMARY KEY (`user_id`) USING BTREE
+) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of suser
+-- ----------------------------
+INSERT INTO `suser` VALUES ('0', '123456', 0);
+INSERT INTO `suser` VALUES ('1', '123456', 1);
+INSERT INTO `suser` VALUES ('10', '123456', 1);
+INSERT INTO `suser` VALUES ('11', '123456', 1);
+INSERT INTO `suser` VALUES ('12', '123456', 1);
+INSERT INTO `suser` VALUES ('13', '123456', 2);
+INSERT INTO `suser` VALUES ('14', '123456', 2);
+INSERT INTO `suser` VALUES ('15', '123456', 2);
+INSERT INTO `suser` VALUES ('16', '123456', 2);
+INSERT INTO `suser` VALUES ('17', '123456', 2);
+INSERT INTO `suser` VALUES ('18', '123456', 2);
+INSERT INTO `suser` VALUES ('19', '123456', 2);
+INSERT INTO `suser` VALUES ('2', '123456', 2);
+INSERT INTO `suser` VALUES ('20', '123456', 2);
+INSERT INTO `suser` VALUES ('3', 'asdfgh', 1);
+INSERT INTO `suser` VALUES ('30', '123456', 2);
+INSERT INTO `suser` VALUES ('4', 'asdfgh', 1);
+INSERT INTO `suser` VALUES ('40', '123456', 1);
+INSERT INTO `suser` VALUES ('41', '123456', 2);
+INSERT INTO `suser` VALUES ('5', 'as', 1);
+INSERT INTO `suser` VALUES ('50', '123456', 1);
+INSERT INTO `suser` VALUES ('6', 'as', 1);
+INSERT INTO `suser` VALUES ('7', 'az', 1);
+INSERT INTO `suser` VALUES ('8', 'aq', 1);
+INSERT INTO `suser` VALUES ('9', '123456', 1);
+
+SET FOREIGN_KEY_CHECKS = 1;

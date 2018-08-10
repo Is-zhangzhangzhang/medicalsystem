@@ -1,0 +1,61 @@
+
+/*============病历录入============*/
+.wrapping60{
+    width: 60%;
+    margin: 0 auto;
+}
+#medical-name,
+#medical-amount{
+    *width: 100%;
+}
+textarea{
+    margin-top: 20px;
+}
+.list-action .btn{
+    margin: 0 5px;
+}
+#dt_intro_home h4:nth-child(1),
+#dt_intro_home h4:nth-child(5),
+#consult_dt_intro h4:nth-child(1),
+#consult_dt_intro h4:nth-child(5){
+    font-size:20px;
+      color:rgb(69, 132, 103);
+      font-weight: 600!important;
+}
+#dt_intro_home h4:nth-child(2),
+#dt_intro_home h4:nth-child(3),
+#dt_intro_home h4:nth-child(4),
+#dt_intro_home h4:nth-child(6),
+#consult_dt_intro h4:nth-child(2),
+#consult_dt_intro h4:nth-child(3),
+#consult_dt_intro h4:nth-child(4),
+#consult_dt_intro h4:nth-child(6){
+    font-size:17px;
+}
+#collapse0 li,
+#collapse1 li{
+    cursor: pointer;
+}
+#score_title_h4{
+    color:#999;
+    line-height: 0;
+    margin-top: 50px;
+    margin-left:120px;
+    font-weight: 600!important;
+}
+
+#score_info{
+    margin-left:20px;
+    margin-right:20px;
+}
+#scoretitle{
+    font-size:28px;
+    float:left;
+}
+#span_info{
+    float:right;
+}
+#span_score{
+    float:right;
+    font-size:24px;
+}

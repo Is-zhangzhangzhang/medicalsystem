@@ -1,0 +1,29 @@
+function sendData(){
+    $.ajax({    
+     type : "post",    
+     async:false,    
+     url : "http://localhost:8080/ssm/admin/updateIllness.do",
+     dataType:"jsonp", 
+     jsonp:"callback",
+     data: {
+         ill_id: encodeURI('35'),
+         ill_name: encodeURI('肠胃炎'),
+         ill_symptom: encodeURI('腹胀，消化不良'),
+         ill_treatment: encodeURI('饮食清淡,服用江中牌健胃消食片'),
+         cl_id: encodeURI('0102')
+     }, 
+     success:function(res){  
+       if(res.result == '1'){
+           console.log('修改成功');
+       }
+       else{
+           console.log('修改失败');
+       }
+     },    
+     error:function(){ 
+        console.log("提交失败");
+     }    
+ });   
+}
+
+sendData();

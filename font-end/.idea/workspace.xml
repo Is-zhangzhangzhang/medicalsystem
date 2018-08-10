@@ -1,0 +1,910 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" readonly="true" id="375d6f2c-4f95-4a5b-a82d-4773700a563e" name="Default" comment="" />
+    <ignored path="$PROJECT_DIR$/.tmp/" />
+    <ignored path="$PROJECT_DIR$/temp/" />
+    <ignored path="$PROJECT_DIR$/tmp/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file leaf-file-name="login.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/util/login.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2860">
+              <caret line="130" selection-start-line="130" selection-end-line="130" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bookDoctor.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/html/patient/bookDoctor.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="59">
+              <caret line="1148" column="52" selection-start-line="1148" selection-start-column="52" selection-end-line="1148" selection-end-column="62" />
+              <folding>
+                <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#style#0;n#div#0;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#1;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
+                <element signature="n#style#0;n#i#0;n#strong#0;n#h4#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="bookDoctor.js" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/js/patient/bookDoctor.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="67">
+              <caret line="647" column="7" lean-forward="true" selection-start-line="647" selection-start-column="7" selection-end-line="647" selection-end-column="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="consult.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/patient/consult.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="247">
+              <caret line="157" column="40" lean-forward="true" selection-start-line="157" selection-start-column="40" selection-end-line="157" selection-end-column="40" />
+              <folding>
+                <element signature="e#102#485#0" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="patient.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/patient/patient.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-3305">
+              <caret line="63" column="35" selection-start-line="63" selection-start-column="35" selection-end-line="63" selection-end-column="35" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="myConsult.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/patient/myConsult.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="192">
+              <caret line="17" column="33" lean-forward="true" selection-start-line="14" selection-start-column="55" selection-end-line="17" selection-end-column="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jquery-3.1.1.min.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/plugins/jQuery/jquery-3.1.1.min.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-8">
+              <caret line="1" column="7556" selection-start-line="1" selection-start-column="7556" selection-end-line="1" selection-end-column="7556" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="commons.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/js/util/commons.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2244">
+              <caret line="102" column="16" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="JavaScript File" />
+        <option value="CSS File" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>咨询</find>
+      <find>我的</find>
+      <find>div</find>
+      <find>collapse1</find>
+      <find>result</find>
+      <find>删除</find>
+      <find>if</find>
+      <find>img</find>
+      <find>$('#setting_modal').modal('show');</find>
+      <find>loadDoctor</find>
+      <find>setting_modal</find>
+      <find>commentList</find>
+      <find>dt_allConsult</find>
+      <find>fill</find>
+      <find>setConsultList</find>
+      <find>ad_id</find>
+      <find>dt</find>
+      <find>allco</find>
+      <find>fillDoctor</find>
+      <find>all</find>
+      <find>l</find>
+      <find>loadconsult</find>
+      <find>consult</find>
+      <find>comment</find>
+      <find>点击事件</find>
+      <find>load</find>
+      <find>local</find>
+      <find>book-modal</find>
+      <find>modal</find>
+      <find>allconsult</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+      <replace>&lt;body&gt;&lt;div class=&quot;container1&quot;&gt;         &lt;div class=&quot;season&quot;&gt;&lt;/div&gt;         &lt;div class=&quot;sun&quot;&gt;&lt;/div&gt;         &lt;div class=&quot;rainbow&quot;&gt;             &lt;div class=&quot;rainbow-colour&quot;&gt;&lt;/div&gt;             &lt;div class=&quot;rainbow-colour&quot;&gt;&lt;/div&gt;             &lt;div class=&quot;rainbow-colour&quot;&gt;&lt;/div&gt;             &lt;div class=&quot;rainbow-colour&quot;&gt;&lt;/div&gt;             &lt;div class=&quot;rainbow-colour&quot;&gt;&lt;/div&gt;             &lt;div class=&quot;rainbow-colour&quot;&gt;&lt;/div&gt;             &lt;div class=&quot;rainbow-colour&quot;&gt;&lt;/div&gt;         &lt;/div&gt;         &lt;div class=&quot;cloud-group&quot;&gt;             &lt;div class=&quot;cloud&quot;&gt;                 &lt;div class=&quot;weather-container&quot;&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                 &lt;/div&gt;             &lt;/div&gt;             &lt;div class=&quot;cloud&quot;&gt;                 &lt;div class=&quot;weather-container&quot;&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                 &lt;/div&gt;             &lt;/div&gt;             &lt;div class=&quot;cloud&quot;&gt;                 &lt;div class=&quot;weather-container&quot;&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                 &lt;/div&gt;             &lt;/div&gt;             &lt;div class=&quot;cloud&quot;&gt;                 &lt;div class=&quot;weather-container&quot;&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                 &lt;/div&gt;             &lt;/div&gt;             &lt;div class=&quot;cloud&quot;&gt;                 &lt;div class=&quot;weather-container&quot;&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                 &lt;/div&gt;             &lt;/div&gt;             &lt;div class=&quot;cloud&quot;&gt;                 &lt;div class=&quot;weather-container&quot;&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                 &lt;/div&gt;             &lt;/div&gt;             &lt;div class=&quot;cloud&quot;&gt;                 &lt;div class=&quot;weather-container&quot;&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                 &lt;/div&gt;             &lt;/div&gt;             &lt;div class=&quot;cloud&quot;&gt;                 &lt;div class=&quot;weather-container&quot;&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                 &lt;/div&gt;             &lt;/div&gt;             &lt;div class=&quot;cloud&quot;&gt;                 &lt;div class=&quot;weather-container&quot;&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;snow&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;rain&quot;&gt;&lt;/div&gt;                 &lt;/div&gt;             &lt;/div&gt;         &lt;/div&gt;         &lt;div class=&quot;base&quot;&gt;             &lt;div class=&quot;bush-group&quot;&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;                 &lt;div class=&quot;bush&quot;&gt;&lt;/div&gt;             &lt;/div&gt;             &lt;div class=&quot;rabbit animated&quot;&gt;                 &lt;div class=&quot;head&quot;&gt;                     &lt;div class=&quot;ear&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;ear&quot;&gt;&lt;/div&gt;                 &lt;/div&gt;             &lt;/div&gt;             &lt;div class=&quot;tree-group&quot;&gt;                 &lt;div class=&quot;tree&quot; style=&quot;display:none;&quot;&gt;                     &lt;div class=&quot;trunk&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                 &lt;/div&gt;                 &lt;div class=&quot;tree&quot; style=&quot;display:none;&quot;&gt;                     &lt;div class=&quot;trunk&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                 &lt;/div&gt;                 &lt;div class=&quot;tree&quot;&gt;                     &lt;div class=&quot;trunk&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                 &lt;/div&gt;                 &lt;div class=&quot;tree&quot;&gt;                     &lt;div class=&quot;trunk&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;&lt;/div&gt;                 &lt;/div&gt;                 &lt;div class=&quot;tree&quot;&gt;                     &lt;div class=&quot;trunk&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;branch-two&quot;&gt;                         &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;branch-two&quot;&gt;                         &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;branch-two&quot;&gt;                         &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                     &lt;/div&gt;                 &lt;/div&gt;                 &lt;div class=&quot;tree&quot;&gt;                     &lt;div class=&quot;trunk&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                 &lt;/div&gt;                 &lt;div class=&quot;tree&quot;&gt;                     &lt;div class=&quot;trunk&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                 &lt;/div&gt;                 &lt;div class=&quot;tree&quot;&gt;                     &lt;div class=&quot;trunk&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;flower&quot;&gt;                         &lt;div class=&quot;flower-in&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;petal&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;petal&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;petal&quot;&gt;&lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;flower&quot;&gt;                         &lt;div class=&quot;flower-in&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;petal&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;petal&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;petal&quot;&gt;&lt;/div&gt;                     &lt;/div&gt;                 &lt;/div&gt;                 &lt;div class=&quot;tree&quot;&gt;                     &lt;div class=&quot;trunk&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt; &lt;/div&gt;                 &lt;/div&gt;                 &lt;div class=&quot;tree&quot;&gt;                     &lt;div class=&quot;trunk&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;                         &lt;div class=&quot;branch-in&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;pine-cone-row&quot;&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                         &lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;                         &lt;div class=&quot;branch-in&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;pine-cone-row&quot;&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                         &lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;                         &lt;div class=&quot;branch-in&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;pine-cone-row&quot;&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                         &lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;                         &lt;div class=&quot;branch-in&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;pine-cone-row&quot;&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                         &lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;                         &lt;div class=&quot;branch-in&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;pine-cone-row&quot;&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                         &lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;                         &lt;div class=&quot;branch-in&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;pine-cone-row&quot;&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                         &lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;                         &lt;div class=&quot;branch-in&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;pine-cone-row&quot;&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                         &lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;                         &lt;div class=&quot;branch-in&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;pine-cone-row&quot;&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                         &lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;                         &lt;div class=&quot;branch-in&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;pine-cone-row&quot;&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                         &lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;branch&quot;&gt;                         &lt;div class=&quot;branch-in&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;pine-cone-row&quot;&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                             &lt;div class=&quot;pine-cone&quot;&gt;&lt;/div&gt;                         &lt;/div&gt;                     &lt;/div&gt;                 &lt;/div&gt;                 &lt;div class=&quot;tree&quot;&gt;                     &lt;div class=&quot;trunk&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                 &lt;/div&gt;                 &lt;div class=&quot;tree&quot;&gt;                     &lt;div class=&quot;trunk&quot;&gt; &lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;flower&quot;&gt;                         &lt;div class=&quot;flower-in&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;petal&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;petal&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;petal&quot;&gt;&lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;flower&quot;&gt;                         &lt;div class=&quot;flower-in&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;petal&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;petal&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;petal&quot;&gt;&lt;/div&gt;                     &lt;/div&gt;                 &lt;/div&gt;                 &lt;div class=&quot;tree&quot;&gt;                     &lt;div class=&quot;trunk&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt; &lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;branch-two&quot;&gt;                         &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;branch-two&quot;&gt;                         &lt;div class=&quot;tree-top&quot;&gt;&lt;/div&gt;                     &lt;/div&gt;                 &lt;/div&gt;                 &lt;div class=&quot;tree&quot;&gt;                     &lt;div class=&quot;trunk&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                     &lt;/div&gt;                 &lt;/div&gt;                 &lt;div class=&quot;tree&quot;&gt;                     &lt;div class=&quot;trunk&quot;&gt;&lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt; &lt;/div&gt;                     &lt;/div&gt;                     &lt;div class=&quot;tree-top&quot;&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                         &lt;div class=&quot;cone&quot;&gt;&lt;/div&gt;                     &lt;/div&gt;                 &lt;/div&gt;             &lt;/div&gt;         &lt;/div&gt;     &lt;/div&gt;</replace>
+    </replaceStrings>
+    <dirStrings>
+      <dir>E:\学习资料\东软实习\Project\medicalsystem\font-end</dir>
+    </dirStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/css/util/animation.css" />
+        <option value="$PROJECT_DIR$/css/util/commons.css" />
+        <option value="$PROJECT_DIR$/css/users/patient.css" />
+        <option value="$PROJECT_DIR$/js/patient/diseaseKnowledge.js" />
+        <option value="$PROJECT_DIR$/js/administrator/clinic.js" />
+        <option value="$PROJECT_DIR$/js/administrator/doctor.js" />
+        <option value="$PROJECT_DIR$/js/administrator/bookHistroy.js" />
+        <option value="$PROJECT_DIR$/js/administrator/disease.js" />
+        <option value="$PROJECT_DIR$/html/administrator/bookHistory.html" />
+        <option value="$PROJECT_DIR$/html/administrator/clinic.html" />
+        <option value="$PROJECT_DIR$/html/administrator/disease.html" />
+        <option value="$PROJECT_DIR$/html/administrator/doctorRegister.html" />
+        <option value="$PROJECT_DIR$/html/administrator/medicine.html" />
+        <option value="$PROJECT_DIR$/css/util/login.css" />
+        <option value="$PROJECT_DIR$/js/patient/myBook.js" />
+        <option value="$PROJECT_DIR$/js/patient/myConsult.js" />
+        <option value="$PROJECT_DIR$/js/patient/setting.js" />
+        <option value="$PROJECT_DIR$/js/doctor/registerList.js" />
+        <option value="$PROJECT_DIR$/js/doctor/medicalRecord.js" />
+        <option value="$PROJECT_DIR$/html/doctor/consult.html" />
+        <option value="$PROJECT_DIR$/html/doctor/registerList.html" />
+        <option value="$PROJECT_DIR$/html/doctor/doctorHome.html" />
+        <option value="$PROJECT_DIR$/html/doctor/doctorScore.html" />
+        <option value="$PROJECT_DIR$/html/doctor/main.html" />
+        <option value="$PROJECT_DIR$/html/doctor/medicalRecord.html" />
+        <option value="$PROJECT_DIR$/html/doctor/message.html" />
+        <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/css/util/styles.css" />
+        <option value="$PROJECT_DIR$/html/patient/bookDoctor.html" />
+        <option value="$PROJECT_DIR$/html/patient/consult.html" />
+        <option value="$PROJECT_DIR$/html/patient/diseaseKnowledge.html" />
+        <option value="$PROJECT_DIR$/html/patient/main.html" />
+        <option value="$PROJECT_DIR$/html/patient/message.html" />
+        <option value="$PROJECT_DIR$/html/patient/myBook.html" />
+        <option value="$PROJECT_DIR$/html/patient/myConsult.html" />
+        <option value="$PROJECT_DIR$/html/patient/myMedicalRecord.html" />
+        <option value="$PROJECT_DIR$/html/patient/pay.html" />
+        <option value="$PROJECT_DIR$/html/patient/setting.html" />
+        <option value="$PROJECT_DIR$/js/doctor/doctor.js" />
+        <option value="$PROJECT_DIR$/html/doctor/setting.html" />
+        <option value="$PROJECT_DIR$/js/patient/pay.js" />
+        <option value="$PROJECT_DIR$/js/patient/message.js" />
+        <option value="$PROJECT_DIR$/js/doctor/message.js" />
+        <option value="$PROJECT_DIR$/js/doctor/consult.js" />
+        <option value="$PROJECT_DIR$/js/doctor/doctorHome.js" />
+        <option value="$PROJECT_DIR$/js/doctor/setting.js" />
+        <option value="$PROJECT_DIR$/js/util/login.js" />
+        <option value="$PROJECT_DIR$/js/util/commons.js" />
+        <option value="$PROJECT_DIR$/js/patient/patient.js" />
+        <option value="$PROJECT_DIR$/js/patient/consult.js" />
+        <option value="$PROJECT_DIR$/js/patient/bookDoctor.js" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="NodePackageJsonFileManager">
+    <packageJsonPaths>
+      <path value="$PROJECT_DIR$/plugins/bootstrap-datetimepicker-master/package.json" />
+    </packageJsonPaths>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="676" />
+    <option name="width" value="697" />
+    <option name="height" value="735" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="font-end" type="b2602c69:ProjectViewProjectNode" />
+              <item name="font-end" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="font-end" type="b2602c69:ProjectViewProjectNode" />
+              <item name="font-end" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="font-end" type="b2602c69:ProjectViewProjectNode" />
+              <item name="font-end" type="462c0819:PsiDirectoryNode" />
+              <item name="css" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="font-end" type="b2602c69:ProjectViewProjectNode" />
+              <item name="font-end" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="font-end" type="b2602c69:ProjectViewProjectNode" />
+              <item name="font-end" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+              <item name="administrator" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="font-end" type="b2602c69:ProjectViewProjectNode" />
+              <item name="font-end" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+              <item name="doctor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="font-end" type="b2602c69:ProjectViewProjectNode" />
+              <item name="font-end" type="462c0819:PsiDirectoryNode" />
+              <item name="html" type="462c0819:PsiDirectoryNode" />
+              <item name="patient" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="font-end" type="b2602c69:ProjectViewProjectNode" />
+              <item name="font-end" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="font-end" type="b2602c69:ProjectViewProjectNode" />
+              <item name="font-end" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="doctor" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="font-end" type="b2602c69:ProjectViewProjectNode" />
+              <item name="font-end" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="patient" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="font-end" type="b2602c69:ProjectViewProjectNode" />
+              <item name="font-end" type="462c0819:PsiDirectoryNode" />
+              <item name="js" type="462c0819:PsiDirectoryNode" />
+              <item name="util" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="Scope" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="list.type.of.created.stylesheet" value="CSS" />
+    <property name="node.js.detected.package.stylelint" value="true" />
+    <property name="node.js.path.for.package.stylelint" value="project" />
+    <property name="node.js.selected.package.stylelint" value="" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="settings.editor.selected.configurable" value="configurable.stylesheets.stylelint" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\学习资料\东软实习\Project\medicalsystem\font-end\js\util" />
+      <recent name="E:\学习资料\东软实习\Project\medicalsystem\font-end\img\carousel" />
+      <recent name="E:\学习资料\东软实习\Project\medicalsystem\font-end\img" />
+      <recent name="E:\学习资料\东软实习\Project\medicalsystem\font-end\img\icon" />
+      <recent name="E:\学习资料\东软实习\Project\medicalsystem\font-end\css\users" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\学习资料\东软实习\Project\medicalsystem\font-end\css\util" />
+      <recent name="E:\学习资料\东软实习\Project\medicalsystem" />
+      <recent name="E:\学习资料\东软实习\Project\medicalsystem\font-end\plugins" />
+      <recent name="E:\学习资料\东软实习\Project\medicalsystem\font-end\img" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="JavaScript Debug.index.html">
+    <configuration name="bookDoctor.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/font-end/html/patient/bookDoctor.html" />
+    <configuration name="index.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/font-end/index.html" />
+    <configuration name="main.html (1)" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/font-end/html/patient/main.html" />
+    <configuration name="main.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/font-end/html/doctor/main.html" />
+    <configuration name="pay.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/font-end/html/patient/pay.html" />
+    <list>
+      <item itemvalue="JavaScript Debug.main.html" />
+      <item itemvalue="JavaScript Debug.pay.html" />
+      <item itemvalue="JavaScript Debug.bookDoctor.html" />
+      <item itemvalue="JavaScript Debug.index.html" />
+      <item itemvalue="JavaScript Debug.main.html (1)" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JavaScript Debug.index.html" />
+        <item itemvalue="JavaScript Debug.main.html (1)" />
+        <item itemvalue="JavaScript Debug.bookDoctor.html" />
+        <item itemvalue="JavaScript Debug.main.html" />
+        <item itemvalue="JavaScript Debug.pay.html" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration" cleanupOnStartRun="true">
+    <configuration>C:\Users\嘉怡吖\AppData\Roaming\Subversion</configuration>
+    <supportedVersion>125</supportedVersion>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="375d6f2c-4f95-4a5b-a82d-4773700a563e" name="Default" comment="" />
+      <created>1532073476835</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1532073476835</updated>
+      <workItem from="1532073480604" duration="515000" />
+      <workItem from="1532074018769" duration="91000" />
+      <workItem from="1532074130774" duration="1235000" />
+      <workItem from="1532244675637" duration="15068000" />
+      <workItem from="1532309279110" duration="8456000" />
+      <workItem from="1532326193779" duration="34103000" />
+      <workItem from="1532481013134" duration="22539000" />
+      <workItem from="1532567736740" duration="13165000" />
+      <workItem from="1532588902017" duration="8732000" />
+      <workItem from="1532654352979" duration="20483000" />
+      <workItem from="1532913402233" duration="21548000" />
+      <workItem from="1532999882407" duration="21042000" />
+      <workItem from="1533086227209" duration="22025000" />
+      <workItem from="1533172735087" duration="31478000" />
+      <workItem from="1533258826238" duration="21690000" />
+      <workItem from="1533296980526" duration="7791000" />
+      <workItem from="1533348266380" duration="78131000" />
+      <workItem from="1533517731403" duration="42798000" />
+      <workItem from="1533604599588" duration="43371000" />
+      <workItem from="1533690828767" duration="19015000" />
+      <workItem from="1533736387803" duration="16734000" />
+      <workItem from="1533776992493" duration="21835000" />
+      <workItem from="1533864400316" duration="2766000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="474611000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="1" visible="true" weight="0.16983895" />
+      <window_info anchor="bottom" id="TODO" order="10" />
+      <window_info anchor="bottom" id="Docker" order="1" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50220263" side_tool="true" weight="0.3290735" />
+      <window_info anchor="bottom" id="Version Control" order="3" />
+      <window_info anchor="bottom" id="Run" order="5" />
+      <window_info id="Structure" order="2" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Terminal" order="0" />
+      <window_info id="Favorites" order="0" side_tool="true" />
+      <window_info anchor="bottom" id="Debug" order="6" sideWeight="0.49048316" weight="0.105511814" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="9" weight="0.4" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="bottom" id="Message" order="4" />
+      <window_info anchor="bottom" id="Cvs" order="8" weight="0.25" />
+      <window_info anchor="bottom" id="Find" order="7" sideWeight="0.49779737" weight="0.3290735" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="53" />
+    </breakpoint-manager>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/js/administrator/disease.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="226" column="16" lean-forward="true" selection-start-line="226" selection-start-column="16" selection-end-line="226" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/util/areachart.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="12" column="10" lean-forward="true" selection-start-line="12" selection-start-column="10" selection-end-line="12" selection-end-column="10" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/doctor/doctorScore.html.mine">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/doctor/doctorScore.html.r283">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-1312" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/administrator/bookHistory.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="436">
+          <caret line="1068" column="51" selection-start-line="1068" selection-start-column="51" selection-end-line="1068" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/administrator/clinic.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="1142" column="51" selection-start-line="1142" selection-start-column="51" selection-end-line="1142" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/administrator/disease.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="1153" column="51" selection-start-line="1153" selection-start-column="51" selection-end-line="1153" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/administrator/doctorRegister.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="1187" column="51" selection-start-line="1187" selection-start-column="51" selection-end-line="1187" selection-end-column="51" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/administrator/medicine.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="414">
+          <caret line="1160" column="51" selection-start-line="1160" selection-start-column="51" selection-end-line="1160" selection-end-column="51" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/util/login.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="473">
+          <caret line="172" column="42" selection-start-line="172" selection-start-column="42" selection-end-line="172" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/patient/setting.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="281">
+          <caret line="54" column="38" selection-start-line="54" selection-start-column="38" selection-end-line="54" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/doctor/medicalRecord.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="275">
+          <caret line="145" column="52" selection-start-line="145" selection-start-column="52" selection-end-line="145" selection-end-column="52" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/doctor/consult.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="998" column="125" selection-start-line="998" selection-start-column="109" selection-end-line="998" selection-end-column="125" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#strong#0;n#h4#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#footer#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/doctor/doctorScore.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="1026" column="105" selection-start-line="1026" selection-start-column="105" selection-end-line="1026" selection-end-column="105" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#i#0;n#strong#0;n#h4#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/doctor/medicalRecord.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="340">
+          <caret line="1035" column="105" selection-start-line="1035" selection-start-column="105" selection-end-line="1035" selection-end-column="105" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/doctor/registerList.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="239">
+          <caret line="1034" column="37" lean-forward="true" selection-start-line="1034" selection-start-column="37" selection-end-line="1034" selection-end-column="37" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#i#0;n#strong#0;n#h4#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#footer#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/css/util/styles.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="377">
+          <caret line="509" column="11" selection-start-line="509" selection-start-column="11" selection-end-line="509" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="8" column="92" selection-start-line="8" selection-start-column="92" selection-end-line="8" selection-end-column="92" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/patient/consult.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="227">
+          <caret line="1033" column="83" selection-start-line="1033" selection-start-column="83" selection-end-line="1033" selection-end-column="83" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#i#0;n#strong#0;n#h4#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/patient/diseaseKnowledge.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="262">
+          <caret line="1030" column="25" lean-forward="true" selection-start-line="1030" selection-start-column="25" selection-end-line="1030" selection-end-column="25" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#i#0;n#strong#0;n#h4#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/patient/myBook.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="420">
+          <caret line="1032" column="83" selection-start-line="1032" selection-start-column="83" selection-end-line="1032" selection-end-column="83" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#i#0;n#strong#0;n#h4#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/patient/myConsult.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="370">
+          <caret line="1032" column="83" selection-start-line="1032" selection-start-column="83" selection-end-line="1032" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/patient/myMedicalRecord.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="406">
+          <caret line="1032" column="83" selection-start-line="1032" selection-start-column="83" selection-end-line="1032" selection-end-column="83" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#i#0;n#strong#0;n#h4#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/patient/pay.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="201">
+          <caret line="1032" column="83" selection-start-line="1032" selection-start-column="83" selection-end-line="1032" selection-end-column="83" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/doctor/doctor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="361">
+          <caret line="162" selection-start-line="162" selection-end-line="165" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/doctor/setting.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="241">
+          <caret line="1148" column="90" selection-start-line="1148" selection-start-column="73" selection-end-line="1148" selection-end-column="90" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#i#0;n#strong#0;n#h4#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/doctor/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="237">
+          <caret line="1197" column="31" lean-forward="true" selection-start-line="1197" selection-start-column="31" selection-end-line="1197" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/doctor/main.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="396">
+          <caret line="45" column="2" lean-forward="true" selection-start-line="13" selection-end-line="45" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/patient/setting.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="395">
+          <caret line="1160" column="33" selection-start-line="1160" selection-start-column="33" selection-end-line="1160" selection-end-column="33" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#i#0;n#strong#0;n#h4#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/patient/message.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="147">
+          <caret line="129" selection-start-line="129" selection-end-line="129" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="e#550#556#0" expanded="true" />
+            <element signature="n#style#0;n#div#0;n#div#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#0;n#p#0;n#div#1;n#div#0;n#li#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#p#0;n#div#0;n#li#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/doctor/doctorHome.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="325">
+          <caret line="1136" column="34" lean-forward="true" selection-start-line="1136" selection-start-column="34" selection-end-line="1136" selection-end-column="34" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#i#0;n#strong#0;n#h4#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#ul#0;n#div#1;n#div#0;n#div#1;n#div#0;n#div#0;n#div#3;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/doctor/consult.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="73">
+          <caret line="29" column="5" lean-forward="true" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/patient/message.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="405">
+          <caret line="1124" column="34" selection-start-line="1124" selection-start-column="34" selection-end-line="1124" selection-end-column="34" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#i#0;n#strong#0;n#h4#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#footer#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/doctor/message.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="327">
+          <caret line="1095" column="32" lean-forward="true" selection-start-line="1095" selection-start-column="32" selection-end-line="1095" selection-end-column="32" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#i#0;n#strong#0;n#h4#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/patient/pay.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="61" column="39" selection-start-line="61" selection-start-column="39" selection-end-line="61" selection-end-column="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/doctor/message.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-91">
+          <caret line="98" column="52" lean-forward="true" selection-start-line="98" selection-start-column="52" selection-end-line="98" selection-end-column="52" />
+          <folding>
+            <element signature="n#style#0;n#div#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/doctor/doctorHome.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2867">
+          <caret line="230" column="33" selection-start-line="230" selection-start-column="26" selection-end-line="230" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/doctor/registerList.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="209">
+          <caret line="32" column="23" lean-forward="true" selection-start-line="32" selection-start-column="23" selection-end-line="32" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/doctor/setting.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="211">
+          <caret line="41" column="29" lean-forward="true" selection-start-line="41" selection-start-column="29" selection-end-line="41" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/jsLanguageServicesImpl/external/lib.dom.d.ts">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="191">
+          <caret line="12997" column="4" selection-start-line="12997" selection-start-column="4" selection-end-line="12997" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/patient/main.js">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/patient/main.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="589">
+          <caret line="1032" column="83" selection-start-line="1032" selection-start-column="83" selection-end-line="1032" selection-end-column="83" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#i#0;n#strong#0;n#h4#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#footer#0;n#body#0;n#html#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/util/login.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2860">
+          <caret line="130" selection-start-line="130" selection-end-line="130" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/util/commons.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2244">
+          <caret line="102" column="16" selection-start-line="102" selection-start-column="16" selection-end-line="102" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/patient/myBook.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="122">
+          <caret line="29" column="41" selection-start-line="29" selection-start-column="41" selection-end-line="29" selection-end-column="41" />
+          <folding>
+            <element signature="e#8#14#0" expanded="true" />
+            <element signature="e#6#12#0" expanded="true" />
+            <element signature="e#6#12#0" expanded="true" />
+            <element signature="e#6#12#0" expanded="true" />
+            <element signature="e#12#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/patient/patient.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-3305">
+          <caret line="63" column="35" selection-start-line="63" selection-start-column="35" selection-end-line="63" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/plugins/jQuery/jquery-3.1.1.min.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-8">
+          <caret line="1" column="7556" selection-start-line="1" selection-start-column="7556" selection-end-line="1" selection-end-column="7556" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/patient/myConsult.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="17" column="33" lean-forward="true" selection-start-line="14" selection-start-column="55" selection-end-line="17" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/html/patient/bookDoctor.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="59">
+          <caret line="1148" column="52" selection-start-line="1148" selection-start-column="52" selection-end-line="1148" selection-end-column="62" />
+          <folding>
+            <element signature="n#div#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#div#0;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#1;n#div#2;n#div#4;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#nav#0;n#body#0;n#html#0;n#!!top" />
+            <element signature="n#style#0;n#i#0;n#strong#0;n#h4#0;n#a#0;n#div#0;n#div#0;n#nav#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/patient/consult.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="247">
+          <caret line="157" column="40" lean-forward="true" selection-start-line="157" selection-start-column="40" selection-end-line="157" selection-end-column="40" />
+          <folding>
+            <element signature="e#102#485#0" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/patient/bookDoctor.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="67">
+          <caret line="647" column="7" lean-forward="true" selection-start-line="647" selection-start-column="7" selection-end-line="647" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>                       

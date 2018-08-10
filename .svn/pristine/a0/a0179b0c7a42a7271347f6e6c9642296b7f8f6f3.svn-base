@@ -1,0 +1,478 @@
+package cn.edu.scau.hlyz.controller;
+
+import java.io.File;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.net.InetAddress;
+import java.net.URLDecoder;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.HashSet;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
+import org.springframework.web.multipart.MultipartFile;
+
+import cn.edu.scau.hlyz.entity.Advisory;
+import cn.edu.scau.hlyz.entity.ConsumptionOrder;
+import cn.edu.scau.hlyz.entity.Doctor;
+import cn.edu.scau.hlyz.entity.Evaluation;
+import cn.edu.scau.hlyz.entity.Illness;
+import cn.edu.scau.hlyz.entity.MedicalRecord;
+import cn.edu.scau.hlyz.entity.Medicine;
+import cn.edu.scau.hlyz.entity.Patient;
+import cn.edu.scau.hlyz.entity.Prescription;
+import cn.edu.scau.hlyz.entity.RegistrationForm;
+import cn.edu.scau.hlyz.entity.Reply;
+import cn.edu.scau.hlyz.entity.Suser;
+import cn.edu.scau.hlyz.jsonprocessor.JsonDateVauleProcessor;
+import cn.edu.scau.hlyz.service.impl.AdvisoryServiceImpl;
+import cn.edu.scau.hlyz.service.impl.ChargePaymentServiceImpl;
+import cn.edu.scau.hlyz.service.impl.EvaluationServiceImpl;
+import cn.edu.scau.hlyz.service.impl.IdGeneratorServiceImpl;
+import cn.edu.scau.hlyz.service.impl.IllnessServiceImpl;
+import cn.edu.scau.hlyz.service.impl.MedicalRecordServiceImpl;
+import cn.edu.scau.hlyz.service.impl.MedicineManagementServiceImpl;
+import cn.edu.scau.hlyz.service.impl.MessagePushServiceImpl;
+import cn.edu.scau.hlyz.service.impl.PatientInformationServiceImpl;
+import cn.edu.scau.hlyz.service.impl.PhysicianInformationServiceImpl;
+import cn.edu.scau.hlyz.service.impl.RegisteredServiceImpl;
+import net.sf.json.JSONArray;
+import net.sf.json.JSONObject;
+import net.sf.json.JsonConfig;
+
+@Controller
+@RequestMapping(value="/doctor")
+public class DoctorController {
+	@Autowired
+	private PhysicianInformationServiceImpl physicianInformationService;
+	@Autowired
+	private PatientInformationServiceImpl patientInformationService;
+	@Autowired
+	private RegisteredServiceImpl registeredService;
+	@Autowired
+	private MessagePushServiceImpl messagePushService;
+	@Autowired
+	private MedicineManagementServiceImpl medicineManageMentService;
+	@Autowired
+	private IdGeneratorServiceImpl idGeneratorService;
+	@Autowired
+	private MedicalRecordServiceImpl medicalRecordService;
+	@Autowired
+	private ChargePaymentServiceImpl chargePaymentService;
+	@Autowired
+	private AdvisoryServiceImpl advisoryService;
+	@Autowired
+	private EvaluationServiceImpl evaluationService;
+	@Autowired
+	private IllnessServiceImpl illnessService;
+
+	@ResponseBody
+	@RequestMapping(value="/dmain.do",produces="application/json;charset=UTF-8")
+	public String DoctorInformation(String callback) throws Exception {
+		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+		Suser user=new Suser();
+		user.setUser_id(URLDecoder.decode(request.getParameter("user_id"),"UTF-8"));
+        String dayOfWeek=URLDecoder.decode(request.getParameter("dayOfWeek"),"UTF-8");
+        Map<String,Object> map=new HashMap<String,Object>();
+		Doctor doctor=physicianInformationService.findByUser(user);
+		map.put("doctor", doctor);
+		//挂号数量
+		Integer rfNum;
+		rfNum=registeredService.getRemainingQuantity(user.getUser_id(), Integer.parseInt(dayOfWeek),8)+registeredService.getRemainingQuantity(user.getUser_id(), Integer.parseInt(dayOfWeek),10)+registeredService.getRemainingQuantity(user.getUser_id(), Integer.parseInt(dayOfWeek),14)+registeredService.getRemainingQuantity(user.getUser_id(), Integer.parseInt(dayOfWeek),16);
+		map.put("registerFormNumber", rfNum);
+		JSONObject resultObject=JSONObject.fromObject(map);
+		String res=callback+"("+resultObject.toString()+")";
+		return res;
+	}
+	@ResponseBody
+	@RequestMapping(value="/registration.do",produces="application/json;charset=UTF-8")
+	public String registerList(String callback) throws UnsupportedEncodingException{
+		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+		Map<String,Object> map=new HashMap<String,Object>();
+		Doctor d=new Doctor();
+		d.setDt_id(URLDecoder.decode(request.getParameter("dt_id"),"UTF-8"));
+		registeredService.loadRegister();
+		List<RegistrationForm> rList=registeredService.getDoctorRegisters(d);
+		map.put("reArray", rList);
+		JsonConfig jsonConfig = new JsonConfig();
+		jsonConfig.registerJsonValueProcessor(Date.class, new JsonDateVauleProcessor("yyyy-MM-dd HH:mm:ss"));
+		JSONObject resultObject=JSONObject.fromObject(map,jsonConfig);
+		String res=callback+"("+resultObject.toString()+")";
+		return res;
+	}
+	@ResponseBody
+	@RequestMapping(value="/call.do",produces="application/json;charset=UTF-8")
+	public String registerCall(String callback) throws UnsupportedEncodingException{
+		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+		String result=null;
+		Map<String,String> map=new HashMap<String,String>();
+		String rf_id=URLDecoder.decode(request.getParameter("rf_id"),"UTF-8");
+		RegistrationForm rf=registeredService.findById(rf_id);
+		messagePushService.addCallRegistration(rf);
+		result="1";
+		map.put("result", result);
+		JSONObject resultJSON = JSONObject.fromObject(map); //将Java代码转Json
+		String res=callback+"("+resultJSON.toString()+")";
+		return res;
+	}
+	@ResponseBody
+	@RequestMapping(value="/ignore.do",produces="application/json;charset=UTF-8")
+	public String registerIgnore(String callback) throws UnsupportedEncodingException{
+		//registeredService.loadRegister();
+		Map<String,Object> map=new HashMap<String,Object>();
+		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+		Doctor d=new Doctor();
+		d.setDt_id(URLDecoder.decode(request.getParameter("dt_id"),"UTF-8"));
+		registeredService.getNextRegister(d);
+		List<RegistrationForm> rList=registeredService.getDoctorRegisters(d);
+		map.put("reArray", rList);
+		JsonConfig jsonConfig = new JsonConfig();
+		jsonConfig.registerJsonValueProcessor(Date.class, new JsonDateVauleProcessor("yyyy-MM-dd HH:mm:ss"));
+		JSONObject resultObject=JSONObject.fromObject(map,jsonConfig);
+		String res=callback+"("+resultObject.toString()+")";
+		return res;
+	}
+	@ResponseBody
+	@RequestMapping(value="/treatment.do",produces="application/json;charset=UTF-8")
+	public String treatment(String callback) throws UnsupportedEncodingException{
+		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+		Map<String,Object> map=new HashMap<String,Object>();
+		String rf_id=URLDecoder.decode(request.getParameter("rf_id"),"UTF-8");
+		RegistrationForm rf=registeredService.findById(rf_id);
+		registeredService.registerComplete(rf_id);
+		Suser user=new Suser();
+		user.setUser_id(rf.getDoctor().getDt_id());
+		//医生信息
+		Doctor doctor=physicianInformationService.findByUser(user);
+		map.put("doctor", doctor);
+		//病人信息
+		user.setUser_id(rf.getPatient().getPt_id());
+		Patient patient=patientInformationService.findByUser(user);
+		map.put("patient", patient);
+		int num=medicineManageMentService.getFindAllCount();
+		List<Medicine> medicineList=medicineManageMentService.findAll(1, num);
+		map.put("medicines",medicineList);
+		String mr_id=idGeneratorService.medicalRecordGenerator();
+		map.put("medicalRecordId", mr_id);
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+		String dateNowStr = sdf.format(new Date());
+		map.put("medicalRecordDate",dateNowStr);
+		JsonConfig jsonConfig = new JsonConfig();
+		jsonConfig.registerJsonValueProcessor(Date.class, new JsonDateVauleProcessor());
+		JSONObject resultObject=JSONObject.fromObject(map,jsonConfig);
+		String res=callback+"("+resultObject.toString()+")";
+		return res;
+	}
+	@ResponseBody
+	@RequestMapping(value="/submitMdRecord.do",produces="application/json;charset=UTF-8")
+	public String submitMdRecord(String callback) throws UnsupportedEncodingException, ParseException{
+		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+		String rf_id=URLDecoder.decode(request.getParameter("rf_id"),"UTF-8");
+		MedicalRecord mr=new MedicalRecord();
+		mr.setMr_id(URLDecoder.decode(request.getParameter("mr_id"),"UTF-8"));
+		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	    Date utilDate = sdf.parse(request.getParameter("mr_time"));
+		mr.setMr_time(utilDate);
+		Suser user=new Suser();
+		user.setUser_id(URLDecoder.decode(request.getParameter("dt_id"),"UTF-8"));
+		Doctor d=physicianInformationService.findByUser(user);
+		mr.setDoctor(d);
+		user.setUser_id(URLDecoder.decode(request.getParameter("pt_id"),"UTF-8"));
+		Patient p=patientInformationService.findByUser(user);
+		mr.setPatient(p);
+		String illname=URLDecoder.decode(request.getParameter("illness"),"UTF-8");
+		Illness illness=illnessService.findByName(illname).get(0);
+		mr.setIllness(illness);
+		mr.setMr_score(Double.parseDouble(URLDecoder.decode(request.getParameter("mr_score"),"UTF-8")));
+		mr.setMr_taken_days(Integer.parseInt(URLDecoder.decode(request.getParameter("mr_taken_days"),"UTF-8")));
+		mr.setMr_taken_times(Integer.parseInt(URLDecoder.decode(request.getParameter("mr_taken_times"),"UTF-8")));
+		String ds=request.getParameter("prstSet");
+		JSONArray json=JSONArray.fromObject(ds);
+		JSONObject jsonOne;
+		Set<Prescription> prstSet=new HashSet<>();
+		for(int i=0;i<json.size();i++){
+		          jsonOne = json.getJSONObject(i);
+		          Prescription pr=new Prescription();
+		          String mdname=(String) jsonOne.get("mdname");
+		          Medicine medicine=medicineManageMentService.findByName(mdname);
+		          pr.setMedicine(medicine);
+		          String pr_num=(String)jsonOne.get("pr_num");
+		          pr.setPr_num(Integer.parseInt(pr_num));
+		          MedicalRecord mrt=new MedicalRecord();
+		  		mrt.setMr_id(URLDecoder.decode(request.getParameter("mr_id"),"UTF-8"));
+		  		pr.setMr(mrt);
+		  		prstSet.add(pr);
+
+		 }
+		Iterator<Prescription> it=prstSet.iterator();
+		while(it.hasNext()){
+			 Prescription pr=it.next();
+			System.out.println(pr.getPr_num()+" "+pr.getMedicine().getMd_name());
+		}
+		mr.setPrstSet(prstSet);
+		ConsumptionOrder co=new ConsumptionOrder();
+		co.setCo_id(idGeneratorService.consumptionOrderIdGenerator());
+		co.setMr(mr);
+		messagePushService.addPushConsumpationOrder(co);
+		String result=null;
+		if(medicalRecordService.addMedicalRecord(mr)&&chargePaymentService.charge(co)){
+			registeredService.getNextRegister(d);
+			registeredService.registerComplete(rf_id);
+			result="1";
+		}
+		else result="0";
+		String res=callback+"("+result+")";
+		return res;
+	}
+	@ResponseBody
+	@RequestMapping(value="/MedicinePrice.do",produces="application/json;charset=UTF-8")
+	public String getMedicinePrice(String callback) throws UnsupportedEncodingException, ParseException{
+		HttpServletRequest request = ((ServletRequestAttributes)RequestContextHolder.getRequestAttributes()).getRequest();
+		String mdname=URLDecoder.decode(request.getParameter("md_name"),"UTF-8");
+		Medicine medicine=medicineManageMentService.findByName(mdname);
+		Map<String,Object> map=new HashMap<String,Object>();
+		map.put("medicine",medicine);
+		JSONObject resultObject=JSONObject.fromObject(map);
+		String res=callback+"("+resultObject.toString()+")";
+		return res;
+	}
+	@ResponseBody
+	@RequestMapping(value="/doctorConsult.do",produces="application/json;charset=UTF-8")
+	public String doctorConsult(String callback) throws UnsupportedEncodingException{
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		String dt_id = URLDecoder.decode(request.getParameter("doctorId"), "UTF-8");
+		int page = Integer.parseInt(URLDecoder.decode(request.getParameter("page"), "UTF-8"));
+		int totalNum = advisoryService.getFindAllAdvisoryOfDoctorCount(dt_id);
+		List<Advisory> adList=advisoryService.findAllAdvisoryOfDoctor(dt_id, page, 10);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("totalNum", URLDecoder.decode(totalNum+"", "UTF-8"));
+		map.put("advisoryArray", adList);
+		JsonConfig jsonConfig = new JsonConfig();
+		jsonConfig.registerJsonValueProcessor(Date.class, new JsonDateVauleProcessor());
+		JSONObject resultJSON = JSONObject.fromObject(map, jsonConfig);
+		String result = callback + "(" + resultJSON.toString() + ")";
+		return result;
+	}
+	@ResponseBody
+	@RequestMapping(value="/doctorEvaluation.do",produces="application/json;charset=UTF-8")
+	public String doctorEvaluation(String callback) throws UnsupportedEncodingException{
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		String dt_id = URLDecoder.decode(request.getParameter("doctorId"), "UTF-8");
+		int page = Integer.parseInt(URLDecoder.decode(request.getParameter("page"), "UTF-8"));
+		int totalNum = evaluationService.getFindAllEvaluationOfDoctorCount(dt_id);
+		List<Evaluation> evList=evaluationService.findAllEvaluationOfDoctor(dt_id, page, 10);
+		evaluationService.setReadEvaluation(dt_id);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("totalNum", URLDecoder.decode(totalNum+"", "UTF-8"));
+		map.put("evaluationArray", evList);
+		JsonConfig jsonConfig = new JsonConfig();
+		jsonConfig.registerJsonValueProcessor(Date.class, new JsonDateVauleProcessor());
+		JSONObject resultJSON = JSONObject.fromObject(map, jsonConfig);
+		String result = callback + "(" + resultJSON.toString() + ")";
+		return result;
+	}
+	@ResponseBody
+	@RequestMapping(value="/unreadEvaluation.do",produces="application/json;charset=UTF-8")
+	public String unreadEvaluation(String callback) throws UnsupportedEncodingException{
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		String dt_id = URLDecoder.decode(request.getParameter("doctorId"), "UTF-8");
+		int totalNum = evaluationService.getFindUnreadEvaluationCount(dt_id);
+		List<Evaluation> evList=evaluationService.findUnreadEvaluation(dt_id, 1, totalNum);
+		evaluationService.setReadEvaluation(dt_id);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("totalNum", URLDecoder.decode(totalNum+"", "UTF-8"));
+		map.put("evaluationArray", evList);
+		JsonConfig jsonConfig = new JsonConfig();
+		jsonConfig.registerJsonValueProcessor(Date.class, new JsonDateVauleProcessor());
+		JSONObject resultJSON = JSONObject.fromObject(map, jsonConfig);
+		String result = callback + "(" + resultJSON.toString() + ")";
+		return result;
+	}
+	@ResponseBody
+	@RequestMapping(value="/unreadAdvisoryAndReply.do",produces="application/json;charset=UTF-8")
+	public String unreadAdvisoryAndReply(String callback) throws UnsupportedEncodingException{
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		String dt_id = URLDecoder.decode(request.getParameter("doctorId"), "UTF-8");
+		List<Advisory> adList=advisoryService.findUnreadAdvisoryOfDoctor(dt_id);
+		List<Reply> reList=advisoryService.findDoctorUnreadReply(dt_id);
+		for(Advisory a:adList){
+			Reply re=new Reply();
+			re.setRe_content("");
+			re.setRe_Consultaion(a);
+			re.setRe_time(a.getAd_time());
+			reList.add(re);
+		}
+		int num=reList.size();
+		Map<String,Object> map=new HashMap<String,Object>();
+		map.put("totalNum", num+"");
+		map.put("unreadArr",reList);
+		JsonConfig jsonConfig = new JsonConfig();
+		jsonConfig.registerJsonValueProcessor(Date.class, new JsonDateVauleProcessor());
+		JSONObject resultJSON = JSONObject.fromObject(map, jsonConfig);
+		String result = callback + "(" + resultJSON.toString() + ")";
+		return result;
+	}
+	@ResponseBody
+	@RequestMapping(value="/setRead.do",produces="application/json;charset=UTF-8")
+	public String setRead(String callback) throws UnsupportedEncodingException{
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		String ad_id = URLDecoder.decode(request.getParameter("ad_id"), "UTF-8");
+		String dt_id = URLDecoder.decode(request.getParameter("dt_id"), "UTF-8");
+		int num = advisoryService.getFindAllRespondenceOfAdvisory(ad_id);
+		List<Reply> replyList= advisoryService.findAllRespondenceOfAdvisory(ad_id, 1, num);
+		Advisory advisory = advisoryService.findAdvisoryById(ad_id);
+		if(advisory.getAd_status().equals("unread")) advisoryService.setAdvisoryReadOfDoctor(ad_id);
+		Doctor doctor = advisory.getDoctor();
+		Suser user = new Suser();
+		user.setUser_id(advisory.getPatient().getPt_id());
+		Patient patient = patientInformationService.findByUser(user);
+		advisoryService.setReplysOfAdvisoryRead(ad_id,dt_id);
+		Map<String,Object> map=new HashMap<String,Object>();
+		map.put("advisory", advisory);
+		map.put("replyArray", replyList);
+		map.put("doctor", doctor);
+		map.put("patient", patient);
+		JsonConfig jsonConfig = new JsonConfig();
+		jsonConfig.registerJsonValueProcessor(Date.class, new JsonDateVauleProcessor());
+		JSONObject resultJSON = JSONObject.fromObject(map, jsonConfig);
+		String result = callback + "(" + resultJSON.toString() + ")";
+		return result;
+	}
+	@ResponseBody
+	@RequestMapping(value="/consultDetail.do",produces="application/json;charset=UTF-8")
+	public String consultDetail(String callback) throws UnsupportedEncodingException{
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		String ad_id = URLDecoder.decode(request.getParameter("ad_id"), "UTF-8");
+		int num = advisoryService.getFindAllRespondenceOfAdvisory(ad_id);
+		List<Reply> replyList= advisoryService.findAllRespondenceOfAdvisory(ad_id, 1, num);
+		Advisory advisory = advisoryService.findAdvisoryById(ad_id);
+		Doctor doctor = advisory.getDoctor();
+		advisoryService.setReplysOfAdvisoryRead(ad_id,doctor.getDt_id());
+		Suser user = new Suser();
+		user.setUser_id(advisory.getPatient().getPt_id());
+		Patient patient = patientInformationService.findByUser(user);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("totalNum", URLDecoder.decode(num+"", "UTF-8"));
+		map.put("replyArray", replyList);
+		map.put("doctor", doctor);
+		map.put("patient", patient);
+		JsonConfig jsonConfig = new JsonConfig();
+		jsonConfig.registerJsonValueProcessor(Date.class, new JsonDateVauleProcessor("yyyy-MM-dd HH:mm:ss"));
+		JSONObject resultJSON = JSONObject.fromObject(map, jsonConfig);
+		String result = callback + "(" + resultJSON.toString() + ")";
+		return result;
+	}
+	@ResponseBody
+	@RequestMapping(value="/respondence.do",produces="application/json;charset=UTF-8")
+	public String DoctorResponse(String callback) throws UnsupportedEncodingException{
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		String re_content = URLDecoder.decode(request.getParameter("re_content"), "UTF-8");
+		String result=null;
+		Map<String,String> map=new HashMap<String,String>();
+		Reply reply = new Reply();
+		Advisory ad=new Advisory();
+		ad.setAd_id(URLDecoder.decode(request.getParameter("ad_id"), "UTF-8"));
+		Patient p=new Patient();
+		p.setPt_id(URLDecoder.decode(request.getParameter("pt_id"), "UTF-8"));
+		ad.setPatient(p);
+		Suser user=new Suser();
+		user.setUser_id(URLDecoder.decode(request.getParameter("dt_id"), "UTF-8"));
+		reply.setRespondent(user);
+		reply.setRe_Consultaion(ad);
+		reply.setRe_id(idGeneratorService.ReplyIdGenerator());
+		reply.setRe_content(re_content);
+		reply.setRe_time(new Date());// new Date()为获取当前系统时间
+		if(advisoryService.addRespondence(reply)){
+			result="1";
+		}
+		else result="0";
+		map.put("result", result);
+		JSONObject resultJSON = JSONObject.fromObject(map);
+		String res = callback + "(" + resultJSON.toString() + ")";
+		return res;
+	}
+	//上传图片我不会啊
+	@ResponseBody
+	@RequestMapping(value="/setting.do",produces="application/json;charset=UTF-8")
+	public void DoctorSetInformation(@RequestParam(value="image", required=false) MultipartFile image,
+			@RequestParam(value="dt_id", required=false) String doctorId,
+			@RequestParam(value="dt_name", required=false) String doctorName,
+			@RequestParam(value="dt_sex", required=false) String doctorSex,
+			@RequestParam(value="introduction", required=false) String introduction,
+			@RequestParam(value="dt_tel", required=false) String doctorTel,
+			HttpServletRequest request, HttpServletResponse response) throws ParseException, IOException{
+			Suser user = new Suser();
+			user.setUser_id( URLDecoder.decode(doctorId, "UTF-8"));
+			Doctor d=physicianInformationService.findByUser(user);
+			d.setDt_name(doctorName);
+			d.setDt_sex(doctorSex);
+			d.setDt_tel(doctorTel);
+			d.setIntroduction(introduction);
+			//上传图片
+		    if(image != null){
+			String realPath = request.getServletContext().getRealPath("headImage");
+			String fileName = System.currentTimeMillis() + image.getOriginalFilename();
+			File targetFile = new File(realPath, fileName);
+			//判断文件夹headImage是否存在
+			if(!targetFile.exists()){
+				targetFile.mkdirs();
+			}
+			//上传
+			try{
+				image.transferTo(targetFile);
+				String imageURL = request.getScheme() + "://" +
+									InetAddress.getLocalHost().getHostAddress() +
+								   ":"+ request.getServerPort() + request.getContextPath() +
+									"/" + "headImage" + '/' + targetFile.getName();
+				System.out.println(imageURL);
+				d.setDt_image(imageURL);
+			} catch(Exception e){
+				e.printStackTrace();
+				return ;
+			}
+		}
+		//更新病人信息
+		int res = physicianInformationService.updateInformation(d)? 1 : 0;
+
+		//返回结果
+		response.getWriter().write(res+"");
+		response.setHeader("Access-Control-Allow-Origin", "*");
+	}
+	@ResponseBody
+	@RequestMapping(value="/score.do",produces="application/json;charset=UTF-8")
+	public String DoctorScore(String callback) throws UnsupportedEncodingException{
+		HttpServletRequest request = ((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest();
+		String dt_id = URLDecoder.decode(request.getParameter("dt_id"), "UTF-8");
+		String year,month;
+	        Calendar calendar=Calendar.getInstance();
+	      //获得当前时间的月份，月份从0开始所以结果要加1
+	      int currentmonth=calendar.get(Calendar.MONTH)+1;
+	      month=currentmonth+"";
+	      int currentyear=calendar.get(Calendar.YEAR);
+	      year=currentyear+"";
+		List<Double> scList=evaluationService.getDoctorCurrentTimeEvaluationScore(dt_id, year, month);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("scoreArray", scList);
+		JSONObject resultJSON = JSONObject.fromObject(map);
+		String res = callback + "(" + resultJSON.toString() + ")";
+		return res;
+	}
+}

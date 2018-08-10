@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.scau.hlyz.dao.AdvisoryMapper">
+
+	<resultMap type="advisory" id="AdvisoryWithDoctorAndPatientResult">
+		<id property="ad_id" column="ad_id" />
+		<result property="ad_content" column="ad_content" />
+		<result property="ad_time" column="ad_time" />
+		<result property="ad_title" column="ad_title" />
+		<result property="ad_status" column="ad_status" />
+		<association property="doctor" javaType="doctor">
+			<id property="dt_id" column="dt_id" />
+			<result property="dt_name" column="dt_name" />
+			<result column="dt_sex" property="dt_sex" />
+			<result column="dt_tel" property="dt_tel" />
+			<result column="dt_image" property="dt_image" />
+			<result column="dt_title" property="dt_title" />
+			<result column="dt_introduction" property="introduction" />
+			<result column="dt_money" property="money" />
+			<association property="clinic" javaType="Clinic">
+				<id column="cl_id" property="cl_id" />
+				<result column="cl_dept" property="cl_dept" />
+				<result column="cl_part" property="cl_part" />
+				<result column="cl_place" property="cl_place" />
+			</association>
+		</association>
+		<association property="patient" javaType="patient">
+			<id property="pt_id" column="pt_id" />
+			<result property="pt_name" column="pt_name" />
+		</association>
+	</resultMap>
+
+	<!-- 增加SQL -->
+	<insert id="save" parameterType="advisory">
+		insert into advisory(ad_id,
+		dt_id, pt_id, ad_content, ad_time, ad_title)
+		values(#{ad_id},
+		#{doctor.dt_id}, #{patient.pt_id}, #{ad_content}, #{ad_time},
+		#{ad_title})
+	</insert>
+
+	<!-- 根据ID SQL -->
+	<select id="findById" parameterType="String"
+		resultMap="AdvisoryWithDoctorAndPatientResult">
+		select *
+		from advisory natural join patient natural join doctor natural join clinic
+		where ad_id=#{id}
+	</select>
+
+	<!-- 根据doctor查询结果数 SQL -->
+	<select id="getFindByDoctorCount" parameterType="String"
+		resultType="int">
+		select count(*)
+		from advisory natural join patient natural join doctor
+		where dt_id=#{doctorId}
+	</select>
+
+	<!-- 根据patient查询结果数 SQL -->
+	<select id="getFindByPatientCount" parameterType="String"
+		resultType="int">
+		select count(*)
+		from advisory natural join patient natural join doctor
+		where pt_id=#{patientId}
+	</select>
+
+	<!-- 分页根据doctor查询 SQL -->
+	<select id="findByDoctor" resultMap="AdvisoryWithDoctorAndPatientResult">
+		select *
+		from advisory natural join patient natural join doctor natural join clinic
+		where dt_id=#{0}
+		limit #{1}, #{2}
+	</select>
+	<!-- 分页根据patient查询 SQL -->
+	<select id="findByPatient" resultMap="AdvisoryWithDoctorAndPatientResult">
+		select *
+		from advisory natural join patient natural join doctor natural join clinic
+		where pt_id=#{0}
+		limit #{1}, #{2}
+	</select>
+	<select id="getUnreadAdvisory"  parameterType="String" resultType="int">
+	  select count(*)
+	  from advisory natural join patient natural join doctor
+	  where dt_id=#{dt_id} and ad_status='unread'
+	</select>
+	<select id="findUnreadAdvisory" resultMap="AdvisoryWithDoctorAndPatientResult">
+	    select *
+		from advisory natural join patient natural join doctor natural join clinic
+		where dt_id=#{0} and ad_status='unread'
+		limit #{1}, #{2}
+	</select>
+	<update id="setAdvisoryRead" parameterType="String">
+	update advisory set ad_status='read' where ad_id=#{ad_id}
+	</update>
+</mapper>

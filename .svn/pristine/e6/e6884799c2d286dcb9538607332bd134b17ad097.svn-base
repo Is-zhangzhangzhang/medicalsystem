@@ -1,0 +1,28 @@
+/*
+* @Author: 嘉怡吖
+* @Date:   2018-07-20 10:14:57
+* @Last Modified by:   嘉怡吖
+* @Last Modified time: 2018-07-20 15:27:32
+*/
+// 点击登录按钮效果
+$('#login-button').click(function(event){
+	event.preventDefault();
+	$('.lo-form').fadeOut(500);
+	$('.wrapper').addClass('form-success');
+	setTimeout(function () {
+        window.location.href = "./html/main.html";
+    },1000);
+});
+
+$('#to-register').click(function(event){
+	$('.lo-form').fadeOut(100);
+	$('.re-form').fadeIn();
+});
+
+$('#re-born').datetimepicker({
+	format:'yyyy-mm-dd',
+	minView: "month",
+	autoclose:1
+})
+
+

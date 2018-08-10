@@ -1,0 +1,23 @@
+function sendData(){
+    $.ajax({    
+     type : "post",    
+     async:false,    
+     url : "http://localhost:8080/ssm/patient/remainingNumber.do",
+     dataType:"jsonp", 
+     jsonp:"callback",
+     data: {
+        doctorId:encodeURI("1"),
+        dayOfWeek:2
+     }, 
+     success:function(res){    
+       for(var i in res){
+           console.log('number:'+res[i]);
+       } 
+     },    
+     error:function(){ 
+        console.log("提交失败");
+     }    
+ });   
+}
+
+sendData();

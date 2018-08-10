@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.scau.hlyz.dao.IllnessMapper">	
+	
+	<resultMap type="illness" id="IllnessWithClinic">
+		<id property="ill_id" column="ill_id"/>
+		<result property="ill_name" column="ill_name"/>
+		<result property="ill_symptom" column="ill_symptom"/>
+		<result property="ill_treatment" column="ill_treatment"/>
+		<association property="clinic" javaType="clinic">
+			<id property="cl_id" column="cl_id"/>
+			<result property="cl_dept" column="cl_dept"/>
+			<result property="cl_part" column="cl_part"/>
+			<result property="cl_place" column="cl_place"/>
+		</association>
+	</resultMap>
+	
+	<!-- 新增SQL -->
+	<insert id="save" parameterType="illness">
+		insert into illness(ill_id, ill_name, ill_symptom, ill_treatment, cl_id)
+		 values(#{ill_id}, #{ill_name}, #{ill_symptom}, #{ill_treatment}, #{clinic.cl_id})
+	</insert>
+
+	<!-- 修改SQL -->
+	<update id="update" parameterType="illness">
+		update illness set ill_id=#{ill_id}, ill_name=#{ill_name}, ill_symptom=#{ill_symptom}, ill_treatment=#{ill_treatment}, cl_id=#{clinic.cl_id} where ill_id=#{ill_id}
+	</update>
+
+	<!-- 按ID查询  SQL -->
+	<select id="findById" parameterType="String" resultMap="IllnessWithClinic">
+         select ill_id, ill_name, ill_symptom, ill_treatment, cl_id, cl_dept, cl_part, cl_place
+         from illness natural join clinic
+         where ill_id=#{id}
+    </select>
+    <!-- 分页查询所有 SQL -->
+    <select id="findAll" resultMap="IllnessWithClinic">
+    	 select ill_id, ill_name, ill_symptom, ill_treatment, cl_id, cl_dept, cl_part, cl_place
+         from illness natural join clinic
+         limit #{0}, #{1}
+    </select>
+    <!-- 按name查询 SQL -->
+    <select id="findByName" resultMap="IllnessWithClinic">
+    	 select ill_id, ill_name, ill_symptom, ill_treatment, cl_id, cl_dept, cl_part, cl_place
+         from illness natural join clinic
+         where ill_name=#{name}
+    </select>
+</mapper>

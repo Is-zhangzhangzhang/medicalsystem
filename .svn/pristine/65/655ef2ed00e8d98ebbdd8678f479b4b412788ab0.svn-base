@@ -1,0 +1,65 @@
+$(function () {
+    /**
+     *   ======================@module 医务人员管理=========================
+     */
+    var addOrEdit = 0;
+    // 立即执行请求获得 医生列表
+    console.log("执行了执行了！！");
+    var dt_list = [];
+    var obj ={};
+    obj.id = "0101";
+    obj.name = "杨别";
+    obj.sex ="男";
+    obj.dept = "内科";
+    obj.clinic = "门诊1";
+    obj.tel = "13602799555";
+    obj.title ="主任医师";
+    obj.introduction = "中医世家杨家继承人，已攻克中医与新时代神经性疾病的天堑";
+    obj.money = "30";
+    dt_list.push(obj);
+    var str = "<td><img src=\"../../img/inithead.jpg\"></td>";
+    initTable(str,dt_list,"dt_table");
+
+    /**
+     * @module 点击行 编辑医生信息 初始化模态框中的值
+     *
+     * @property list_index 点击行的下标
+     */
+    var tr;
+    $('#dt_table tbody').on('click','tr',function () {
+        addOrEdit = 1;
+        tr = $(this);
+        $('#dt_modal').modal('show');
+        $('#dt_id').attr('disabled',true);  //设置id不可编辑
+        assignToModalText(dt_list,tr.index(), "dt_text");
+    });
+
+    $('#dt_add_btn').click(function () {
+        $('#dt_modal').modal('show');
+        addOrEdit = 2;
+        $('#dt_id').removeAttr('disabled');  //设置id可编辑
+        var text = document.getElementsByName("dt_text");
+        for(var i=0;i<text.length;i++){
+            text[i].value = "";
+        }
+    });
+    $('#dt_save').click(function () {
+        console.log(addOrEdit);
+        if(addOrEdit == 1){  //修改医生信息
+            console.log("modify doctor");
+            //TODO 要加一个判断 值是否已经修改
+            assignToList("dt_text",dt_list,tr.index());
+            //TODO 修改完后要把data_List[list_index]返回给后台，如果成功，才执行下面
+            var td = tr.children();
+            updateTable(td,dt_list[tr.index()]);
+        }
+        else{  //添加医生
+            console.log("add doctor");
+            addToList("dt_text",dt_list);
+            var addstr = "<td><img src=\"../../img/inithead.jpg\"></td>";
+            addTable(addstr,"dt_table",dt_list[dt_list.length - 1]);
+        }
+        $('#dt_modal').modal('hide');
+        addOrEdit = 0;
+    });
+});

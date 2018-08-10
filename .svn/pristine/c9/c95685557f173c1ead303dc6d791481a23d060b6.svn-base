@@ -1,0 +1,23 @@
+function sendData(){
+    $.ajax({    
+     type : "post",    
+     async:false,    
+     url : "http://localhost:8080/ssm/admin/part.do",
+     dataType:"jsonp", 
+     jsonp:"callback",
+     data: {
+         dept: encodeURI("内科")
+     }, 
+     success:function(res){  
+       for(var i in res){
+           console.log('cl_id:'+res[i].cl_id+',cl_part:'+res[i].cl_part);
+           
+       } 
+     },    
+     error:function(){ 
+        console.log("提交失败");
+     }    
+ });   
+}
+
+sendData();

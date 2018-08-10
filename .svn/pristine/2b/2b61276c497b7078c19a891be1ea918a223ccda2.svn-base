@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+    <meta name="description" content="description of your site"/>
+    <meta name="author" content="author of the site"/>
+    <title>挂号列表</title>
+    <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../css/util/styles.css"/>
+    <link rel="stylesheet" href="../../css/users/doctor.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body>
+<!--顶部导航栏-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="index.html"><h4>不知道叫什么<strong>系统</strong></h4></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        我的消息
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">我的挂号</a></li>
+                        <li><a href="#">我的咨询</a></li>
+                        <li><a href="#">回复</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        User
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="index.html">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!--顶部菜单栏-->
+<div id="in-sub-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <ul>
+                    <li>
+                        <a href="main.html"><i class="batch home"></i><br/>主页</a>
+                    </li>
+                    <li>
+                        <span class="label label-danger pull-right">04</span>
+                        <a href="doctorHome.html"><i class="batch plane"></i><br/>我的主页</a>
+                    </li>
+                    <li>
+                        <a href="registerList.html" class="active"><i class="batch forms"></i><br/>挂号列表</a>
+                    </li>
+                    <li>
+                        <a href="doctorScore.html"><i class="batch users"></i><br/>病患评分</a>
+                    </li>
+                    <li>
+                        <a href="setting.html"><i class="batch settings"></i><br/>设置</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--挂号列表-->
+<div class="page">
+    <div class="page-container">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12">
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><h4><strong>今日挂号病人</strong></h4></div>
+                        <table id="list-table" class="table table-striped table-hover table-bordered">
+                            <thead>
+                                <tr>
+                                    <th class="text-center">序号</th>
+                                    <th class="text-center">姓名</th>
+                                    <th class="text-center">操作</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>病人①号</td>
+                                <td class="list-action">
+                                    <button class="btn btn-warning">呼叫</button>
+                                    <button class="btn btn-info">就诊</button>
+                                    <button class="btn btn-danger">忽略</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>病人②号</td>
+                                <td class="list-action">
+                                    <button class="btn btn-warning">呼叫</button>
+                                    <button class="btn btn-info">就诊</button>
+                                    <button class="btn btn-danger">忽略</button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>病人③号</td>
+                                <td class="list-action">
+                                    <button class="btn btn-warning">呼叫</button>
+                                    <button class="btn btn-info">就诊</button>
+                                    <button class="btn btn-danger">忽略</button>
+                                </td>
+                            </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!--底部信息-->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <p class="pull-right">作者：华俊达 李腾泳 袁晓如 张嘉怡</p>
+                <p>&copy; 2018 不知道叫什么系统 来源：scau</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+<script src="../../plugins/jQuery/jquery-3.1.1.min.js"></script>
+<script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="../../js/util/jump.js"></script>
+<script src="../../js/doctor/doctor.js"></script>
+</html>

@@ -1,0 +1,35 @@
+// 显示咨询和评论
+$('.tab-show').click(function(){
+    $('.tab-show').fadeOut();
+    $('.consult-tab').fadeIn();
+});
+
+//问答详情界面
+$('#consult li').click(function () {
+    // console.log(this.innerHTML);
+    window.location.href = "/font-end/html/doctor/consult.html";
+});
+
+//tab 页面切换
+$('#consult a').click(function () {
+    $(this).tab('show');
+});
+$('#comment a').click(function () {
+    $(this).tab('show');
+});
+
+//评论回复
+/*$('.comment-reply').click(function () {
+    console.log("医生在评论处点击了回复");
+    // console.log($(this).html());
+    var btn = $(this);
+    var reply = btn.next();
+    if(reply.is(':visible')){
+        reply.fadeOut();
+        btn.text("回复");
+    }
+    else{
+        btn.text("取消");
+        reply.fadeIn();
+    }
+});*/

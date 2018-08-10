@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+    <meta name="description" content="description of your site"/>
+    <meta name="author" content="author of the site"/>
+    <title>挂号列表</title>
+    <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../css/util/styles.css"/>
+    <link rel="stylesheet" href="../../css/users/doctor.css">
+    <link rel="stylesheet" href="../../css/util/commons.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+<body>
+<!--顶部导航栏-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="../../index.html"><h4><strong>P&nbsp;<i class="glyphicon glyphicon-plus" style="color:#e52c2c"></i>&nbsp;P</strong>系统</h4></a>
+        </div>
+
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        我的消息
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="registerList.html">今天挂号</a></li>
+                        <li><a href="/font-end/html/doctor/doctorHome.html?toConsult=true">我的问答<span class="label label-danger pull-right">03</span></a></li>
+                        <li><a href="/font-end/html/doctor/doctorHome.html?toComment=true">我的评论<span class="label label-danger pull-right">20</span></a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        User
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!--顶部菜单栏-->
+<div id="in-sub-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <ul>
+                    <li><a href="main.html"><i class="batch home"></i><br/>首页</a></li>
+                    <li><span class="label label-danger pull-right">04</span><a href="doctorHome.html" class="active"><i
+                            class="batch plane"></i><br/>我的主页</a></li>
+                    <li><a href="registerList.html"><i class="batch forms"></i><br/>挂号列表</a></li>
+                    <li><a href="doctorScore.html"><i class="batch users"></i><br/>病患评分</a></li>
+                    <li id="top_msg"><a href="message.html"><i class="batch msg"></i><br/>消息列表</a></li>
+                    <li><a href="setting.html"><i class="batch settings"></i><br/>设置</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--消息提示-->
+<div class="msg-alert"></div>
+<div class="page">
+    <div class="page-container">
+        <div class="container">
+            <!--医生简介+照片-->
+            <div class="row" id="dthome_intro">
+                <div class="col-md-5 text-center img_dt_head ">
+                    <img src="../../img/doctor.jpg" alt="医生照片">
+                </div>
+                <div class="col-md-7 intro_dt_content" id="dt_intro_home"></div>
+            </div>
+            <!--展开评论和咨询-->
+            <hr>
+            <div class="row">
+                <div class="text-center">
+                    <a href="javascript:void(0)" id="tab-show">查看医生问答和评论 ></a>
+                </div>
+            </div>
+            <!--评论和咨询-->
+            <div class="row" id="consult-tab">
+                <ul class="nav nav-tabs">
+                    <li role="presentation" class="active">
+                        <a href="#consult" data-toggle="tab">医生问答</a></li>
+                    <li role="presentation">
+                        <a href="#comment" data-toggle="tab">医生评论</a></li>
+                </ul>
+                <div class="tab-content">
+                    <!--医生问答标签页内容-->
+                    <div class="tab-pane fade in active consult" id="consult">
+                        <ul class="list-group" id="dthome_cs_ul">
+                        </ul>
+                    </div>
+                    <!--评论标签页-->
+                    <div class="tab-pane fade" id="comment">
+                        <ul class="list-group">
+                            <li class="list-group-item">
+                                <div class="comment-context">
+                                    <div class="row">
+                                        <div class="col-lg-1 col-md-1 text-center">
+                                            <img src="../../img/inithead.jpg" alt="评论者头像">
+                                        </div>
+                                        <div class="col-lg-8 col-md-8">
+                                            <strong>张嘉怡哇:<br/></strong>
+                                            <span>我觉得这个医生非常的好！！！</span>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3">
+                                            <span class="pull-right">2018-07-23</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="comment-context">
+                                    <div class="row">
+                                        <div class="col-lg-1 col-md-1 text-center">
+                                            <img src="../../img/inithead.jpg" alt="评论者头像">
+                                        </div>
+                                        <div class="col-lg-8 col-md-8">
+                                            <strong>袁晓如哇:<br/></strong>
+                                            <span>医生挺好的！！！</span>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3">
+                                            <span class="pull-right">2018-07-23</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--底部信息-->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <p class="pull-right">作者：华俊达 李腾泳 袁晓如 张嘉怡</p>
+                <p>&copy; 2018 P&nbsp;<i class="glyphicon glyphicon-plus"></i>&nbsp;P系统 来源：scau</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+<script src="../../plugins/jQuery/jquery-3.1.1.min.js"></script>
+<script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
+<!--<script src="../../js/util/jump.js"></script>-->
+<script src="../../js/doctor/doctor.js"></script>
+<script src="../../js/doctor/doctorHome.js"></script>
+<script src="../../js/util/commons.js"></script>
+</html>

@@ -1,0 +1,84 @@
+$(function () {
+    /**
+     * @module 首页
+     */
+    //hover科室显示门诊
+    $("[data-toggle='popover']").popover({
+        html: true,
+        title: clinic_title(),
+        delay: {show: 500, hide: 3000},
+        content: function () {
+            return clinic_card_content();
+        }
+    });
+
+    // hover显示门诊给的标题
+    function clinic_title(data) {
+        console.log(data);
+        return data;
+    };
+
+    // hover显示门诊的数据
+    $('.choose_dept a').mouseover(function () {
+        var clinic = $(this).text();
+        clinic_title(clinic);
+    });
+
+    // 从后台获取的门诊数据
+    function clinic_card_content() {
+        // TODO 从后台获取门诊
+        var data = "<a>呼吸门诊</a>";
+        data += "<a>消化门诊</a>";
+        data += "<a>内分泌门诊</a>";
+        data += "<a>血液门诊</a>";
+        console.log(data);
+        return data;
+    }
+
+    // 轮播
+    $('.carousel').carousel({
+        interval: 3000
+    });
+
+    /**
+     * @module 个人资料
+     */
+    //修改出生日期
+    if($('#pt_born'))
+    $('#pt_born').datetimepicker({
+        format: 'yyyy-mm-dd',
+        minView: "month",
+        autoclose: 1
+    });
+
+    $('#pt_setting_save').click(function () {
+        var formData = new FormData();
+        formData.append('image', $("#upload-file")[0].files[0]);   //将文件转成二进制形式
+        formData.append('pt_id', encodeURI('13')),
+            formData.append('pt_name', encodeURI($("#pt_name").val()));
+        formData.append('pt_sex', encodeURI($("#pt_sex").val()));
+        formData.append('born', encodeURI($("#pt_born").val()));
+        formData.append('pt_tel', encodeURI($("#pt_tel").val()));
+        console.log(formData);
+        $.ajax({
+            type: "post",
+            url: "http://134.175.21.162:8080/medicalSystem/patient/setting.do",
+            async: false,
+            contentType: false,    //这个一定要写
+            processData: false, //这个也一定要写，不然会报错
+            data: formData,
+            dataType: 'text',    //返回类型，有json，text，HTML。这里并没有jsonp格式，所以别妄想能用jsonp做跨域了。
+            success: function (res) {
+                console.log(res);
+                if (res == '1') {
+                    console.log('success!');
+                } else {
+                    console.log('fail');
+                }
+            },
+            error: function (XMLHttpRequest, textStatus, errorThrown, data) {
+                alert(errorThrown);
+            }
+        });
+    });
+});

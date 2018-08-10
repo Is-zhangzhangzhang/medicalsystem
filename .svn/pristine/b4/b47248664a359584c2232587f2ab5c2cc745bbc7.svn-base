@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.scau.hlyz.dao.RegistrationFormMapper">
+
+	<resultMap type="registrationForm" id="RegistrationFormWithPatientAndDoctResult">
+		<id property="rf_id" column="rf_id" />
+		<result property="rf_time" column="rf_time" />
+		<result property="rf_status" column="rf_status" />
+		<association property="doctor" javaType="doctor">
+			<id property="dt_id" column="dt_id" />
+			<result property="dt_name" column="dt_name" />
+		</association>
+		<association property="patient" javaType="patient">
+			<id property="pt_id" column="pt_id" />
+			<result property="pt_name" column="pt_name" />
+		</association>
+	</resultMap>
+
+	<!-- 增加SQL -->
+	<insert id="save" parameterType="registrationForm">
+		insert into
+		registrationform(rf_id, dt_id, pt_id, rf_time, rf_status)
+		values(#{rf_id}, #{doctor.dt_id}, #{patient.pt_id}, #{rf_time},
+		#{rf_status})
+	</insert>
+
+	<!-- 修改SQL -->
+	<update id="updateStatus" parameterType="registrationForm">
+		update registrationform
+		set rf_status=#{rf_status} where rf_id=#{rf_id}
+	</update>
+
+	<!-- 根据ID SQL -->
+	<select id="findById" parameterType="String"
+		resultMap="RegistrationFormWithPatientAndDoctResult">
+		select rf_id, rf_time, rf_status, dt_id, dt_name, pt_id,
+		pt_name
+		from registrationform natural join patient natural join doctor
+		where rf_id=#{id}
+	</select>
+	
+	<!-- 查询所有结果数 SQL -->
+	<select id="getFindAllCount" resultType="int">
+		select count(*) from registrationform
+	</select>
+	
+	<!-- 分页查询所有 SQL -->
+	<select id="findAll" resultMap="RegistrationFormWithPatientAndDoctResult">
+		select rf_id, rf_time, rf_status,
+		dt_id, dt_name, pt_id, pt_name
+		from registrationform natural join
+		patient natural join doctor
+		limit #{0}, #{1}
+	</select>
+	<!-- 查询当前两个小时 SQL -->
+	<select id="findTwoHours" resultMap="RegistrationFormWithPatientAndDoctResult">
+		select rf_id, rf_time,
+		rf_status, dt_id, dt_name, pt_id, pt_name
+		from registrationform natural
+		join patient natural join doctor
+		where rf_time between now() and
+		date_add(now(), interval 2 hour)
+		order by rf_time
+	</select>
+
+	<!-- 获取某周某一天的某两个小时的未完成的挂号数 SQL -->
+	<select id="getCount"  resultType="int">
+		select count(*)
+		from registrationform natural join
+		patient natural join doctor
+		where dt_id = #{0} and rf_status = 'uncompleted' and
+		weekofyear(now()) = weekofyear(rf_time)
+		and dayofweek(rf_time) =
+		#{1} and hour(rf_time) between #{2} and (#{2}+2);
+	</select>
+
+</mapper>

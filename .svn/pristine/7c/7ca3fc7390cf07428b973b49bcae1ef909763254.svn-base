@@ -1,0 +1,203 @@
+$(function () {
+    /**
+     * @module 首页
+     */
+    let _deptIndex = 0;
+    // hover显示门诊的数据
+    $('.choose_dept>a').mouseover(function () {
+        _deptIndex = $(this).index();
+    });
+    let _clinicList = [
+        ['呼吸内科门诊','血液内科门诊','风湿免疫门诊','心血管内科门诊','内分泌科门诊','糖尿病教育门诊','消化内科门诊'],
+        ['胃肠外科门诊','甲乳外科门诊','关节外科创伤骨科门诊','骨外科门诊','心胸外科门诊','泌尿外科门诊','神经外科门诊','整形烧伤科门诊'],
+        ['神经内科门诊'],
+        ['妇科门诊','产科门诊'],
+        ['儿科门诊'],
+        ['中医科门诊'],
+        ['咽喉头颈科门诊','鼻科门诊','耳科门诊','耳鼻喉科门诊'],
+        ['口腔科门诊'],
+        ['皮肤性病科门诊'],
+        ['精神（心理）科门诊']
+    ];
+    function clinic_card_content() {
+        // TODO 从后台获取门诊
+        let data = "";
+        console.log(_deptIndex);
+        for(let i in _clinicList[_deptIndex])
+        {
+            data += "<a href='javascript:void(0)'>"+_clinicList[_deptIndex][i]+"</a>";
+        }
+        return data;
+    }
+    //hover科室显示门诊
+    $("[data-toggle='popover']").popover({
+        html: true,
+        content: function () {
+            return clinic_card_content();
+        }
+    });
+
+    // 轮播
+    $('.carousel').carousel({
+        interval: 3000
+    });
+    window.setInterval(callRegister(), 30000);
+    window.setInterval(callConsume(), 30000);
+    window.setInterval(callReply(), 30000);
+});
+
+/*===========轮询============*/
+//挂号呼叫
+let getPatientId = function () {
+    let id = "";
+    if(localStorage.hasOwnProperty('patient')){
+        id = JSON.parse(localStorage.getItem('patient')).pt_id;
+    }
+    return id;
+};
+//if($('#msg_rf_call')) //如果在message的话就把轮询内容插进去
+let replyList;
+let callReply = function () {
+    $.ajax({
+        type: "post",
+        async: false,
+        url: "http://134.175.21.162:8080/medicalSystem/patient/callReply.do",
+        dataType: "jsonp",
+        jsonp: "callback",
+        data: {
+            pt_id: getPatientId(),
+        },
+        success: function (res) {
+            if (res.result == '1') {
+                replyList = res.replyArray;
+                let warn_kind = "你有"+replyList.length+"条问答消息,";
+                let warn_class = "alert_reply";
+                let open_tab = 1;
+                let warn_html = `<div class="alert alert-warning alert-dismissible ${warn_class}" role="alert">
+                    <button class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong><span class="alert_msg_amount">${warn_kind}</span><a href="/font-end/html/patient/message.html?tab=${open_tab}" class="alert_msg">立即查看</a></strong>
+                </div>`;
+                if( $('.msg-alert').hasClass('.alert_reply')){
+                    $('.alert_reply .alert_msg_amount').text(warn_kind);
+                }
+                else{
+                    $('.msg-alert').append(warn_html);
+                }
+
+                console.log(warn_html);
+                var reArr = res.replyArray;
+                for (var i in reArr) {
+                    console.log('re_id:' + reArr[i].re_id + ',re_content:' + reArr[i].re_content + ',re_time:' + reArr[i].re_time);
+
+                    console.log('dt_id:' + reArr[i].re_Consultaion.doctor.dt_id + ',dt_name:' + reArr[i].re_Consultaion.doctor.dt_name + ',dt_sex:' + reArr[i].re_Consultaion.doctor.dt_sex + ',dt_tel:' + reArr[i].re_Consultaion.doctor.dt_tel + ',dt_image:' + reArr[i].re_Consultaion.doctor.dt_image + ',dt_title:' + reArr[i].re_Consultaion.doctor.dt_title + ',introduction:' + reArr[i].re_Consultaion.doctor.introduction + ',money:' + reArr[i].re_Consultaion.doctor.money);
+                }
+            }
+        },
+        error: function () {
+            console.log("提交失败");
+        }
+    });
+};
+let registerList;
+let callRegister = function () {
+    $.ajax({
+        type: "post",
+        async: false,
+        url: "http://134.175.21.162:8080/medicalSystem/patient/callRegistration.do",
+        dataType: "jsonp",
+        jsonp: "callback",
+        data: {
+            patientId: getPatientId(),
+        },
+        success: function (res) {
+            if(res.result == '1'){
+                console.log('被呼叫');
+                registerList = res.registrationForm;
+                console.log(res);
+                let warn_kind = "你有"+registerList.length+"条就诊消息,";
+                let open_tab = 2;
+                let warn_class = "alert_register";
+                let warn_html = `<div class="alert alert-warning alert-dismissible ${warn_class}" role="alert">
+                    <button class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong><span class="alert_msg_amount">${warn_kind}</span><a href="/font-end/html/patient/message.html?tab=${open_tab}" class="alert_msg">立即查看</a></strong>
+                </div>`;
+                if( $('.msg-alert').hasClass('.alert_register')){
+                    $('.alert_register .alert_msg_amount').text(warn_kind);
+                }
+                else{
+                    $('.msg-alert').append(warn_html);
+                }
+                //TODO 把消息内容放到localstorage 加载message时显示
+                /*  var rf = res.registrationForm;
+                  console.log('rf_id:'+rf.rf_id+',rf_time:'+rf.rf_time+',rf_status:'+rf.rf_status);
+                  var doctor = rf.doctor;
+                  console.log('dt_id:'+doctor.dt_id+',dt_name:'+doctor.dt_name);
+                  var clinic = doctor.clinic;
+                  console.log('cl_id:' + clinic.cl_id + ',cl_dept:' + clinic.cl_dept + ',cl_part:' + clinic.cl_part + ',cl_place:' + clinic.cl_place);
+                  var patient = rf.patient;
+                  console.log('pt_id:'+patient.pt_id+',pt_name:'+patient.pt_name);*/
+            }else{
+                console.log("请继续等待");
+            }
+
+        },
+        error: function () {
+            console.log("提交失败");
+        }
+    });
+};
+let consumeList;
+let callConsume = function () {
+    $.ajax({
+        type: "post",
+        async: false,
+        url: "http://134.175.21.162:8080/medicalSystem/patient/askCOrder.do",
+        dataType: "jsonp",
+        jsonp: "callback",
+        data: {
+            patientId: getPatientId(),
+        },
+        success: function (res) {
+            if(res.result == '1'){
+                consumeList =  res.consumptionOrder;
+                let warn_kind = "你有"+consumeList.length+"条支付消息,";
+                let open_tab = 3;
+                let warn_class = "alert_pay";
+                let warn_html = `<div class="alert alert-warning alert-dismissible ${warn_class}" role="alert">
+                    <button class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <strong><span class="alert_msg_amount">${warn_kind}</span><a href="/font-end/html/patient/message.html?tab=${open_tab}" class="alert_msg">立即查看</a></strong>
+                </div>`;
+                if( $('.msg-alert').hasClass('.alert_pay')){
+                    console.log('有了有了！');
+                    $('.alert_pay .alert_msg_amount').text(warn_kind);
+                }
+                else{
+                    $('.msg-alert').append(warn_html);
+                }
+                console.log(warn_html);
+                console.log('有消费单啦');
+
+            }else{
+                console.log("请继续等待");
+            }
+
+        },
+        error: function () {
+            console.log("支付消息提交失败");
+        }
+    });
+};
+$('.msg-alert').on('click','a',function () {
+    // alert("点击了！！");
+    localStorage.setItem('replyList',JSON.stringify(replyList));
+    localStorage.setItem('registerList',JSON.stringify(registerList));
+    localStorage.setItem('consumeList',JSON.stringify(consumeList));
+});
+$('#top_msg').click(function () {
+    localStorage.setItem('replyList',JSON.stringify(replyList));
+    localStorage.setItem('registerList',JSON.stringify(registerList));
+    localStorage.setItem('consumeList',JSON.stringify(consumeList));
+});
+
+
+

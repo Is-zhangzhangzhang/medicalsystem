@@ -1,0 +1,172 @@
+/*=========首页 start=========*/
+/*轮播图*/
+#carousel-img img{
+    margin: 0 auto;
+}
+/*手风琴*/
+.choose_dept .popover-content>a{
+    margin-right: 5px;
+}
+.panel-heading{
+    cursor: pointer;
+}
+.panel{
+    width:100%;
+}
+
+/*========tag======== 病患挂号选择科室门诊*/
+.tag a{
+    display: inline-block;
+    background-color: #EEE;
+    padding: 3px 8px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+    border-radius: 4px;
+    text-decoration: none;
+}
+.tag a:hover {
+    background-color: #008dcd;
+    color: #FFF;
+}
+.tag-active{
+    background-color: #008dcd !important;
+    color: #FFF !important;
+    text-decoration: none !important;
+}
+
+/*========挂号 start========*/
+.book-clinic,
+.book-day,
+.book-who,
+.doctor-page{
+    display: none;
+}
+.book-clinic > h4{
+    display: inline-block;
+}
+.book-clinic > h5{
+    display: inline-block;
+}
+#book_consult_ul{
+    margin-bottom: 0;
+}
+/*咨询的医生简介*/
+#consult_title{
+    margin-top: 30px;
+}
+#consult_title h3{
+    font-weight: 500;
+    display: inline-block;
+}
+#consult_dt_intro{
+    margin-top: 50px;
+}
+#consult_title .green-title>span{
+    line-height: 65px;
+}
+.consult-detial{
+    padding: 20px 5px;
+    border: 1px solid #ccc;
+}
+/*挂号时间表*/
+.time-table{
+    width: 65%;
+    margin: 30px auto;
+    border-radius: 5px;
+}
+.time-table tr th{
+    vertical-align: middle !important;
+    text-align: center;
+    font-size: 1.8rem;
+}
+.time-table tr td{
+    text-align: center;
+    font-size: 1.6rem;
+}
+.time-table table tr td:nth-of-type(2){
+    background-color: rgba(187,209,191,0.32);
+    cursor: pointer;
+}
+.time-table table tr td:nth-of-type(2):hover{
+    background-color: rgb(187,209,191);
+}
+/*挂号信息确认*/
+.book-sure-msg{
+    display: none;
+}
+.book-sure-msg div{
+    margin-top: 20px;
+}
+
+/*==========历史病历==========*/
+.record-list li{
+    cursor: pointer;
+}
+
+/*==========疾病百科==========*/
+.dk-search{
+    width: 65%;
+    margin: 0 auto;
+}
+/*搜索框*/
+.dk-search button,
+.dk-search button:visited{
+    background-color: rgba(64,152,127,1);
+    color:#fff;
+}
+.dk-search button:hover{
+    background-color: rgba(64,152,127,0.8);
+    color: #fff;
+}
+.dk-search button:active{
+    background-color: rgba(64,152,127,1);
+    color:#fff;
+}
+.dk-search button:focus{
+    background-color: rgba(64,152,127,1);
+    color:#fff;
+}
+/*疾病列表*/
+.dk-list{
+    margin-top: 20px;
+}
+
+/* =============支付界面============== */
+#pt_pay{
+    margin: 20px 0 80px 0;
+    vertical-align: middle;
+}
+#pt_pay img{
+    width: 30%;
+}
+#pt_pay div{
+    margin: 30px;
+    font-size: 3rem;
+}
+/*==============消息列表界面=================*/
+#msg_list .head_img{
+    max-width: 100px;
+    max-height: 100px;
+    border-radius: 50%;
+}
+.msg_time{
+    display: inline-block;
+    margin-top: 8px;
+}
+#diseaseKnowledge_ul .list-group-item h4{
+    font-size:22px;
+    color:rgb(58,171,162,1);
+    font-weight: 700 !important;
+}
+#diseaseKnowledge_ul .list-group-item p:nth-child(2){
+    font-size:14px;
+}
+#diseaseKnowledge_ul .list-group-item p:nth-child(3){
+    font-size:14px;
+}
+#diseaseKnowledge_ul .list-group-item p>span{
+    color:rgb(157,157,150,1);
+}
+#diseaseKnowledge_ul .list-group-item p:nth-child(4){
+    color:rgb(157,157,150,1);
+}

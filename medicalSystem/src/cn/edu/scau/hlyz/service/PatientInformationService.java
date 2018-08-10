@@ -1,0 +1,13 @@
+package cn.edu.scau.hlyz.service;
+
+import cn.edu.scau.hlyz.entity.Patient;
+import cn.edu.scau.hlyz.entity.Suser;
+
+public interface PatientInformationService {
+	Patient findByUser(Suser user);
+	Boolean addInformation(Patient patient);
+	Boolean updateInformation(Patient patient);
+	Boolean deleteInformation(Patient patient);
+	String getPatientID(String phone);
+	Boolean checkPatientIDCardNum(String IDCardNum);
+}

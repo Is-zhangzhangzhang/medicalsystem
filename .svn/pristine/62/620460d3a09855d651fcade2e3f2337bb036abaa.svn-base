@@ -1,0 +1,14 @@
+//药品输入提示
+$(function () {
+    var medicalMsg = [
+        "阿胶",
+        "茯苓",
+        "感冒药",
+        "止痛药",
+        "感动哈哈哈哈",
+        "感觉哈哈哈"
+    ];
+    $('#medical-name').autocomplete({
+        source: medicalMsg
+    });
+})

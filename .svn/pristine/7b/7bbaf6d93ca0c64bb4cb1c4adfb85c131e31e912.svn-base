@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+    <meta name="description" content="description of your site"/>
+    <meta name="author" content="author of the site"/>
+    <title>首页</title>
+    <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../css/util/styles.css"/>
+    <link rel="stylesheet" href="../../css/users/patient.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+
+<body>
+<!--顶部导航栏-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="../../index.html"><h4>不知道叫什么<strong>系统</strong></h4></a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        我的消息
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="#">我的挂号</a></li>
+                        <li><a href="#">我的咨询</a></li>
+                        <li><a href="#">回复</a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        User
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!--顶部菜单栏-->
+<div id="in-sub-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <ul>
+                    <li>
+                        <a href="main.html"><i class="batch home"></i><br/>主页</a>
+                    </li>
+                    <li>
+                        <a href="bookDoctor.html"><i class="batch book-doctor"></i><br/>我要挂号</a>
+                    </li>
+                    <li>
+                        <span class="label label-danger pull-right">04</span>
+                        <a href="myConsult.html"><i class="batch comment"></i><br/>我的问答</a>
+                    </li>
+                    <li>
+                        <a href="myMedicalRecord.html" class="active"><i class="batch forms"></i><br/>我的病历</a>
+                    </li>
+                    <li>
+                        <a href="diseaseKnowledge.html"><i class="batch book"></i><br/>疾病百科</a>
+                    </li>
+                    <li>
+                        <a href="setting.html"><i class="batch users"></i><br/>个人资料</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--主界面内容：我的病历列表-->
+<div class="page">
+    <div class="page-container">
+        <div class="container">
+            <div class="row">
+                <!--侧边sidebar-->
+                <div class="col-lg-3 col-md-3 col-sm-12 col-xm-12 record-list">
+                    <h4>我的历史病历</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item">医生：xxx <span class="badge">2018年7月26日</span></li>
+                        <li class="list-group-item">医生：xxx <span class="badge">2018年6月30日</span></li>
+                        <li class="list-group-item">医生：xxx <span class="badge">2018年6月5日</span></li>
+                        <li class="list-group-item">医生：xxx <span class="badge">2018年5月26日</span></li>
+                        <li class="list-group-item">医生：xxx <span class="badge">2018年4月30日</span></li>
+                    </ul>
+                </div>
+                <div class="col-lg-9 col-md-9 col-sm-12 col-xm-12">
+                    <div>
+                        <h4>病历信息</h4>
+                        <div class="wrapping80">
+                            <div class="row">
+                                <span class="col-lg-3 col-md-3 text-center">姓名：<span>病人</span></span>
+                                <span class="col-lg-3 col-md-3 text-center">性别：<span></span></span>
+                                <span class="col-lg-3 col-md-3 text-center">年龄：<span></span></span>
+                                <span class="col-lg-3 col-md-3 text-center">病历号：<span></span></span>
+                            </div>
+                            <div class="row">
+                                <span class="col-lg-3 col-lg-offset-3 col-md-3 col-md-offset-3 text-center">科室：</span>
+                                <span class="col-lg-3 col-md-3 text-center">门诊：</span>
+                                <span class="col-lg-3 col-md-3 text-center">日期：</span>
+                            </div>
+                            <hr>
+                            <div>
+                                <strong>临床诊断：</strong>
+                                <span id="record-disease">没毛病</span>
+                            </div>
+                            <div>
+                                <h1>Rp:</h1>
+                                <!--药品列表-->
+                                <div>
+                                    <table class="table table-striped table-hover table-bordered" style="margin: 15px;">
+                                        <thead>
+                                        <tr><th>药品名称</th>
+                                            <th>药品用量</th>
+                                            <th>药品价格</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        <tr>
+                                            <td>1111</td>
+                                            <td>2222</td>
+                                            <td>3333</td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!--用法-->
+                                <div>
+                                    <strong>用法：</strong>
+                                    <span id="record-eatday">？？</span>
+                                    <strong>次，服用：</strong>
+                                    <span>??</span>
+                                    <strong>天</strong>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <p class="pull-right">作者：华俊达 李腾泳 袁晓如 张嘉怡</p>
+                <p>&copy; 2018 不知道叫什么系统 来源：scau</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+<!--jQuery-->
+<script src="../../plugins/jQuery/jquery-3.1.1.min.js"></script>
+<!--bootstrap-->
+<script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
+<!--当前界面js-->
+<script src="../../js/util/jump.js"></script>
+<script src="../../js/patient/patient.js"></script>
+</html>

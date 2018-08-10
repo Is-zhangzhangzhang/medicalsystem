@@ -1,0 +1,55 @@
+/*
+* @Author: anchen
+* @Date:   2018-08-04 16:44:45
+* @Last Modified by:   anchen
+* @Last Modified time: 2018-08-04 18:04:11
+*/
+
+let loadValidRegistration= function(){
+    $.ajax({
+        type : "post",
+        async:false,
+        url : "http://134.175.21.162:8080/medicalSystem/patient/validRegistration.do",
+        dataType:"jsonp",
+        jsonp:"callback",
+        data: {
+            pt_id: if(sessionStorage.hasOwnProperty(''patient)){
+                           JSON.parse(sessionStorage.getItem('patient')).pt_id;
+                       }
+        },
+        success:function(res){
+            let li;
+            for(var i in res){
+                    var rf=res[i];
+                    li = "";
+                    li += "<li class=\"list-group-item\">";
+                    li += "<h4>"+"挂号："+rf.doctor.clinic.cl_dept+"-"+rf.doctor.clininc.cl_part+"&emsp;医生："+rf.doctor.dt_name+"</h4>";
+                    li += "<span>"+"时间：";
+                    var dateTime=rf.rf_time.split(" ");
+                    li+=dateTime[0]+"</span>";
+                    var timeHour=dateTime[1].substring(0,2);
+                    if(parseInt(timeHour)<parseInt("12")){
+                        li+= "<span>&ensp; 上午：";
+                        if(parseInt(timeHour)<parseInt("10")){
+                            li+="8:00-10：00</span>";
+                        }else{
+                             li+="10:00-12：00</span>";
+                        }
+                    }else{
+                        li+= "<span>&ensp; 下午：";
+                        if(parseInt(timeHour)<parseInt("16")){
+                            li+="14:00-16：00</span>";
+                        }else{
+                             li+="16:00-18：00</span>";
+                        }
+                    }
+                    li+="<span>"+rf.rf_time+"</span>"
+                    li += "</li>";
+                    $('#myBook_ul').append(li);
+          }
+        },
+        error:function(){
+            console.log("提交失败");
+        }
+    });
+}

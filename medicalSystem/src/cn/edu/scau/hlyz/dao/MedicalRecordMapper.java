@@ -1,0 +1,12 @@
+package cn.edu.scau.hlyz.dao;
+
+import java.util.List;
+
+import cn.edu.scau.hlyz.entity.MedicalRecord;
+
+public interface MedicalRecordMapper {
+	int getFindByPatientCount(String patientId);
+	List<MedicalRecord> findByPatient(String patientId, int start, int num);
+	MedicalRecord findById(String medicalRecordId);
+	int save(MedicalRecord medicalRecord);
+}

@@ -1,0 +1,18 @@
+.consult-tab{
+    display: none;
+}
+.consult-writer{
+    margin: 0 10px;
+}
+
+#consult li{
+    cursor: pointer;
+}
+.comment-context img{
+    max-width: 30px;
+    max-height: 30px;
+    border-radius: 50%;
+}
+.comment-reply + div{
+    display: none;
+}

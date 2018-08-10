@@ -1,0 +1,163 @@
+/**
+ * @module 个人资料页面 上传图片 图片预览
+ * @description doctor and patient的上传图片预览功能
+ */
+$('#upload-file').change(function () {
+    var file = this.files[0];
+    // console.log(this.files[0]);
+    var reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+        $('#head-img').attr("src", this.result);
+    }
+});
+
+/**
+ * @module doctor and patient 医生主页 and 咨询评论的展开
+ */
+// 显示咨询和评论
+// $('.tab-show').click(function () {
+//     $('.tab-show').fadeOut();
+//     $('#consult-tab').fadeIn();
+// });
+
+//tab 页面切换
+// $('#consult a').click(function () {
+//     $(this).tab('show');
+// });
+// $('#comment a').click(function () {
+//     $(this).tab('show');
+// });
+
+
+/**
+ * @description 分页的绘制
+ * @param pages 总页数
+ * @param nowPage 当前显示页
+ * @returns {string} 分页的html代码
+ */
+let drawPagination = function(ul,pages,nowPage){
+    let li = "<li><span aria-label=\"Previous\"><span aria-hidden=\"true\">&laquo;</span></span>\n</li>";  //上一页 <<
+        for(let i=1; i<=pages; i++)
+        {
+            if(i == nowPage){
+                li += "<li class='active'><span>"+i+"</span></li>";
+            }
+            else
+                li += "<li><span>"+i+"</span></li>";
+        }
+    li += "<li><span aria-label=\"Next\"><span aria-hidden=\"true\">&raquo;</span></span></li>";  //下一页 >>
+    ul.append(li);
+    setPageDisable(ul,pages,nowPage);
+};
+
+let setPageDisable = function (ul,pages,nowPage) {
+    let liNode = ul.find('li');
+    console.log(pages);
+    if(nowPage == 1){ //当前页为第一页
+        console.log("当前页为第一页");
+        liNode.first().addClass('disabled');
+    }else {
+        liNode.first().removeClass('disabled');
+    }
+    if(nowPage == pages ){ //当前页为最后一页
+        console.log("当前页为最后一页");
+        liNode.last().addClass('disabled');
+    }else{
+        liNode.last().removeClass('disabled');
+    }
+    if(pages == 1) //总页数只有1 << >>都要禁用
+    {
+        console.log("总页数只有1！！");
+        liNode.first().addClass('disabled');
+        liNode.last().addClass('disabled');
+    }else{
+        liNode.first().removeClass('disabled');
+        liNode.last().removeClass('disabled');
+    }
+};
+//分页获得下一页,返回下一页页码
+let getNextPage = function (ul,pages){
+    let nowPage = ul.find('.active');
+    let nextPage = parseInt(nowPage.text()) +1;
+    setPageDisable(ul,pages,nextPage);
+    nowPage.removeClass('active');
+    nowPage.next().addClass('active');
+    return nextPage;
+};
+//分页获得上一页，返回上一页页码
+let getPrePage = function (ul,pages) {
+    let nowPage = ul.find('.active');
+    let prevPage = parseInt(nowPage.text()) - 1;
+    setPageDisable(ul,pages,prevPage);
+    nowPage.removeClass('active');
+    nowPage.prev().addClass('active');
+    return prevPage;
+};
+//点击某一页
+let clickAnyPage = function (ul,pages,page) {
+    let nowPage = ul.find('.active');
+    nowPage.removeClass('active');
+    $(ul.find('li').get(page)).addClass('active');
+};
+//加载病人基本信息
+let loadPatient = function (uid) {
+    $.ajax({
+        type : "post",
+        async:false,
+        url : "http://134.175.21.162:8080/medicalSystem/patient/loadPatient.do",
+        dataType:"jsonp",
+        jsonp:"callback",
+        data: {
+            userId:uid,
+        },
+        success:function(res){
+            localStorage.setItem('patient',JSON.stringify(res));
+        },
+        error:function(){
+            console.log("获取病人信息失败");
+        }
+    });
+};
+
+/*===========轮询============*/
+// setInterval(function () , 300000);
+//挂号呼叫
+let getPatientId = function () {
+    let id = "";
+    if(localStorage.hasOwnProperty('patient')){
+        id = JSON.parse(localStorage.getItem('patient')).pt_id;
+    }
+    return id;
+};
+let callRegister = function () {
+    $.ajax({
+        type: "post",
+        async: false,
+        url: "http://134.175.21.162:8080/medicalSystem/patient/callRegistration.do",
+        dataType: "jsonp",
+        jsonp: "callback",
+        data: {
+            patientId: getPatientId(),
+        },
+        success: function (res) {
+            if(res.result == '1'){
+                console.log('被呼叫');
+                var rf = res.registrationForm;
+                console.log('rf_id:'+rf.rf_id+',rf_time:'+rf.rf_time+',rf_status:'+rf.rf_status);
+                var doctor = rf.doctor;
+                console.log('dt_id:'+doctor.dt_id+',dt_name:'+doctor.dt_name);
+                var clinic = doctor.clinic;
+                console.log('cl_id:' + clinic.cl_id + ',cl_dept:' + clinic.cl_dept + ',cl_part:' + clinic.cl_part + ',cl_place:' + clinic.cl_place);
+                var patient = rf.patient;
+                console.log('pt_id:'+patient.pt_id+',pt_name:'+patient.pt_name);
+            }else{
+                console.log("请继续等待");
+            }
+
+        },
+        error: function () {
+            console.log("提交失败");
+        }
+    });
+};

@@ -1,0 +1,56 @@
+package cn.edu.scau.hlyz.service.impl;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import cn.edu.scau.hlyz.dao.SuserMapper;
+import cn.edu.scau.hlyz.entity.Suser;
+import cn.edu.scau.hlyz.service.UserService;
+@Service
+public class UserServiceImpl implements UserService {
+    @Autowired
+    private UserMapper useri;
+	@Override
+	public Boolean register(Suser user) {
+		//注册用户，把用户信息添加到数据库中
+		// TODO Auto-generated method stub
+		int a=useri.save(user);
+		if(a==1){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+	@Override
+	public Integer login(Suser user) {
+		//用户登录，返回用户的权限等级
+		// TODO Auto-generated method stub
+		return useri.findLevelById(user);
+	}
+
+	@Override
+	public Boolean changePassword(Suser user) {
+		// TODO Auto-generated method stub
+		int a=useri.update(user);
+		if(a==1){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+	@Override
+	public Boolean deleteUser(Suser user) {
+		// TODO Auto-generated method stub
+		int a=useri.delete(user);
+		if(a==1){
+			return true;
+		}
+		else{
+			return false;
+		}
+	}
+
+}

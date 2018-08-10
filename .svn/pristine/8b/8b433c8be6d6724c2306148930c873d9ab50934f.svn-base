@@ -1,0 +1,8 @@
+/*========药品管理=======*/
+.medicine-list th{
+    min-width: 75px;
+    text-align: center;
+}
+.medicine-list tr:hover{
+    cursor: pointer;
+}

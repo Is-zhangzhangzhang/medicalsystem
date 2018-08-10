@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.scau.hlyz.dao.MedicalRecordMapper">	
+	
+	<resultMap type="medicalRecord" id="MedicalRecordWithDoctorAndPatientAndIllnessAndPrescription">
+		<id property="mr_id" column="mr_id"/>
+		<result property="mr_time" column="mr_time"/>
+		<result property="mr_taken_times" column="mr_taken_times"/>
+		<result property="mr_taken_days" column="mr_taken_days"/>
+		<result property="mr_score" column="mr_score"/>
+		<association property="doctor" javaType="doctor">
+			<id property="dt_id" column="dt_id"/>
+			<result property="dt_name" column="dt_name"/>
+		</association>
+		<association property="patient" javaType="patient">
+			<id property="pt_id" column="pt_id"/>
+			<result property="pt_name" column="pt_name"/>
+		</association>
+		<association property="illness" javaType="illness">
+			<id property="ill_id" column="ill_id"/>
+			<result property="ill_name" column="ill_name"/>
+		</association>
+		<collection property="prstSet" ofType="prescription">
+			<result property="pr_num" column="pr_num"/>
+			<association property="medicine" javaType="medicine">
+				<id property="md_id" column="md_id"/>
+				<result property="md_name" column="md_name"/>
+				<result property="md_is_prescription" column="md_is_prescription"/>
+				<result property="md_price" column="md_price"/>
+			</association>
+		</collection>
+	</resultMap>
+	
+	<!-- 增加SQL,不含处方 -->
+	<insert id="save" parameterType="medicalRecord">
+		insert into medicalrecord(mr_id, pt_id, dt_id, ill_id, mr_time, mr_taken_times, mr_taken_days, mr_score) 
+		values(#{mr_id}, #{patient.pt_id}, #{doctor.dt_id}, #{illness.ill_id}, #{mr_time}, #{mr_taken_times}, #{mr_taken_days}, #{mr_score})
+	</insert>
+
+    <!-- 分页按病人查询 SQL -->
+    <select id="findByPatient" resultMap="MedicalRecordWithDoctorAndPatientAndIllnessAndPrescription">
+    	 select mr_id, mr_time, mr_taken_times, mr_taken_days, mr_score, dt_id, dt_name, pt_id, pt_name, ill_id, ill_name, pr_num, md_id, md_name, md_is_prescription, md_price
+         from medicalrecord natural join patient natural join doctor natural join illness natural join prescription natural join medicine
+         where pt_id=#{0}
+         limit #{1}, #{2}
+    </select>
+    
+    <!-- 根据id 查询 SQL -->
+    <select id="findById" resultMap="MedicalRecordWithDoctorAndPatientAndIllnessAndPrescription">
+    	 select mr_id, mr_time, mr_taken_times, mr_taken_days, mr_score, dt_id, dt_name, pt_id, pt_name, ill_id, ill_name, pr_num, md_id, md_name, md_is_prescription, md_price
+         from medicalrecord natural join patient natural join doctor natural join illness natural join prescription natural join medicine
+         where mr_id=#{medicalRecordId}
+    </select>
+</mapper>

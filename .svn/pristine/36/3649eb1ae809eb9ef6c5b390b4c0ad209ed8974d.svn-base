@@ -1,0 +1,140 @@
+/**
+ * @module 立即执行函数
+ * @description 病人付款结束后到挂号的医生主页处对医生进行评价
+ */
+$(function () {
+        //当url上的paid=true时执行
+        let url_param = location.search;
+        console.log(url_param);
+        let flag = {};
+        if (url_param) {
+            if (url_param.indexOf("?") != -1) {
+                flag[url_param.substr(1).split('=')[0]] = url_param.substr(1).split('=')[1];
+            }
+        }
+        // 隐藏显示 支付完毕后跳转到评价医生，打开评价tab
+        if(flag.paid){
+            let book_content = $('#book_content').children('div');
+            $(book_content.get(0)).hide();   // 隐藏科室医生的选择面板
+            let intro = $(book_content.get(1));
+            intro.show();  //直接显示医生主页
+            intro.find(".time-table").hide();  //隐藏时间选择表格
+
+            $('.tab-show').hide();  //隐藏展开咨询和评论
+            $('#consult-tab').show();
+            //打开tab的医生评论
+            $('#consult-tab>ul li:first-child').removeClass('active');
+            $('#consult-tab>ul li:last-child').addClass('active');
+            $('#consult').removeClass('in active');
+            $('#comment').addClass('in active');
+            $('.pa_comment').show();
+        }
+
+        //页面加载时请求科室
+        loadDept();
+});
+
+//挂号信息 标签选择切换
+let tagChange = function () {
+    let a = $(this);
+    // 标签选择
+    a.addClass('tag-active').siblings().removeClass('tag-active');
+};
+$('.tag').on('click','a',tagChange);
+
+//闭包 填充界面的科室和门诊
+let fillDeptClinic = (function () {
+    let data = {};
+    return {
+        setData:function (result) {
+            for(let i=0,arr; arr=result[i++];){
+                if( !(data[arr.cl_dept] instanceof Array)){
+                    data[arr.cl_dept] = [];
+                }
+                data[arr.cl_dept].push(arr.cl_part);
+            }
+        },
+        // 把科室展示在界面中
+        fillDept:function () {
+            let newDept = "";
+            for(let i=0,dept;dept=Object.keys(data)[i++];){
+                newDept += "<a href=\"void:javascript(0)\" class=\"tag\">"+dept+"</a>";
+            }
+            $('#book_content .book-dept .tag').append(newDept);
+        },
+        // 把所选择科室的对应门诊展示在界面中
+        fillClinic:function (dept) {
+            //选择门诊标题
+            $('.book-clinic h5').text(" -- "+dept);
+            let dom = $('#book_content .book-clinic .tag');
+            dom.html(""); //清空
+            let newClinic = "";
+            for(let i=0,clinic;clinic=data[dept][i++];){
+                newClinic += "<a href=\"void:javascript(0)\" class=\"tag\">"+clinic+"</a>";
+            }
+            dom.append(newClinic);
+            $('.book-clinic').fadeIn();
+        }
+    }
+})();
+let loadDept = function () {
+    $.ajax({
+        url: 'http://134.175.21.162:8080/medicalSystem/patient/loadClinic.do',
+        type: 'POST',
+        dataType: 'jsonp',
+        jsonp: 'callback',
+    })
+        .done(function (result) {
+            fillDeptClinic.setData(result);
+            fillDeptClinic.fillDept();
+        })
+        .fail(function () {
+            console.log("请求失败！");
+        })
+};
+//选择科室完毕后展示对应的门诊，调用闭包方法
+$('.book-dept .tag').on('click','a',function () {
+    // 标签选择
+    let deptChosen = $(this).text();
+    fillDeptClinic.fillClinic(deptChosen);
+});
+
+/**
+ *      选择时间
+ */
+$('.book-clinic .tag a').click(function () {
+    // 标签选择
+    $('.book-day').fadeIn();
+});
+
+/**
+ *      选择医生
+ */
+$('.book-day .tag a').click(function () {
+    // 标签选择
+    $('.book-who').fadeIn();
+});
+
+/**
+ *      显示医生主页
+ */
+$('.book-who .tag a').click(function () {
+    $('.doctor-page').fadeIn();
+});
+
+/**
+ *      点击挂号
+ */
+$('.time-table table tr td:nth-of-type(2)').click(function () {
+    // alert("挂号成功，去付款！");
+    $('.book-sure-msg').fadeIn();
+});
+
+$('#book-cancel').click(function () {
+    $('.book-sure-msg').fadeOut();
+});
+
+
+$('#book-ok').click(function () {
+    //    TODO 提交挂号信息
+});

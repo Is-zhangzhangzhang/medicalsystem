@@ -1,0 +1,28 @@
+function sendData(){
+    $.ajax({    
+     type : "post",    
+     async:false,    
+     url : "http://localhost:8080/ssm/patient/advisoryOfDoctor.do",
+     dataType:"jsonp", 
+     jsonp:"callback",
+     data: {
+        doctorId:encodeURI("1"),
+        page:encodeURI("1")
+     }, 
+     success:function(res){   
+        console.log('reulstNumber:'+res.resultNum);
+        var adArr = res.advisoryArray;
+        for(var i in adArr){
+           console.log('ad_id:'+ adArr[i].ad_id+',ad_content:'+adArr[i].ad_content+',ad_time:'+adArr[i].ad_time+',ad_title'+adArr[i].ad_title);
+           console.log('dt_id:'+adArr[i].doctor.dt_id+',dt_name:'+adArr[i].doctor.dt_name+',dt_sex:'+adArr[i].doctor.dt_sex+',dt_tel:'+adArr[i].doctor.dt_tel+',dt_image:'+adArr[i].doctor.dt_image+',dt_title:'+adArr[i].doctor.dt_title+',introduction:'+adArr[i].doctor.introduction+',money:'+adArr[i].doctor.money);
+           console.log('cl_id:'+adArr[i].doctor.clinic.cl_id+',cl_dept:'+adArr[i].doctor.clinic.cl_dept+',cl_part:'+adArr[i].doctor.clinic.cl_part+',cl_place:'+adArr[i].doctor.clinic.cl_place);
+           console.log('pt_id:'+adArr[i].patient.pt_id+', pt_name:'+adArr[i].patient.pt_name);
+        } 
+     },    
+     error:function(){ 
+        console.log("提交失败");
+     }    
+ });   
+}
+
+sendData();

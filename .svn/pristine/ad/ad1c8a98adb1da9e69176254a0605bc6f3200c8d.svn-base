@@ -1,0 +1,67 @@
+package cn.edu.scau.hlyz.service.impl;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import cn.edu.scau.hlyz.dao.AdvisoryMapper;
+import cn.edu.scau.hlyz.dao.ReplyMapper;
+import cn.edu.scau.hlyz.entity.Advisory;
+import cn.edu.scau.hlyz.entity.Reply;
+import cn.edu.scau.hlyz.service.AdvisoryService;
+
+@Service
+public class AdvisoryServiceImpl implements AdvisoryService{
+	@Autowired
+	private AdvisoryMapper adi;
+	private ReplyMapper rei;
+
+	@Override
+	public Boolean addAdvisory(Advisory advisory) {
+		// TODO Auto-generated method stub
+		int a=adi.save(advisory);
+		if(a==1){
+			return true;
+		}	
+		else{
+			return false;
+		}	
+	}
+
+	@Override
+	public Boolean addRespondence(Reply reply) {
+		// TODO Auto-generated method stub
+		int a=rei.save(reply);
+		if(a==1){
+			return true;
+		}	
+		else{
+			return false;
+		}
+	}
+
+	@Override
+	public Advisory findAdvisoryById(String id) {
+		// TODO Auto-generated method stub
+		return adi.findById(id);
+	}
+
+	@Override
+	public List<Advisory> findAllAdvisoryOfDoctor(String doctorId, int start, int num) {
+		// TODO Auto-generated method stub
+		return adi.findAllOfDoctor(doctorId,start,num);
+	}
+
+	@Override
+	public List<Advisory> findAllAdvisoryOfPatient(String patientId, int start, int num) {
+		// TODO Auto-generated method stub
+		return adi.findAllOfDoctor(patientId,start,num);
+	}
+
+	@Override
+	public List<Reply> findAllRespondenceOfAdvisory(String advisoryId, int start, int num) {
+		// TODO Auto-generated method stub
+		return adi.findAll(advisoryId,start,num);
+	}
+	
+
+}

@@ -1,0 +1,14 @@
+/*顶部导航栏*/
+.navbar{
+    margin-bottom: 0;
+}
+.navbar-default{
+    background-color: #fff;
+}
+#register-queue{
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+.panel{
+    width: 100%;
+}

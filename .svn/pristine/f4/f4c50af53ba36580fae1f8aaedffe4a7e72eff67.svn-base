@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+</head>
+<body>
+    <!--上传头像-->
+            <div class="row">
+                <div class="wrapping">
+                    <div class="text-center">
+                        <input type="file" id="upload-file">
+                        <div id="head-show">
+                            <img src="../../img/inithead.jpg" id="head-img">
+                        </div>
+                        <div>
+                            <button class="btn btn-default" onclick="$('#upload-file').click()">上传头像</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <hr>
+
+        <div class="form-wrap">
+                <form class="form-horizontal">
+                    <!--病人编号-->
+                    <div class="form-group">
+                        <label for="pt_id" class="col-md-2 col-lg-2 col-sm-2 col-xs-12 control-label text-right">病人编号：</label>
+                        <div class="col-md-8 col-lg-8 col-sm-8 col-xs-12">
+                            <input type="text" id="pt_id" class="form-control" disabled="disabled">
+                        </div>
+                    </div>
+                    <!--姓名-->
+                    <div class="form-group">
+                        <label for="pt_name" class="col-md-2 col-lg-2 col-sm-2 col-xs-12 control-label text-right">姓名：</label>
+                        <div class="col-md-8 col-lg-8 col-sm-8 col-xs-12">
+                            <input type="text" id="pt_name" class="form-control" placeholder="姓名">
+                        </div>
+                    </div>
+                    <!--性别-->
+                    <div class="form-group">
+                        <label for="pt_id" class="col-md-2 col-lg-2 col-sm-2 col-xs-12 control-label text-right">性别：</label>
+                        <div class="col-md-8 col-lg-8 col-sm-8 col-xs-12">
+                            <select id="pt_sex" class="form-control">
+                                <option value="男">男</option>
+                                <option value="女">女</option>
+                            </select>
+                        </div>
+                    </div>
+                    <!--出生日期-->
+                    <div class="form-group">
+                        <label for="pt_born" class="col-md-2 col-lg-2 col-sm-2 col-xs-12 control-label text-right">出生日期：</label>
+                        <div class="col-md-8 col-lg-8 col-sm-8 col-xs-12">
+                            <input type="text" id="pt_born" class="form-control" placeholder="出生日期">
+                        </div>
+                    </div>
+                    <!--联系方式-->
+                    <div class="form-group">
+                        <label for="pt_tel" class="col-md-2 col-lg-2 col-sm-2 col-xs-12 control-label text-right">联系方式：</label>
+                        <div class="col-md-8 col-lg-8 col-sm-8 col-xs-12">
+                            <input type="text" id="pt_tel" class="form-control" placeholder="联系方式">
+                        </div>
+                    </div>
+                    <!--保存修改-->
+                    <div class="form-group">
+                        <div class="col-md-10 col-lg-10">
+                            <button class="btn btn-success pull-right" id="save" type="button">保存修改</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+    <script src="jquery-3.3.1.min.js"></script>
+    <script src="jquery-migrate-1.2.1.js"></script>
+    <!-- <script src="dateFomat.js"></script> -->
+    <!-- <script src="testLoadPatient.js"></script> -->
+    <!-- <script src="testLoadClinic.js"></script> -->
+    <!-- <script src="testGetDoctorOfClinic.js"></script> -->
+    <!-- <script src="testGetRemainingNumber.js"></script> -->
+    <!-- <script src="testGetAdvisoryOfDoctor.js"></script> -->
+    <!-- <script src="testGetEvaluation.js"></script> -->
+    <!-- <script src="testSubmitRegistration.js"></script> -->
+    <!-- <script src="testSubmitAdvisory.js"></script> -->
+    <!-- <script src="testGetAdvisoryOfPatient.js"></script> -->
+    <!-- <script src="testGetAdvisoryWithReply.js"></script> -->
+    <!-- <script src="testSubmitReply.js"></script> -->
+    <!-- <script src="testGetAllMedicalRecord.js"></script> -->
+    <!-- <script src="testGetOneMedicalRecord.js"></script> -->
+    <!-- <script src="testSearchIllness.js"></script> -->
+    <!-- <script src="testUploadImage.js"></script> -->
+    <!-- <script src="testUpdateSetting.js"></script> -->
+    <!-- <script src="testCallRegistation.js"></script> -->
+    <!-- <script src="testAskConsumptionOrder.js"></script> -->
+    <!-- <script src="testSubmitEvaluation.js"></script> -->
+</body>
+</html>

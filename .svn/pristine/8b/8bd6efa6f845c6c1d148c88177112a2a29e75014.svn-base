@@ -1,0 +1,83 @@
+package cn.edu.scau.hlyz.entity;
+
+import java.util.Set;
+
+public class Doctor {
+
+	private String dt_id;
+	private String dt_name;
+	private String sex;
+	private String dt_tel;
+	private String title;
+	private String introduction;
+	private double money;
+	private Clinic clinic;
+	private Set<Advisory> adSet;
+	private Set<RegistrationForm> rfSet;
+	public Set<Advisory> getAdSet() {
+		return adSet;
+	}
+	public void setAdSet(Set<Advisory> adSet) {
+		this.adSet = adSet;
+	}
+	public Set<RegistrationForm> getRfSet() {
+		return rfSet;
+	}
+	public void setRfSet(Set<RegistrationForm> rfSet) {
+		this.rfSet = rfSet;
+	}
+	public String getDt_id() {
+		return dt_id;
+	}
+	public void setDt_id(String dt_id) {
+		this.dt_id = dt_id;
+	}
+	public String getDt_name() {
+		return dt_name;
+	}
+	public void setDt_name(String dt_name) {
+		this.dt_name = dt_name;
+	}
+	public String getSex() {
+		return sex;
+	}
+	public void setSex(String sex) {
+		this.sex = sex;
+	}
+	public Clinic getClinic() {
+		return clinic;
+	}
+	public void setClinic(Clinic clinic) {
+		this.clinic = clinic;
+	}
+	public String getDt_tel() {
+		return dt_tel;
+	}
+	public void setDt_tel(String dt_tel) {
+		this.dt_tel = dt_tel;
+	}
+	public String getTitle() {
+		return title;
+	}
+	public void setTitle(String title) {
+		this.title = title;
+	}
+	public String getIntroduction() {
+		return introduction;
+	}
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
+	}
+	public double getMoney() {
+		return money;
+	}
+	public void setMoney(double money) {
+		this.money = money;
+	}
+	@Override
+	public String toString() {
+		return "Doctor [dt_id=" + dt_id + ", dt_name=" + dt_name + ", sex=" + sex + ", dt_tel=" + dt_tel + ", title="
+				+ title + ", introduction=" + introduction + ", money=" + money + ", clinic=" + clinic + ", adSet="
+				+ adSet +", rfSet=" + rfSet + "]";
+	}
+}

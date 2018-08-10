@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge, chrome=1"/>
+    <meta name="description" content="description of your site"/>
+    <meta name="author" content="author of the site"/>
+    <title>付款</title>
+    <link rel="stylesheet" href="../../plugins/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../css/util/styles.css"/>
+    <link rel="stylesheet" href="../../css/users/patient.css">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+</head>
+
+<body>
+<!--顶部导航栏-->
+<nav class="navbar navbar-default">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="javascript:(0)"><h4><strong>P&nbsp;<i class="glyphicon glyphicon-plus" style="color:#e52c2c"></i>&nbsp;P</strong>系统</h4></a>
+        </div>
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        我的消息
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="message.html?tab=2">挂号呼叫<span class="label label-danger pull-right" id="top_myRegisterNum"></span></a></li>
+                        <li><a href="message.html?tab=1">我的问答<span class="label label-danger pull-right" id="top_myReplyNum"></span></a></li>
+                        <li><a href="message.html?tab=3">待支付<span class="label label-danger pull-right" id="top_myPayNum"></span></a></li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">
+                        <div id="top_head_img"></div>
+                        <span id="top_head_name">User</span>
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a href="../../index.html">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </div><!-- /.container-fluid -->
+</nav>
+<!--顶部菜单栏-->
+<div id="in-sub-nav">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12">
+                <ul>
+                    <li>
+                        <a href="main.html"><i class="batch home"></i><br/>主页</a>
+                    </li>
+                    <li>
+                        <a href="bookDoctor.html"><i class="batch book-doctor"></i><br/>我要挂号</a>
+                    </li>
+                    <li>
+                        <a href="myBook.html"><i class="batch calendar"></i><br/>我的挂号</a>
+                    </li>
+                    <li>
+                        <span class="label label-danger pull-right">04</span>
+                        <a href="myConsult.html"><i class="batch comment"></i><br/>我的问答</a>
+                    </li>
+                    <li>
+                        <a href="myMedicalRecord.html"><i class="batch forms"></i><br/>我的病历</a>
+                    </li>
+                    <li id="top_msg">
+                        <a href="message.html"><i class="batch msg"></i><br/>消息列表</a>
+                    </li>
+                    <li>
+                        <a href="diseaseKnowledge.html"><i class="batch book"></i><br/>疾病百科</a>
+                    </li>
+                    <li>
+                        <a href="setting.html"><i class="batch users"></i><br/>个人资料</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<!--消息提示-->
+<div class="msg-alert"></div>
+<!--主界面内容：我的病历列表-->
+<div class="page">
+    <div class="page-container">
+        <div class="container">
+            <!--二维码+病历-->
+            <div class="row">
+                <div class="wrapping80" >
+                    <!--<button data-target="#pt_pay_success" data-toggle="modal" class="btn btn-success">付款成功</button>-->
+                    <!--付款成功模态框-->
+                    <div class="modal fade" id="pt_pay_success">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                    <h4 class="modal-title">提示</h4>
+                                </div>
+                                <div class="modal-body text-center">
+                                    <h1>支付成功！</h1>
+                                    <div class="text-right">
+                                        <a href="#" id="pa_to_comment"><strong>立刻去评价医生？</strong></a>
+                                    </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <buton class="btn btn-default" data-dismiss="modal">关闭</buton>
+                                    <button type="button" class="btn btn-primary" id="cl_save">保存</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h4 id="consume_title_h4">消费单详情：</h4>
+                    <div id="consume_detail">
+
+                        <div class="row">
+                            <span class="col-lg-4 col-md-4">患者编号：<span name="span_consume">66666</span></span>
+                            <span class="col-lg-4 col-md-4">患者姓名：<span name="span_consume">病人</span></span>
+                            <span class="col-lg-4 col-md-4">主治医生：<span name="span_consume">哈哈哈</span></span>
+                        </div>
+
+                        <!--药品table-->
+                        <div class="row">
+                            <h1 class="col-lg-12 col-md-12">Rp:</h1>
+                            <!--药品列表-->
+                            <div>
+                                <table class="table table-striped table-hover table-bordered" style="margin: 15px;" id="pay_md_table">
+                                    <thead>
+                                        <tr>
+                                            <td>药品编号</td>
+                                            <td>药品名称</td>
+                                            <td>药品用量</td>
+                                            <td>药品单价</td>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td colspan="4" class="text-center">暂无处方</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                        <!--消费单-->
+                        <div class="row">
+                            <h4 class="col-lg-3 col-md-3">消费单号：<span name="span_consume">123456</span></h4>
+                            <h4 class="col-lg-3 col-md-3 ">诊金：<span name="span_consume">30</span></h4>
+                            <h4 class="col-lg-3 col-md-3 ">消费总额：<span name="span_consume">200</span></h4>
+                            <h4 class="col-lg-3 col-md-3 ">支付状态：<span name="span_consume">未支付</span></h4>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="span12">
+                <p class="pull-right">作者：华俊达 李腾泳 袁晓如 张嘉怡</p>
+                <p>&copy; 2018 P&nbsp;<i class="glyphicon glyphicon-plus"></i>&nbsp;P系统 来源：scau</p>
+            </div>
+        </div>
+    </div>
+</footer>
+</body>
+<!--jQuery-->
+<script src="../../plugins/jQuery/jquery-3.1.1.min.js"></script>
+<!--bootstrap-->
+<script src="../../plugins/bootstrap/js/bootstrap.min.js"></script>
+<!--当前界面js-->
+<script src="../../js/util/jump.js"></script>
+<script src="../../js/patient/patient.js"></script>
+<script src="../../js/patient/pay.js"></script>
+</html>

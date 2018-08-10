@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.edu.scau.hlyz.dao.ReplyMapper">	
+	
+	<resultMap type="reply" id="ReplyWithSuserResult">
+		<id property="re_id" column="re_id"/>
+		<result property="re_content" column="re_content"/>
+		<result property="re_time" column="re_time"/>
+		<result property="re_status" column="re_status"/>
+		<association property="respondent" javaType="suser">
+			<id property="user_id" column="user_id"/>
+			<result property="user_level" column="user_level"/>
+		</association>
+	</resultMap>
+	<resultMap type="reply" id="ReplyWithAdvisoryPatinetResult">
+		<id property="re_id" column="re_id"/>
+		<result property="re_content" column="re_content"/>
+		<result property="re_time" column="re_time"/>
+		<result property="re_status" column="re_status"/>
+		<association property="re_Consultaion" javaType="Advisory">
+			<id property="ad_id" column="ad_id"/>
+			<result property="ad_title" column="ad_title"/>
+			<result property="ad_content" column="ad_content"/>
+			<association property="patient" javaType="patient">
+			<id property="pt_id" column="pt_id" />
+			<result property="pt_name" column="pt_name" />
+			<result property="pt_image" column="pt_image" />
+			</association>
+		</association>
+		<association property="respondent" javaType="suser">
+			<id property="user_id" column="user_id"/>
+			<result property="user_level" column="user_level"/>
+		</association>
+	</resultMap>
+	<resultMap type="reply" id="ReplyWithAdvisoryDoctorResult">
+		<id property="re_id" column="re_id"/>
+		<result property="re_content" column="re_content"/>
+		<result property="re_time" column="re_time"/>
+		<result property="re_status" column="re_status"/>
+		<association property="re_Consultaion" javaType="Advisory">
+			<id property="ad_id" column="ad_id"/>
+			<result property="ad_title" column="ad_title"/>
+			<result property="ad_content" column="ad_content"/>
+			<association property="doctor" javaType="doctor">
+			<id property="dt_id" column="dt_id" />
+			<result property="dt_name" column="dt_name" />
+			<result property="dt_image" column="dt_image" />
+			</association>
+		</association>
+		<association property="respondent" javaType="suser">
+			<id property="user_id" column="user_id"/>
+			<result property="user_level" column="user_level"/>
+		</association>
+	</resultMap>
+	<!-- 增加SQL -->
+	<insert id="save" parameterType="reply">
+		insert into reply(re_id, user_id, ad_id, re_content, re_time) 
+		values(#{re_id}, #{respondent.user_id}, #{re_Consultaion.ad_id}, #{re_content}, #{re_time})
+	</insert>
+    <update id="updateAllReplyRead" parameterType="String">
+    update reply set re_status='read' where ad_id=#{0} and user_id  &lt;&gt; #{1}
+    </update>
+    <select id="findByDoctorUnread" parameterType="String" resultMap="ReplyWithAdvisoryPatinetResult">
+    select re_id,re_content,re_time,re_status,ad_id,ad_title,ad_content,pt_id,pt_name,pt_image,user_id,user_level
+    from reply natural join suser natural join advisory natural join patient
+    where user_id &lt;&gt; #{dt_id} and advisory.dt_id=#{dt_id} and re_status='unread'
+    </select>
+    <select id="findByPatientUnread" parameterType="String" resultMap="ReplyWithAdvisoryDoctorResult">
+    select re_id,re_content,re_time,re_status,ad_id,ad_title,ad_content,dt_id,dt_name,dt_image,user_id,user_level
+    from reply natural join suser natural join advisory natural join doctor
+    where user_id &lt;&gt; #{pt_id} and advisory.pt_id=#{pt_id} and re_status='unread'
+    </select>
+    <select id="getDoctorUnreadCount" resultType="int">
+    select count(*)
+    from reply natural join suser natural join advisory
+    where user_id &lt;&gt; #{dt_id} and advisory.dt_id=#{dt_id} and re_status='unread'
+    </select>
+    <select id="getPatientUnreadCount" resultType="int">
+    select count(*)
+    from reply natural join suser natural join advisory
+    where user_id &lt;&gt; #{pt_id} and advisory.pt_id=#{pt_id} and re_status='unread'
+    </select>
+	<!-- 按咨询查询结果数 SQL -->
+	<select id="getFindByAdvisoryCount" resultType="int">
+		select count(*) from reply where ad_id=#{advisoryId}
+	</select>
+    
+    <!-- 分页按咨询查询 SQL -->
+    <select id="findByAdvisory" resultMap="ReplyWithSuserResult">
+    	 select re_id, re_content, re_time, user_id, user_level
+         from reply natural join suser
+         where ad_id=#{0}
+         limit #{1}, #{2}
+    </select>
+</mapper>

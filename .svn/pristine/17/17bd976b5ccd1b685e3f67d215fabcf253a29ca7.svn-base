@@ -1,0 +1,5 @@
+$(function () {
+
+});
+
+let consult = JSON.parse(localStorage.getItem('consult'));

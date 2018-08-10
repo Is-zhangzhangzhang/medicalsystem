@@ -1,0 +1,25 @@
+/**
+ * @module 立即执行函数 医生查看我的评论
+ */
+$(function () {
+    var url_param = location.search;
+    console.log(url_param);
+    var flag = {};
+    var toComment
+    if (url_param) {
+        if (url_param.indexOf("?") != -1) {
+            flag[url_param.substr(1).split('=')[0]] = url_param.substr(1).split('=')[1];
+        }
+    }
+    if(flag.toComment){
+        $('.tab-show').css('display','none');
+        $('#consult-tab').css('display','block');
+    //    打开tab的医生评论
+        $('#consult-tab>ul li:first-child').removeClass('active');
+        $('#consult-tab>ul li:last-child').addClass('active');
+        $('#consult').removeClass('in active');
+        $('#comment').addClass('in active');
+    }
+});
+
+

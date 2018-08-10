@@ -1,0 +1,19 @@
+/**
+ * 登录界面点击登录跳转到主界面
+ */
+$('#login-button').click(function(event){
+    event.preventDefault();
+    $('.lo-form').fadeOut(500);
+    $('.wrapper').addClass('form-success');
+    setTimeout(function () {
+        window.location.href = "./html/doctor/main.html";
+    },1000);
+});
+
+/**
+ * main.html中点击查看当日行程
+ * 当天挂号列表
+ */
+$('#register-queue').click(function (event) {
+    window.location.href = "./registerList.html";
+});

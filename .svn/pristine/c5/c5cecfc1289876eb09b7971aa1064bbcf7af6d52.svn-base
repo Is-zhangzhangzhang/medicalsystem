@@ -1,0 +1,20 @@
+$(function () {
+/**
+ * @module 医生主页 and 咨询评论
+ */
+    // 显示咨询和评论
+    $('.tab-show').click(function(){
+        $('.tab-show').fadeOut();
+        $('.consult-tab').fadeIn();
+    });
+
+    //tab 页面切换
+    $('#consult a').click(function () {
+        $(this).tab('show');
+    });
+    $('#comment a').click(function () {
+        $(this).tab('show');
+    });
+});
+
+

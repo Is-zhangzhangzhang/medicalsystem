@@ -1,0 +1,56 @@
+$(function () {
+    /**
+     * @module 我的挂号列表界面
+     * @description 点击就诊跳转到病例界面
+     *
+     * @property el 点击的就诊button
+     * @property tr 点击的button所在tr
+     * @property td 点击的button所在tr下的所有td
+     */
+    document.getElementById('list-table').addEventListener('click',function(e){
+        // console.log(e.target);
+        var el = e.target;
+        if(el.innerText == '就诊')
+        {
+            var tr = el.parentNode.parentNode;
+            var td = tr.childNodes;
+            // 删除空节点
+            for (var i=0; i<td.length;i++)
+            {
+                if(td[i].nodeName.toLowerCase() != "td")
+                {
+                    tr.removeChild(td[i]);
+                }
+            }
+            var patient = {};
+            patient.id = td[0].innerText;
+            patient.name = td[1].innerText;
+            // 保存到sessionstorage中
+            if(patient != null)
+            {
+                sessionStorage.setItem("patient",JSON.stringify(patient));
+            }
+            console.log(patient);
+            window.location.href = './medicalRecord.html';
+        }
+    });
+
+    /**
+     * @module 病历录入界面
+     * @description 处方药提示框
+     */
+    //药品输入提示
+    $(function () {
+        var medicalMsg = [
+            "阿胶",
+            "茯苓",
+            "感冒药",
+            "止痛药",
+            "感动哈哈哈哈",
+            "感觉哈哈哈"
+        ];
+        $('#medical-name').autocomplete({
+            source: medicalMsg
+        });
+    });
+});
